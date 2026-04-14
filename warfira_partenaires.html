@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WARFIRA — Partenaires</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --blue: #28368C; --blue-dark: #1A2E5A; --blue-darker: #111E3A;
+      --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
+      --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
+    }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
+
+    /* NAVBAR */
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+    .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* HERO */
+    .hero { background: var(--blue); min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 40px; }
+    .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
+    .hero h1 { font-size: 34px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 500px; margin-bottom: 14px; }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 440px; line-height: 1.8; }
+
+    /* SECTIONS */
+    .section { padding: 60px; }
+    .section-alt { background: var(--cream); }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
+    .section h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .section-sub { font-size: 13px; color: var(--gray); max-width: 460px; line-height: 1.8; margin-bottom: 36px; }
+
+    /* INTRO GRID */
+    .intro { padding: 56px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .intro-text h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 12px; }
+    .intro-text p { font-size: 13px; color: var(--gray); line-height: 1.8; }
+    .intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .istat { background: var(--cream); padding: 18px; border-radius: 4px; }
+    .istat-num { font-size: 30px; font-weight: 700; color: var(--blue-dark); line-height: 1; }
+    .istat-label { font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-top: 4px; text-transform: uppercase; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .card { background: var(--white); padding: 32px 26px; display: flex; flex-direction: column; }
+    .card-badge { display: inline-block; font-size: 10px; font-weight: 600; background: var(--blue); color: var(--white); padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.5px; align-self: flex-start; }
+    .card-num { font-size: 44px; font-weight: 700; color: rgba(40,54,140,0.07); line-height: 1; margin-bottom: -6px; }
+    .card-tag { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
+    .card h3 { font-size: 17px; font-weight: 700; color: var(--blue); margin-bottom: 6px; }
+    .card-question { font-size: 12px; color: var(--blue); font-style: italic; margin-bottom: 12px; opacity: 0.7; }
+    .card > p { font-size: 12px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; flex: 1; }
+    .benefits { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; }
+    .benefits li { font-size: 12px; color: var(--blue-dark); display: flex; gap: 8px; }
+    .benefits li::before { content: '•'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
+    .btn-blue { display: inline-block; font-family: var(--font); font-size: 11px; font-weight: 600; color: var(--white); background: var(--blue); padding: 10px 18px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; align-self: flex-start; }
+    .btn-blue:hover { background: var(--blue-dark); }
+    .card--featured { border-top: 2px solid var(--blue); }
+
+    /* STEPS */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: 8px; }
+    .steps::before { content: ''; position: absolute; top: 20px; left: 12%; right: 12%; height: 0.5px; background: rgba(40,54,140,0.2); }
+    .step { text-align: center; padding: 0 16px; position: relative; z-index: 1; }
+    .step-circle { width: 40px; height: 40px; border-radius: 50%; background: var(--white); border: 1px solid var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .step-circle span { font-size: 14px; font-weight: 700; color: var(--blue); }
+    .step h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
+    .step p { font-size: 11px; color: var(--gray); line-height: 1.6; }
+
+    /* PRICING */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+    .price-card { border: 1px solid var(--border); border-radius: 4px; padding: 26px 22px; }
+    .price-card--featured { border: 1.5px solid var(--blue); }
+    .price-tag { font-size: 10px; letter-spacing: 1.5px; color: var(--blue); margin-bottom: 8px; text-transform: uppercase; font-weight: 600; opacity: 0.6; }
+    .price-name { font-size: 18px; font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; }
+    .price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+    .price-amount strong { font-size: 32px; font-weight: 700; color: var(--blue-dark); }
+    .price-amount span { font-size: 13px; color: var(--gray); }
+    .price-note { font-size: 11px; color: var(--gray); margin-bottom: 16px; }
+    .price-divider { height: 0.5px; background: var(--border); margin-bottom: 14px; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .price-features li { font-size: 12px; color: var(--gray); display: flex; gap: 8px; }
+    .price-features li::before { content: '—'; color: var(--blue); flex-shrink: 0; opacity: 0.5; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--blue-dark); padding: 56px 60px; }
+    .testimonials .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
+    .testimonials h2 { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 32px; }
+    .tgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .tcard { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 24px; }
+    .tcard-quote { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.75; font-style: italic; margin-bottom: 16px; }
+    .tcard-author { display: flex; align-items: center; gap: 10px; }
+    .tcard-avatar { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.1); border: 0.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--white); flex-shrink: 0; }
+    .tcard-name { font-size: 12px; font-weight: 600; color: var(--white); }
+    .tcard-role { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+
+    /* FOOTER CTA */
+    .footer-cta { padding: 44px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border); }
+    .footer-cta h3 { font-size: 22px; font-weight: 700; color: var(--blue-dark); }
+    .footer-cta p { font-size: 13px; color: var(--gray); margin-top: 4px; }
+    .footer-cta-btn { background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 11px 26px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+    .footer-cta-btn:hover { background: var(--blue-dark); }
+
+    /* FOOTER */
+    footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo img { height: 36px; width: auto; object-fit: contain; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+    .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
+    .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 12px 20px; } .nav-links { display: none; }
+      .hero h1 { font-size: 26px; }
+      .intro { grid-template-columns: 1fr; padding: 40px 20px; }
+      .intro-stats { grid-template-columns: 1fr 1fr; }
+      .section { padding: 40px 20px; }
+      .cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+      .steps::before { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonials { padding: 40px 20px; } .tgrid { grid-template-columns: 1fr; }
+      .footer-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html" class="active">Partenaires</a></li>
+      <li><a href="warfira_vision.html">Vision</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">HÔTELIERS · AGENCES · INVESTISSEURS</div>
+    <h1>Rejoignez un réseau bâti pour durer</h1>
+    <p class="hero-sub">WARFIRA s'adresse à trois écosystèmes distincts avec une proposition de valeur claire et un parcours de conversion dédié à chacun.</p>
+  </section>
+
+  <div class="intro">
+    <div class="intro-text">
+      <div class="section-label">Pourquoi WARFIRA</div>
+      <h2>Une alternative française de confiance</h2>
+      <p>WARFIRA conjugue la sécurité du conseil humain et l'efficacité du digital, offrant une proposition de valeur unique qui fusionne expertise locale et outils technologiques de pointe sur le corridor France-Afrique.</p>
+    </div>
+    <div class="intro-stats">
+      <div class="istat"><div class="istat-num">250</div><div class="istat-label">Boutiques 2027</div></div>
+      <div class="istat"><div class="istat-num">5M€</div><div class="istat-label">CA projeté 2029</div></div>
+      <div class="istat"><div class="istat-num">25%</div><div class="istat-label">Marge nette 2029</div></div>
+      <div class="istat"><div class="istat-num">3–5x</div><div class="istat-label">ROI investisseur</div></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-label">Nos trois programmes</div>
+    <h2>Choisissez votre parcours</h2>
+    <p class="section-sub">Hôtelier, agent de voyage ou investisseur — WARFIRA a conçu un programme sur mesure pour chaque profil.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <div class="card-tag">Pour les hôteliers</div>
+        <h3>Rejoindre le réseau WHS</h3>
+        <p class="card-question">"Comment optimiser durablement mon taux d'occupation ?"</p>
+        <p>Intégrez le réseau WHS pour accroître votre visibilité internationale, optimiser votre distribution via nos systèmes GDS et capter les flux de voyageurs qualifiés de WARFIRA.</p>
+        <ul class="benefits">
+          <li>Visibilité internationale via GDS & AMADEUS</li>
+          <li>Réduction de la dépendance aux OTAs</li>
+          <li>Accès aux flux voyageurs du réseau WRB</li>
+          <li>Commissions transparentes 5–10%</li>
+        </ul>
+        <button class="btn-blue">Rejoindre WHS ↗</button>
+      </div>
+      <div class="card card--featured">
+        <div class="card-badge">Programme phare</div>
+        <div class="card-num">02</div>
+        <div class="card-tag">Pour les agences</div>
+        <h3>Devenir boutique partenaire WRB</h3>
+        <p class="card-question">"Quels leviers pour booster la performance de mon agence ?"</p>
+        <p>Rejoignez le réseau WRB. Accédez à la plateforme technologique WRS et bénéficiez d'un programme d'accompagnement et de formation continue pour professionnaliser vos services.</p>
+        <ul class="benefits">
+          <li>Accès complet à la plateforme WRS</li>
+          <li>Formation continue & accompagnement</li>
+          <li>Support marketing & outils CRM</li>
+          <li>Abonnement 149€/mois · Entrée 5 000€</li>
+        </ul>
+        <button class="btn-blue">Devenir partenaire WRB ↗</button>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <div class="card-tag">Pour les investisseurs</div>
+        <h3>Investir dans l'écosystème WARFIRA</h3>
+        <p class="card-question">"Pourquoi choisir WARFIRA pour mon portefeuille ?"</p>
+        <p>Participez au financement d'un écosystème touristique hybride, structuré sur le corridor France-Afrique et porté par un modèle économique multi-sources pérenne.</p>
+        <ul class="benefits">
+          <li>ROI attendu 3–5x sur 4 ans</li>
+          <li>Marge brute 80% · Marge nette 25%</li>
+          <li>Revenus récurrents + commissions</li>
+          <li>Expansion France puis Afrique francophone</li>
+        </ul>
+        <button class="btn-blue">Contacter la direction ↗</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="section-label">Comment ça marche</div>
+    <h2>Rejoindre WARFIRA en 4 étapes</h2>
+    <p class="section-sub">Un processus simple et accompagné pour intégrer l'écosystème WARFIRA rapidement et sereinement.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-circle"><span>1</span></div>
+        <h4>Prise de contact</h4>
+        <p>Envoyez-nous votre demande par email ou via le formulaire de contact</p>
+      </div>
+      <div class="step">
+        <div class="step-circle"><span>2</span></div>
+        <h4>Étude du dossier</h4>
+        <p>Notre équipe analyse votre profil et vos besoins sous 48h</p>
+      </div>
+      <div class="step">
+        <div class="step-circle"><span>3</span></div>
+        <h4>Signature & accès</h4>
+        <p>Contrat signé, accès à la plateforme WRS activé immédiatement</p>
+      </div>
+      <div class="step">
+        <div class="step-circle"><span>4</span></div>
+        <h4>Formation & lancement</h4>
+        <p>Onboarding complet, vous êtes opérationnel en moins d'une semaine</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Tarification WRB</div>
+    <h2>Un investissement transparent</h2>
+    <p class="section-sub">Un modèle simple, sans surprise, conçu pour être rentable dès les premiers mois d'activité.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tag">Droits d'entrée</div>
+        <div class="price-name">Adhésion WRB</div>
+        <div class="price-amount"><strong>5 000</strong><span>€ unique</span></div>
+        <div class="price-note">Investissement initial</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Accès plateforme WRS</li>
+          <li>Formation initiale complète</li>
+          <li>Kit de démarrage marketing</li>
+          <li>Support technique dédié</li>
+        </ul>
+      </div>
+      <div class="price-card price-card--featured">
+        <div class="price-tag">Abonnement mensuel</div>
+        <div class="price-name">Partenaire actif</div>
+        <div class="price-amount"><strong>149</strong><span>€/mois</span></div>
+        <div class="price-note">Revenu récurrent WARFIRA</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Accès continu WRS</li>
+          <li>Formations mensuelles</li>
+          <li>Mises à jour produits</li>
+          <li>Accompagnement commercial</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-tag">Commissions</div>
+        <div class="price-name">Performance</div>
+        <div class="price-amount"><strong>5–10</strong><span>%</span></div>
+        <div class="price-note">Sur chaque transaction</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Vols & billets d'avion</li>
+          <li>Réservations hôtels</li>
+          <li>Séjours & packages</li>
+          <li>Services WHS</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <div class="section-label">Ils nous font confiance</div>
+    <h2>Ce que disent nos partenaires</h2>
+    <div class="tgrid">
+      <div class="tcard">
+        <p class="tcard-quote">"Grâce à WARFIRA, j'ai pu lancer mon agence sans infrastructure lourde. La plateforme WRS est intuitive et le support est vraiment là quand on en a besoin."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MK</div>
+          <div><div class="tcard-name">Marie K.</div><div class="tcard-role">Boutique partenaire WRB · Paris 15e</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <p class="tcard-quote">"Le réseau WARFIRA nous a permis de réduire notre dépendance aux OTAs de 40%. La visibilité internationale via GDS a transformé notre taux d'occupation."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">JB</div>
+          <div><div class="tcard-name">Jean-Baptiste M.</div><div class="tcard-role">Hôtelier indépendant · Réseau WHS</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-cta">
+    <div>
+      <h3>Prêt à rejoindre l'écosystème ?</h3>
+      <p>Notre équipe étudie chaque dossier avec attention. Contactez-nous dès aujourd'hui.</p>
+    </div>
+    <button class="footer-cta-btn" onclick="window.location.href='warfira_contact.html'">NOUS CONTACTER ↗</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo"><img src="Logo_Warfira.jpeg" alt="WARFIRA"/></div>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="mailto:direction@warfira.com">direction@warfira.com</a></li>
+    </ul>
+    <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+  </footer>
+
+  <a href="https://www.warfira.com" class="back-btn" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Réserver sur warfira.com
+  </a>
+
+</body>
+</html>

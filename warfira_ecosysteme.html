@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WARFIRA — Écosystème</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --blue: #28368C; --blue-dark: #1A2E5A; --blue-darker: #111E3A;
+      --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
+      --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
+    }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-size: 15px; font-weight: 700; color: var(--blue-dark); letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+    .nav-links a.active { border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+    .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--blue-dark); }
+    .hero { background: var(--blue); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 40px; }
+    .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
+    .hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 540px; margin-bottom: 14px; }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 460px; line-height: 1.8; }
+    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--white); }
+    .tab { flex: 1; padding: 20px; text-align: center; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; text-decoration: none; display: block; }
+    .tab:hover { background: var(--cream); }
+    .tab.active { border-bottom: 2px solid var(--blue); }
+    .tab-num { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
+    .tab-label { font-size: 14px; font-weight: 600; color: var(--blue-dark); }
+    .tab-sub { font-size: 10px; color: var(--gray); margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; }
+    .pillar-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; border-top: 1px solid var(--border); }
+    .pillar-section.reverse { direction: rtl; }
+    .pillar-section.reverse > * { direction: ltr; }
+    .pillar-content { padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
+    .pillar-num { font-size: 60px; font-weight: 700; color: rgba(40,54,140,0.06); line-height: 1; margin-bottom: -10px; }
+    .pillar-tag { font-size: 10px; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; font-weight: 600; }
+    .pillar-content h2 { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
+    .pillar-content > p { font-size: 13px; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
+    .features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .features li { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--blue-dark); }
+    .features li::before { content: '•'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
+    .argument { background: var(--blue-light); border-left: 2px solid var(--blue); padding: 12px 16px; margin-bottom: 24px; }
+    .argument p { font-size: 12px; color: var(--blue-dark); line-height: 1.7; font-style: italic; }
+    .btn-blue { display: inline-block; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--white); background: var(--blue); padding: 10px 22px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+    .btn-blue:hover { background: var(--blue-dark); }
+    .pillar-visual { display: flex; align-items: center; justify-content: center; padding: 48px; }
+    .pillar-visual.dark { background: var(--blue); }
+    .pillar-visual.mid { background: var(--blue-dark); }
+    .pillar-visual.cream { background: var(--cream); }
+    .wrs-diagram { width: 100%; max-width: 290px; }
+    .wrs-box { background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.18); border-radius: 4px; padding: 12px 14px; margin-bottom: 8px; }
+    .wrs-box-label { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.45); margin-bottom: 4px; text-transform: uppercase; }
+    .wrs-box-val { font-size: 16px; font-weight: 600; color: var(--white); }
+    .wrs-connect { display: flex; align-items: center; gap: 8px; margin: 4px 0; padding: 0 14px; }
+    .wrs-line { flex: 1; height: 0.5px; background: rgba(255,255,255,0.12); }
+    .wrs-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.35); flex-shrink: 0; }
+    .wrs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .wrb-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; width: 100%; max-width: 280px; }
+    .wrb-city { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 9px 7px; text-align: center; }
+    .wrb-city.highlight { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.1); }
+    .wrb-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); margin: 0 auto 5px; }
+    .wrb-city.highlight .wrb-dot { background: var(--white); }
+    .wrb-city strong { display: block; font-size: 11px; color: var(--white); font-weight: 600; }
+    .wrb-city span { display: block; font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+    .whs-cards { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 280px; }
+    .whs-card { background: var(--white); border-radius: 4px; padding: 11px 14px; display: flex; align-items: center; gap: 11px; border: 1px solid var(--border); }
+    .whs-card-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .whs-card-icon svg { width: 12px; height: 12px; stroke: var(--blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .whs-card h4 { font-size: 12px; font-weight: 600; color: var(--blue-dark); margin-bottom: 1px; }
+    .whs-card p { font-size: 10px; color: var(--gray); }
+    .synergy { background: var(--cream); padding: 60px; }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
+    .synergy h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .section-sub { font-size: 13px; color: var(--gray); max-width: 500px; line-height: 1.85; margin-bottom: 36px; }
+    .synergy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+    .synergy-item { background: var(--white); padding: 26px 22px; }
+    .synergy-item h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 8px; }
+    .synergy-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
+    .footer-cta { background: var(--blue-dark); padding: 40px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-cta h3 { font-size: 20px; font-weight: 700; color: var(--white); }
+    .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+    .footer-cta-btn { background: var(--white); color: var(--blue); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 24px; border-radius: 4px; border: none; cursor: pointer; transition: opacity 0.2s; }
+    .footer-cta-btn:hover { opacity: 0.88; }
+    footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
+    .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    @media (max-width: 768px) {
+      .nav { padding: 14px 20px; } .nav-links { display: none; }
+      .hero h1 { font-size: 24px; } .tabs { flex-direction: column; }
+      .pillar-section { grid-template-columns: 1fr; } .pillar-section.reverse { direction: ltr; }
+      .pillar-content { padding: 36px 20px; } .pillar-visual { min-height: 220px; }
+      .synergy { padding: 40px 20px; } .synergy-grid { grid-template-columns: 1fr; }
+      .footer-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="https://www.warfira.com/uploads/global/logo.png" alt="WARFIRA"/>
+      WARFIRA
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" class="active">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_vision.html">Vision</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">LES TROIS PILIERS — WRS · WRB · WHS</div>
+    <h1>Un écosystème intégré pour le tourisme de demain</h1>
+    <p class="hero-sub">Technologie, distribution physique et excellence hôtelière — trois piliers complémentaires et indissociables au service d'une ambition franco-africaine.</p>
+  </section>
+
+  <div class="tabs">
+    <a href="#wrs" class="tab active"><div class="tab-num">01</div><div class="tab-label">WRS</div><div class="tab-sub">RÉSERVATION & TECH</div></a>
+    <a href="#wrb" class="tab"><div class="tab-num">02</div><div class="tab-label">WRB</div><div class="tab-sub">RÉSEAU BOUTIQUES</div></a>
+    <a href="#whs" class="tab"><div class="tab-num">03</div><div class="tab-label">WHS</div><div class="tab-sub">HÔTELLERIE</div></a>
+  </div>
+
+  <div class="pillar-section" id="wrs">
+    <div class="pillar-content">
+      <div class="pillar-num">01</div>
+      <div class="pillar-tag">Pilier 1 — WRS</div>
+      <h2>Warfira Reservation Services</h2>
+      <p>Le socle technologique de l'écosystème. WRS intègre le moteur de réservation, la connectivité GDS et les systèmes CRS pour garantir une fluidité opérationnelle optimale à l'ensemble du réseau.</p>
+      <ul class="features">
+        <li>Moteur de réservation temps réel — interface multilingue et multi-devise</li>
+        <li>Connectivité GDS & AMADEUS — accès étendu aux inventaires aériens et terrestres</li>
+        <li>Billetterie & CRS — émission automatisée, gestion des disponibilités en flux tendu</li>
+        <li>Accessible aux agences partenaires WRB et aux clients finaux</li>
+      </ul>
+      <div class="argument"><p>WRS orchestre chaque transaction au sein de l'écosystème. C'est l'atout technologique central garantissant notre efficacité opérationnelle et la valeur de notre modèle pour les investisseurs.</p></div>
+      <a href="warfira_contact.html" class="btn-blue">Découvrir wrs.warfira.com ↗</a>
+    </div>
+    <div class="pillar-visual dark">
+      <div class="wrs-diagram">
+        <div class="wrs-box"><div class="wrs-box-label">Moteur GDS</div><div class="wrs-box-val">AMADEUS</div></div>
+        <div class="wrs-connect"><div class="wrs-line"></div><div class="wrs-dot"></div><div class="wrs-line"></div></div>
+        <div class="wrs-box"><div class="wrs-box-label">Plateforme WRS</div><div class="wrs-box-val">wrs.warfira.com</div></div>
+        <div class="wrs-connect"><div class="wrs-line"></div><div class="wrs-dot"></div><div class="wrs-line"></div></div>
+        <div class="wrs-grid">
+          <div class="wrs-box"><div class="wrs-box-label">Agences WRB</div><div class="wrs-box-val" style="font-size:14px;">250+</div></div>
+          <div class="wrs-box"><div class="wrs-box-label">Clients finaux</div><div class="wrs-box-val" style="font-size:14px;">B2C</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar-section reverse" id="wrb">
+    <div class="pillar-visual mid">
+      <div class="wrb-map">
+        <div class="wrb-city highlight"><div class="wrb-dot"></div><strong>Paris</strong><span>Hub FR</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Lyon</strong><span>Boutique</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Marseille</strong><span>Boutique</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Bruxelles</strong><span>Belgique</span></div>
+        <div class="wrb-city highlight"><div class="wrb-dot"></div><strong>Douala</strong><span>Cameroun</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Dakar</strong><span>Sénégal</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Libreville</strong><span>Gabon</span></div>
+        <div class="wrb-city"><div class="wrb-dot"></div><strong>Abidjan</strong><span>Côte d'Ivoire</span></div>
+        <div class="wrb-city" style="opacity:0.45;"><div class="wrb-dot"></div><strong>+242</strong><span>à venir</span></div>
+      </div>
+    </div>
+    <div class="pillar-content">
+      <div class="pillar-num">02</div>
+      <div class="pillar-tag">Pilier 2 — WRB</div>
+      <h2>Réseau de Boutiques de Proximité</h2>
+      <p>Le bras commercial terrain de WARFIRA. Ce maillage d'agences partenaires distribue nos produits et services au plus près des clients, en France comme en Afrique francophone.</p>
+      <ul class="features">
+        <li>Modèle d'affiliation — accès structuré à WRS et aux produits exclusifs</li>
+        <li>Distribution physique — implantation au cœur des quartiers et centres-villes</li>
+        <li>Formation continue — montée en compétences sur nos outils technologiques</li>
+        <li>Abonnement 149€/mois · Droits d'entrée 5 000€</li>
+      </ul>
+      <div class="argument"><p>WRB transforme des points de vente existants en hubs de services touristiques, garantissant un maillage territorial unique entre la France et l'Afrique.</p></div>
+      <a href="warfira_contact.html" class="btn-blue">Devenir partenaire WRB ↗</a>
+    </div>
+  </div>
+
+  <div class="pillar-section" id="whs">
+    <div class="pillar-content">
+      <div class="pillar-num">03</div>
+      <div class="pillar-tag">Pilier 3 — WHS</div>
+      <h2>Warfira Hotel Services</h2>
+      <p>Le levier de valorisation hôtelière de l'écosystème. WHS réunit un réseau d'établissements haut de gamme et accompagne ses partenaires dans leur développement.</p>
+      <ul class="features">
+        <li>Hôtels partenaires — visibilité internationale via GDS, optimisation du taux d'occupation</li>
+        <li>Hôtels sous mandat — pilotage opérationnel, revenue management, formation des équipes</li>
+        <li>Prestige & Événementiel — week-ends thématiques dans des châteaux et domaines privatisés</li>
+        <li>Commissions 5–10% sur les transactions</li>
+      </ul>
+      <div class="argument"><p>WHS offre aux hôteliers indépendants une alternative juste et transparente aux OTAs, en leur garantissant visibilité et performance via notre réseau de 250 boutiques.</p></div>
+      <a href="warfira_contact.html" class="btn-blue">Rejoindre le réseau WHS ↗</a>
+    </div>
+    <div class="pillar-visual cream">
+      <div class="whs-cards">
+        <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h4>Hôtels partenaires</h4><p>Visibilité internationale GDS</p></div></div>
+        <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Hôtels sous mandat</h4><p>Gestion opérationnelle complète</p></div></div>
+        <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Prestige & Événementiel</h4><p>Châteaux & domaines privatisés</p></div></div>
+        <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><h4>Commission</h4><p>5–10% sur transactions</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="synergy">
+    <div class="section-label">La force du triptyque</div>
+    <h2>Pourquoi les trois piliers sont indissociables</h2>
+    <p class="section-sub">Ensemble, WRS, WRB et WHS forment une infrastructure robuste qu'aucun acteur seul ne peut reproduire. C'est cette complémentarité qui fait la force de WARFIRA.</p>
+    <div class="synergy-grid">
+      <div class="synergy-item"><h4>WRS alimente WRB</h4><p>Les boutiques partenaires accèdent à la plateforme WRS pour effectuer toutes leurs réservations. La technologie est le carburant du réseau.</p></div>
+      <div class="synergy-item"><h4>WRB remplit WHS</h4><p>Le réseau de boutiques génère des flux de voyageurs qualifiés vers les hôtels partenaires WHS, optimisant leur taux d'occupation.</p></div>
+      <div class="synergy-item"><h4>WHS enrichit WRS</h4><p>Les établissements WHS intègrent le CRS de WARFIRA, enrichissant l'inventaire de la plateforme et créant une offre hôtelière exclusive.</p></div>
+    </div>
+  </section>
+
+  <div class="footer-cta">
+    <div><h3>Intégrez l'écosystème WARFIRA</h3><p>Hôtelier, agence ou investisseur — une place vous attend dans notre réseau.</p></div>
+    <button class="footer-cta-btn" onclick="window.location.href='warfira_contact.html'">NOUS CONTACTER ↗</button>
+  </div>
+
+  <footer>
+    <div class="footer-logo">WARFIRA</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="mailto:direction@warfira.com">direction@warfira.com</a></li>
+    </ul>
+    <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+  </footer>
+
+  <a href="https://www.warfira.com" class="back-btn" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Réserver sur warfira.com
+  </a>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach(tab => { tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('active')); tab.classList.add('active'); }); });
+  </script>
+
+</body>
+</html>

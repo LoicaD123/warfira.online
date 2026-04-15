@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WARFIRA — Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --blue: #28368C; --blue-dark: #1A2E5A; --blue-darker: #111E3A;
+      --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
+      --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
+    }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
+
+    /* NAVBAR */
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
+    .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* HERO */
+    .hero { background: var(--blue); min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 52px 40px; }
+    .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
+    .hero h1 { font-size: 34px; font-weight: 700; color: var(--white); margin-bottom: 12px; }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 420px; line-height: 1.8; }
+
+    /* MAIN GRID */
+    .contact-main { display: grid; grid-template-columns: 1fr 1fr; }
+
+    /* FORMULAIRE */
+    .form-section { padding: 52px; }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
+    .form-section h2 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .form-section p { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-group label { font-size: 12px; font-weight: 500; color: var(--blue-dark); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--font); font-size: 13px; color: var(--blue-dark);
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 4px;
+      background: var(--white); outline: none; transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--gray); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--blue); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select { appearance: none; cursor: pointer; }
+    .btn-submit {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font); font-size: 12px; font-weight: 600;
+      color: var(--white); background: var(--blue);
+      padding: 12px 24px; border-radius: 4px; border: none;
+      cursor: pointer; transition: background 0.2s; margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+    .btn-submit:hover { background: var(--blue-dark); }
+
+    /* COORDONNÉES */
+    .coords-section { background: var(--blue-dark); padding: 52px; display: flex; flex-direction: column; justify-content: flex-start; }
+    .coords-section .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
+    .coords-section h2 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 28px; line-height: 1.3; }
+    .coord-items { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+    .coord-item { display: flex; align-items: flex-start; gap: 12px; }
+    .coord-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .coord-icon svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.6); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .coord-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+    .coord-value { font-size: 13px; font-weight: 500; color: var(--white); }
+    .coord-value a { color: var(--white); text-decoration: none; }
+    .coord-value a:hover { opacity: 0.8; }
+
+    .legal-box { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 16px; margin-bottom: 24px; }
+    .legal-box p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+    .legal-box strong { color: rgba(255,255,255,0.65); display: block; margin-bottom: 4px; font-size: 12px; }
+
+    .social-links { display: flex; gap: 8px; }
+    .social-btn { font-family: var(--font); font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.6); background: transparent; border: 0.5px solid rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .social-btn:hover { border-color: rgba(255,255,255,0.5); color: var(--white); }
+
+    /* CONTACTS SPÉCIALISÉS */
+    .specialized { padding: 56px 60px; background: var(--cream); }
+    .specialized h2 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .specialized-sub { font-size: 13px; color: var(--gray); max-width: 460px; line-height: 1.8; margin-bottom: 32px; }
+    .spec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .spec-card { background: var(--white); padding: 26px 22px; }
+    .spec-card h4 { font-size: 13px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+    .spec-card p { font-size: 12px; color: var(--gray); line-height: 1.7; margin-bottom: 12px; }
+    .spec-card a { font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue); padding-bottom: 1px; }
+    .spec-card a:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer { background: var(--blue-dark); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo img { height: 36px; width: auto; object-fit: contain; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+    .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
+    .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    @media (max-width: 768px) {
+      .nav { padding: 12px 20px; } .nav-links { display: none; }
+      .hero h1 { font-size: 26px; }
+      .contact-main { grid-template-columns: 1fr; }
+      .form-section { padding: 36px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .coords-section { padding: 36px 20px; }
+      .specialized { padding: 40px 20px; }
+      .spec-grid { grid-template-columns: 1fr; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
+    </a>
+    <ul class="nav-links">
+  <li><a href="index.html">Accueil</a></li>
+  <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+  <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
+  <li><a href="warfira_partenaires.html">Partenaires</a></li>
+  <li><a href="warfira_contact.html">Contact</a></li>
+</ul>
+    <button class="nav-cta">NOUS REJOINDRE</button>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">CONTACT · PARTENARIATS · DIRECTION</div>
+    <h1>Parlons de votre projet</h1>
+    <p class="hero-sub">Notre équipe est à votre disposition pour étudier vos projets et déployer notre expertise au service de vos ambitions.</p>
+  </section>
+
+  <div class="contact-main">
+    <div class="form-section">
+      <div class="section-label">Formulaire de contact</div>
+      <h2>Envoyez-nous votre demande</h2>
+      <p>Remplissez ce formulaire et nous reviendrons vers vous sous 48h ouvrées.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Prénom</label>
+          <input type="text" placeholder="Jean"/>
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Dupont"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email professionnel</label>
+        <input type="email" placeholder="jean.dupont@exemple.com"/>
+      </div>
+      <div class="form-group">
+        <label>Téléphone</label>
+        <input type="tel" placeholder="+33 6 00 00 00 00"/>
+      </div>
+      <div class="form-group">
+        <label>Vous êtes</label>
+        <select>
+          <option value="">— Sélectionnez votre profil —</option>
+          <option>Hôtelier indépendant</option>
+          <option>Agent de voyage / Agence</option>
+          <option>Investisseur institutionnel</option>
+          <option>Partenaire potentiel</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Votre message</label>
+        <textarea placeholder="Décrivez votre projet ou votre demande..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="window.location.href='mailto:direction@warfira.com'">
+        ENVOYER MA DEMANDE
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+
+    <div class="coords-section">
+      <div class="section-label">Nos coordonnées</div>
+      <h2>WARFIRA bâtit des synergies durables</h2>
+      <div class="coord-items">
+        <div class="coord-item">
+          <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="coord-label">Direction</div><div class="coord-value"><a href="mailto:direction@warfira.com">direction@warfira.com</a></div></div>
+        </div>
+        <div class="coord-item">
+          <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="coord-label">Contact général</div><div class="coord-value"><a href="mailto:contact@warfira.com">contact@warfira.com</a></div></div>
+        </div>
+        <div class="coord-item">
+          <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 013.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><div class="coord-label">Téléphone</div><div class="coord-value"><a href="tel:+33753584725">+33 7 53 58 47 25</a></div></div>
+        </div>
+        <div class="coord-item">
+          <div class="coord-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+          <div><div class="coord-label">Site institutionnel</div><div class="coord-value"><a href="https://www.warfira.com" target="_blank">www.warfira.com</a></div></div>
+        </div>
+      </div>
+      <div class="legal-box">
+        <strong>Informations légales</strong>
+        <p>WARFIRA CRS Technologies · SAS<br/>Capital social 30 000€<br/>RCS 931 304 299 Versailles<br/>Président : Serge 1er NKOA</p>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-btn">LinkedIn</a>
+        <a href="https://facebook.com/warfiravoyage" target="_blank" class="social-btn">Facebook</a>
+        <a href="#" class="social-btn">Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="specialized">
+    <div class="section-label">Contacts spécialisés</div>
+    <h2>Le bon interlocuteur pour votre projet</h2>
+    <p class="specialized-sub">Selon votre profil, adressez directement votre demande au bon département WARFIRA.</p>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <h4>Hôteliers — Réseau WHS</h4>
+        <p>Vous êtes hôtelier indépendant et souhaitez rejoindre notre réseau de distribution internationale.</p>
+        <a href="mailto:direction@warfira.com">direction@warfira.com</a>
+      </div>
+      <div class="spec-card">
+        <h4>Agences — Réseau WRB</h4>
+        <p>Vous êtes agent de voyage ou entrepreneur et voulez devenir boutique partenaire WARFIRA.</p>
+        <a href="mailto:contact@warfira.com">contact@warfira.com</a>
+      </div>
+      <div class="spec-card">
+        <h4>Investisseurs — Direction</h4>
+        <p>Vous souhaitez participer au financement de l'écosystème WARFIRA et obtenir le dossier investisseur.</p>
+        <a href="mailto:serge.nkoaier@warfira.com">serge.nkoaier@warfira.com</a>
+      </div>
+    </div>
+  </section>
+
+ <footer>
+    <div class="footer-logo">WARFIRA</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="mailto:direction@warfira.com">direction@warfira.com</a></li>
+    </ul>
+    <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+  </footer>
+
+  <a href="https://www.warfira.com" class="back-btn" target="_blank">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Réserver sur warfira.com
+  </a>
+
+</body>
+</html>

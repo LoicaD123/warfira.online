@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WARFIRA — Vision & Fondateur</title>
-  <link rel="icon" type="image/x-icon" href="favicon-16x16.png"/>
+  <link rel="icon" href="favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
   <style>
@@ -18,9 +18,9 @@
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
 
     /* NAVBAR */
-    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo img { height: 44px; width: auto; object-fit: contain; }
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { height: 28px; width: auto; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
@@ -29,61 +29,64 @@
     .nav-cta:hover { background: var(--blue-dark); }
 
     /* HERO */
-    .hero { background: var(--blue); min-height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 36px 40px; }
+    .hero { background: var(--blue); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 40px; }
     .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
-    .hero h1 { font-size: 34px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 480px; margin-bottom: 14px; }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 440px; line-height: 1.8; }
+    .hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 540px; margin-bottom: 14px; }
+    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 460px; line-height: 1.8; }
 
-    /* FONDATEUR */
+    /* FONDATEUR — blanc à gauche, crème à droite */
     .fondateur { display: grid; grid-template-columns: 1fr 1fr; }
-    .fondateur-left { background: var(--blue); padding: 60px 52px; }
-    .fondateur-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.45); margin-bottom: 20px; text-transform: uppercase; }
-    .fondateur-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 16px; }
-    .fondateur-left h2 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .fondateur-title { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
-    .fondateur-left p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.85; margin-bottom: 16px; }
-    .fondateur-quote { border-left: 2px solid rgba(255,255,255,0.25); padding-left: 16px; margin-top: 20px; }
-    .fondateur-quote p { font-style: italic; font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 8px; }
-    .fondateur-quote cite { font-size: 10px; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-weight: 600; }
+
+    .fondateur-left { background: var(--white); padding: 60px 52px; border-right: 1px solid var(--border); }
+    .fondateur-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 20px; text-transform: uppercase; opacity: 0.55; }
+    .fondateur-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
+    .fondateur-left h2 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+    .fondateur-title { font-size: 11px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+    .fondateur-left p { font-size: 13px; color: var(--gray); line-height: 1.85; margin-bottom: 16px; }
+    .fondateur-quote { border-left: 3px solid var(--blue); padding-left: 16px; margin-top: 24px; background: var(--blue-light); padding: 16px 20px; border-radius: 0 4px 4px 0; }
+    .fondateur-quote p { font-style: italic; font-size: 13px; color: var(--blue-dark); line-height: 1.7; margin-bottom: 10px; }
+    .fondateur-quote cite { font-size: 10px; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-weight: 600; }
 
     .fondateur-right { background: var(--cream); padding: 60px 52px; }
     .fondateur-right-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; text-transform: uppercase; opacity: 0.55; }
     .fondateur-right h3 { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 28px; }
     .pillars-eval { display: flex; flex-direction: column; gap: 14px; }
-    .pillar-eval { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 14px 16px; display: flex; gap: 14px; align-items: flex-start; }
-    .pillar-eval-icon { width: 32px; height: 32px; border-radius: 4px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--blue); }
-    .pillar-eval h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 3px; }
+    .pillar-eval { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; transition: box-shadow 0.2s; }
+    .pillar-eval:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.08); }
+    .pillar-eval-icon { width: 36px; height: 36px; border-radius: 6px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--blue); }
+    .pillar-eval h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 4px; }
     .pillar-eval p { font-size: 12px; color: var(--gray); line-height: 1.6; }
 
     /* MISSION */
-    .mission { padding: 64px 60px; }
+    .mission { padding: 64px 60px; background: var(--white); }
     .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
     .mission h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
     .mission-sub { font-size: 13px; color: var(--gray); max-width: 500px; line-height: 1.8; margin-bottom: 36px; }
-    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .mission-item { padding: 24px; border: 1px solid var(--border); border-radius: 4px; }
-    .mission-item h4 { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
+    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .mission-item { padding: 28px 24px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); transition: box-shadow 0.2s; }
+    .mission-item:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.08); }
+    .mission-item h4 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
     .mission-item p { font-size: 12px; color: var(--gray); line-height: 1.75; }
 
     /* ROADMAP */
-    .roadmap { background: var(--blue-dark); padding: 64px 60px; }
-    .roadmap .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
-    .roadmap h2 { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .roadmap-section { background: var(--blue-dark); padding: 64px 60px; }
+    .roadmap-section .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
+    .roadmap-section h2 { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .roadmap-sub { font-size: 13px; color: rgba(255,255,255,0.5); max-width: 460px; line-height: 1.8; margin-bottom: 40px; }
-    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
     .roadmap-item { background: var(--blue-dark); padding: 28px 24px; }
     .roadmap-year { font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
     .roadmap-phase { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-    .roadmap-details { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .roadmap-details { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .roadmap-details li { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; gap: 8px; }
     .roadmap-details li::before { content: '—'; color: rgba(255,255,255,0.25); flex-shrink: 0; }
 
     /* CONFORMITÉ */
-    .conformite { padding: 64px 60px; }
+    .conformite { padding: 64px 60px; background: var(--cream); }
     .conformite h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
     .conformite-sub { font-size: 13px; color: var(--gray); max-width: 460px; line-height: 1.8; margin-bottom: 40px; }
-    .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
-    .conformite-item { }
+    .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .conformite-item { background: var(--white); padding: 24px; border-radius: 6px; border: 1px solid var(--border); }
     .conformite-num { font-size: 28px; font-weight: 700; color: var(--blue); opacity: 0.2; margin-bottom: 10px; line-height: 1; }
     .conformite-item h4 { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
     .conformite-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
@@ -97,7 +100,7 @@
 
     /* FOOTER */
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-logo img { height: 36px; width: auto; object-fit: contain; }
+    .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
@@ -113,7 +116,7 @@
       .fondateur { grid-template-columns: 1fr; }
       .fondateur-left, .fondateur-right { padding: 40px 24px; }
       .mission { padding: 44px 20px; } .mission-grid { grid-template-columns: 1fr; }
-      .roadmap { padding: 44px 20px; } .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+      .roadmap-section { padding: 44px 20px; } .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
       .conformite { padding: 44px 20px; } .conformite-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
       footer { padding: 24px 20px; flex-direction: column; }
@@ -124,20 +127,20 @@
 
   <nav class="nav">
     <a href="index.html" class="nav-logo">
-      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
+      WARFIRA
     </a>
     <ul class="nav-links">
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-  <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
-  <li><a href="warfira_partenaires.html">Partenaires</a></li>
-  <li><a href="warfira_contact.html">Contact</a></li>
-</ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_vision.html" class="active">Vision & Fondateur</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+    </ul>
     <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
   </nav>
 
   <section class="hero">
-    <h1>WARFIRA</h1>
     <div class="hero-badge">VISION · MISSION · FONDATEUR</div>
     <h1>Bâtir un champion franco-africain</h1>
     <p class="hero-sub">La vision de WARFIRA est portée par une ambition claire : devenir l'opérateur touristique hybride de référence entre la France et l'Afrique francophone.</p>
@@ -161,31 +164,19 @@
       <div class="pillars-eval">
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Vis</div>
-          <div>
-            <h4>Vision</h4>
-            <p>Clarté, cohérence et audace stratégique. Une feuille de route précise de 2026 à 2029 avec des jalons mesurables.</p>
-          </div>
+          <div><h4>Vision</h4><p>Clarté, cohérence et audace stratégique. Une feuille de route précise de 2026 à 2029 avec des jalons mesurables.</p></div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Rés</div>
-          <div>
-            <h4>Résilience</h4>
-            <p>Capacité d'anticipation et de gestion des enjeux sectoriels. Un modèle hybride conçu pour résister aux crises.</p>
-          </div>
+          <div><h4>Résilience</h4><p>Capacité d'anticipation et de gestion des enjeux sectoriels. Un modèle hybride conçu pour résister aux crises.</p></div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Rés</div>
-          <div>
-            <h4>Réseau</h4>
-            <p>Accès privilégié aux décideurs du tourisme franco-africain. Partenariat avec FORMATRAVEL pour la conformité.</p>
-          </div>
+          <div><h4>Réseau</h4><p>Accès privilégié aux décideurs du tourisme franco-africain. Partenariat avec FORMATRAVEL pour la conformité.</p></div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Exp</div>
-          <div>
-            <h4>Expertise</h4>
-            <p>Maîtrise pointue du marché franco-africain et des systèmes GDS/CRS. Compréhension profonde des deux continents.</p>
-          </div>
+          <div><h4>Expertise</h4><p>Maîtrise pointue du marché franco-africain et des systèmes GDS/CRS. Compréhension profonde des deux continents.</p></div>
         </div>
       </div>
     </div>
@@ -196,66 +187,21 @@
     <h2>Connecter la France et l'Afrique par le voyage</h2>
     <p class="mission-sub">WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.</p>
     <div class="mission-grid">
-      <div class="mission-item">
-        <h4>Technologie</h4>
-        <p>Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p>
-      </div>
-      <div class="mission-item">
-        <h4>Proximité</h4>
-        <p>Un maillage d'agences ancré localement. 250 boutiques partenaires WRB d'ici 2027, en France et en Afrique francophone.</p>
-      </div>
-      <div class="mission-item">
-        <h4>Expansion</h4>
-        <p>Un déploiement maîtrisé sur les deux continents. France, Cameroun, Gabon, Sénégal, Côte d'Ivoire — 5 pays cibles prioritaires.</p>
-      </div>
+      <div class="mission-item"><h4>Technologie</h4><p>Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p></div>
+      <div class="mission-item"><h4>Proximité</h4><p>Un maillage d'agences ancré localement. 250 boutiques partenaires WRB d'ici 2027, en France et en Afrique francophone.</p></div>
+      <div class="mission-item"><h4>Expansion</h4><p>Un déploiement maîtrisé sur les deux continents. France, Cameroun, Gabon, Sénégal, Côte d'Ivoire — 5 pays cibles prioritaires.</p></div>
     </div>
   </section>
 
-  <section class="roadmap">
+  <section class="roadmap-section">
     <div class="section-label">Feuille de route</div>
     <h2>Notre déploiement 2026–2029</h2>
     <p class="roadmap-sub">Une croissance structurée et maîtrisée, phase par phase, jusqu'à l'expansion internationale en Afrique francophone.</p>
     <div class="roadmap-grid">
-      <div class="roadmap-item">
-        <div class="roadmap-year">2026</div>
-        <div class="roadmap-phase">Lancement & conformité</div>
-        <ul class="roadmap-details">
-          <li>25 boutiques pilotes</li>
-          <li>Agrément Atout France</li>
-          <li>Licence IATA</li>
-          <li>CA 420 000€</li>
-        </ul>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-year">2027</div>
-        <div class="roadmap-phase">Montée en puissance</div>
-        <ul class="roadmap-details">
-          <li>100 boutiques actives</li>
-          <li>Rentabilité atteinte</li>
-          <li>CA 1,35M€</li>
-          <li>Lancement WHS</li>
-        </ul>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-year">2028</div>
-        <div class="roadmap-phase">Hôtellerie & prestige</div>
-        <ul class="roadmap-details">
-          <li>250 boutiques</li>
-          <li>Parc hôtelier WHS</li>
-          <li>CA 3,2M€</li>
-          <li>Événementiel hôtelier</li>
-        </ul>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-year">2029</div>
-        <div class="roadmap-phase">Expansion africaine</div>
-        <ul class="roadmap-details">
-          <li>400 boutiques</li>
-          <li>Cameroun, Gabon, Sénégal</li>
-          <li>CA 5M€</li>
-          <li>Marge nette 25%</li>
-        </ul>
-      </div>
+      <div class="roadmap-item"><div class="roadmap-year">2026</div><div class="roadmap-phase">Lancement & conformité</div><ul class="roadmap-details"><li>25 boutiques pilotes</li><li>Agrément Atout France</li><li>Licence IATA</li><li>CA 420 000€</li></ul></div>
+      <div class="roadmap-item"><div class="roadmap-year">2027</div><div class="roadmap-phase">Montée en puissance</div><ul class="roadmap-details"><li>100 boutiques actives</li><li>Rentabilité atteinte</li><li>CA 1,35M€</li><li>Lancement WHS</li></ul></div>
+      <div class="roadmap-item"><div class="roadmap-year">2028</div><div class="roadmap-phase">Hôtellerie & prestige</div><ul class="roadmap-details"><li>250 boutiques</li><li>Parc hôtelier WHS</li><li>CA 3,2M€</li><li>Événementiel hôtelier</li></ul></div>
+      <div class="roadmap-item"><div class="roadmap-year">2029</div><div class="roadmap-phase">Expansion africaine</div><ul class="roadmap-details"><li>400 boutiques</li><li>Cameroun, Gabon, Sénégal</li><li>CA 5M€</li><li>Marge nette 25%</li></ul></div>
     </div>
   </section>
 
@@ -264,26 +210,10 @@
     <h2>Une confiance institutionnelle irréprochable</h2>
     <p class="conformite-sub">Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.</p>
     <div class="conformite-grid">
-      <div class="conformite-item">
-        <div class="conformite-num">01</div>
-        <h4>Accréditation IATA</h4>
-        <p>Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p>
-      </div>
-      <div class="conformite-item">
-        <div class="conformite-num">02</div>
-        <h4>Atout France</h4>
-        <p>Immatriculation obligatoire validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p>
-      </div>
-      <div class="conformite-item">
-        <div class="conformite-num">03</div>
-        <h4>Garantie financière</h4>
-        <p>Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p>
-      </div>
-      <div class="conformite-item">
-        <div class="conformite-num">04</div>
-        <h4>Conformité RGPD</h4>
-        <p>Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p>
-      </div>
+      <div class="conformite-item"><div class="conformite-num">01</div><h4>Accréditation IATA</h4><p>Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p></div>
+      <div class="conformite-item"><div class="conformite-num">02</div><h4>Atout France</h4><p>Immatriculation obligatoire validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p></div>
+      <div class="conformite-item"><div class="conformite-num">03</div><h4>Garantie financière</h4><p>Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p></div>
+      <div class="conformite-item"><div class="conformite-num">04</div><h4>Conformité RGPD</h4><p>Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p></div>
     </div>
   </section>
 

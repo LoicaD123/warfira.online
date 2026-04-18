@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="Logo Warfira.jpeg"/>
   <meta name="description" content="WARFIRA — Infrastructure touristique de nouvelle génération. Connecter la France et l'Afrique par le voyage."/>
   <title>WARFIRA — The Tourism Infrastructure Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -10,31 +11,15 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-
     :root {
-      --blue:        #28368C;
-      --blue-dark:   #1A2E5A;
-      --blue-darker: #111E3A;
-      --blue-light:  #EEF1FA;
-      --cream:       #F5F4EF;
-      --white:       #FFFFFF;
-      --gray:        #999999;
-      --border:      rgba(40,54,140,0.10);
-      --font:        'Poppins', sans-serif;
+      --blue: #28368C; --blue-dark: #1A2E5A; --blue-darker: #111E3A;
+      --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
+      --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
-
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
 
-    /* ── NAVBAR ── */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 60px;
-      background: rgba(255,255,255,0.97);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
     .nav-logo img { height: 44px; width: auto; object-fit: contain; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 13px; font-weight: 400; color: var(--gray); text-decoration: none; transition: color 0.2s; }
@@ -43,27 +28,9 @@
     .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; letter-spacing: 0.5px; cursor: pointer; transition: background 0.2s; }
     .nav-cta:hover { background: var(--blue-dark); }
 
-    /* ── HERO avec photo + overlay ── */
-    .hero {
-      position: relative; overflow: hidden;
-      background-color: var(--blue);
-      background-image: url('Avion Airfrance.jpg');
-      background-size: cover;
-      background-position: center 40%;
-      min-height: 420px;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center; padding: 80px 40px;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(40, 54, 140, 0.78);
-      z-index: 1;
-    }
+    .hero { position: relative; overflow: hidden; background-color: var(--blue); background-image: url('Avion_Airfrance.jpg'); background-size: cover; background-position: center 40%; min-height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(40,54,140,0.78); z-index: 1; }
     .hero > * { position: relative; z-index: 2; }
-
     .hero h1 { font-size: 52px; font-weight: 700; color: var(--white); margin-bottom: 12px; letter-spacing: 4px; }
     .hero-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.3); padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
     .hero h2 { font-size: 24px; font-weight: 600; line-height: 1.3; color: var(--white); max-width: 560px; margin-bottom: 16px; }
@@ -74,7 +41,6 @@
     .btn-hero-outline { background: transparent; color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 500; padding: 10px 24px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.45); cursor: pointer; transition: all 0.2s; }
     .btn-hero-outline:hover { background: rgba(255,255,255,0.08); }
 
-    /* ── STATS ── */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); background: var(--white); }
     .stat { padding: 28px 20px; text-align: center; border-right: 1px solid var(--border); transition: background 0.2s; }
     .stat:last-child { border-right: none; }
@@ -82,14 +48,12 @@
     .stat-num { font-size: 36px; font-weight: 700; color: var(--blue-dark); line-height: 1; }
     .stat-label { font-size: 10px; color: var(--gray); letter-spacing: 1.5px; margin-top: 6px; text-transform: uppercase; }
 
-    /* ── SECTIONS ── */
     .section { padding: 72px 60px; }
     .section-alt { background: var(--cream); }
     .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
     .section h2 { font-size: 30px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.25; }
     .section-sub { font-size: 13px; color: var(--gray); max-width: 480px; line-height: 1.85; margin-bottom: 44px; }
 
-    /* ── PILLARS ── */
     .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .pillar { padding: 32px 28px; border: 1px solid var(--border); border-radius: 4px; background: var(--white); transition: box-shadow 0.2s; }
     .pillar:hover { box-shadow: 0 4px 20px rgba(40,54,140,0.08); }
@@ -98,9 +62,8 @@
     .pillar p { font-size: 12px; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
     .pillar-link { font-size: 11px; font-weight: 600; color: var(--blue); text-decoration: underline; text-underline-offset: 3px; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
 
-    /* ── PARTNER CARDS ── */
     .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-    .partner-card { background: var(--white); padding: 28px 24px; border: 1px solid var(--border); border-radius: 6px; transition: box-shadow 0.2s, transform 0.2s; }
+    .partner-card { background: var(--white); padding: 28px 24px; border: 1px solid var(--border); border-radius: 6px; transition: box-shadow 0.2s, transform 0.2s; overflow: hidden; }
     .partner-card:hover { box-shadow: 0 8px 28px rgba(40,54,140,0.08); transform: translateY(-2px); }
     .partner-card-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
     .partner-card-icon svg { width: 16px; height: 16px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -109,7 +72,6 @@
     .btn-blue { display: inline-block; font-family: var(--font); font-size: 11px; font-weight: 600; color: var(--white); background: var(--blue); padding: 9px 18px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; }
     .btn-blue:hover { background: var(--blue-dark); }
 
-    /* ── VISION & ROADMAP ── */
     .vision { display: grid; grid-template-columns: 1fr 1fr; }
     .vision-left { background: var(--blue); padding: 72px 52px; }
     .vision-left .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
@@ -128,39 +90,31 @@
     .roadmap-text h5 { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 3px; }
     .roadmap-text p { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.6; }
 
-    /* ── CONFORMITÉ ── */
     .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
     .conformite-num { font-size: 28px; font-weight: 700; color: var(--blue); margin-bottom: 10px; line-height: 1; opacity: 0.25; }
     .conformite-item h4 { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
     .conformite-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
 
-    /* ── FOOTER CTA ── */
     .footer-cta { padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--border); }
     .footer-cta h3 { font-size: 24px; font-weight: 700; color: var(--blue-dark); line-height: 1.3; }
     .footer-cta p { font-size: 13px; color: var(--gray); margin-top: 6px; }
     .footer-cta-btn { background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 12px 28px; border-radius: 4px; border: none; cursor: pointer; letter-spacing: 0.5px; transition: background 0.2s; white-space: nowrap; }
     .footer-cta-btn:hover { background: var(--blue-dark); }
 
-    /* ── FOOTER ── */
-    footer { background: var(--blue-dark); padding: 32px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-logo { display: flex; align-items: center; gap: 10px; }
-    .footer-logo img { height: 36px; width: auto; object-fit: contain; }
+    footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
 
-    /* ── BOUTON WARFIRA.COM ── */
     .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .nav { padding: 12px 20px; }
-      .nav-links { display: none; }
-      .hero h1 { font-size: 36px; }
-      .hero h2 { font-size: 18px; }
+      .nav { padding: 12px 20px; } .nav-links { display: none; }
+      .hero h1 { font-size: 36px; } .hero h2 { font-size: 18px; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .pillars { grid-template-columns: 1fr; }
       .cards-grid { grid-template-columns: 1fr; }
@@ -175,10 +129,10 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="nav">
     <a href="index.html" class="nav-logo">
-      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
+      WARFIRA
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Accueil</a></li>
@@ -190,7 +144,6 @@
     <button class="nav-cta" onclick="document.getElementById('partenaires').scrollIntoView({behavior:'smooth'})">NOUS REJOINDRE</button>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>WARFIRA</h1>
     <div class="hero-badge">VISION 2026 — INFRASTRUCTURE TOURISTIQUE DE NOUVELLE GÉNÉRATION</div>
@@ -202,7 +155,6 @@
     </div>
   </section>
 
-  <!-- STATS -->
   <div class="stats">
     <div class="stat"><div class="stat-num">250</div><div class="stat-label">Boutiques d'ici 2027</div></div>
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Pays cibles</div></div>
@@ -210,38 +162,25 @@
     <div class="stat"><div class="stat-num">5M€</div><div class="stat-label">CA projeté 2029</div></div>
   </div>
 
-  <!-- ÉCOSYSTÈME -->
   <section class="section" id="ecosysteme">
     <div class="section-label">L'écosystème WARFIRA</div>
     <h2>Une infrastructure en trois dimensions</h2>
     <p class="section-sub">WRS, WRB et WHS forment un triptyque indissociable alliant puissance technologique, distribution terrain et excellence hôtelière.</p>
     <div class="pillars" id="piliers">
       <div class="pillar">
-  <img src="reservation.jpg" alt="Warfira Reservation Services" style="
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 16px;
-  "/>
-  <div class="pillar-tag">Pilier 01 — WRS</div>
-  <h3>WARFIRA Reservation Services</h3>
-  <p>Notre moteur de réservation connecté à AMADEUS et aux GDS mondiaux. Interface multilingue, multi-devise, billetterie automatisée et gestion des disponibilités en temps réel.</p>
-  <span class="pillar-link">En savoir plus ↗</span>
-</div>
+        <img src="reservation.jpg" alt="Warfira Reservation Services" style="width:100%; height:180px; object-fit:cover; border-radius:4px; margin-bottom:16px;"/>
+        <div class="pillar-tag">Pilier 01 — WRS</div>
+        <h3>WARFIRA Reservation Services</h3>
+        <p>Notre moteur de réservation connecté à AMADEUS et aux GDS mondiaux. Interface multilingue, multi-devise, billetterie automatisée et gestion des disponibilités en temps réel.</p>
+        <span class="pillar-link">En savoir plus ↗</span>
+      </div>
       <div class="pillar">
-  <img src="reseau.jpg" alt="Réseau de Boutiques de Proximité" style="
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 16px;
-  "/>
-  <div class="pillar-tag">Pilier 02 — WRB</div>
-  <h3>Réseau de Boutiques de Proximité</h3>
-  <p>250 agences partenaires équipées et formées d'ici 2027. Un maillage territorial unique entre la France et l'Afrique francophone. Abonnement à 149€/mois.</p>
-  <span class="pillar-link">En savoir plus ↗</span>
-</div>
+        <img src="reseau.jpg" alt="Réseau de Boutiques de Proximité" style="width:100%; height:180px; object-fit:cover; border-radius:4px; margin-bottom:16px;"/>
+        <div class="pillar-tag">Pilier 02 — WRB</div>
+        <h3>Réseau de Boutiques de Proximité</h3>
+        <p>250 agences partenaires équipées et formées d'ici 2027. Un maillage territorial unique entre la France et l'Afrique francophone. Abonnement à 149€/mois.</p>
+        <span class="pillar-link">En savoir plus ↗</span>
+      </div>
       <div class="pillar">
         <img src="hotel.jpg" alt="Warfira Hotel Services" style="width:100%; height:180px; object-fit:cover; border-radius:4px; margin-bottom:16px;"/>
         <div class="pillar-tag">Pilier 03 — WHS</div>
@@ -252,7 +191,6 @@
     </div>
   </section>
 
-  <!-- PARTENAIRES -->
   <section class="section section-alt" id="partenaires">
     <div class="section-label">Nos partenaires</div>
     <h2>Trois leviers de croissance</h2>
@@ -270,16 +208,29 @@
         <p>Accès à la plateforme WRS, formation continue, accompagnement commercial. Abonnement mensuel à 149€ + droits d'entrée 5 000€. Boostez votre agence avec notre technologie.</p>
         <button class="btn-blue">Devenir partenaire WRB</button>
       </div>
-      <div class="partner-card">
-        <div class="partner-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h4>Investisseurs institutionnels</h4>
-        <p>ROI 3-5x sur 4 ans. Écosystème hybride structuré sur le corridor France-Afrique. Marge nette 25% projetée en 2029. Modèle de revenus récurrents et diversifiés.</p>
-        <button class="btn-blue">Voir le dossier investisseur</button>
-      </div>
-    </div>
+      <div class="partner-card" style="padding: 0; overflow: hidden;">
+  <img src="investisseurs.jpg" style="
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  "/>
+  <div style="padding: 28px 24px;">
+    <div class="partner-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+    <h4>Investisseurs institutionnels</h4>
+    <p>ROI 3-5x sur 4 ans. Écosystème hybride structuré sur le corridor France-Afrique. Marge nette 25% projetée en 2029. Modèle de revenus récurrents et diversifiés.</p>
+    <button class="btn-blue">Voir le dossier investisseur</button>
+  </div>
+</div>
+  <div style="padding: 28px 24px;">
+    <div class="partner-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+    <h4>Investisseurs institutionnels</h4>
+    <p>ROI 3-5x sur 4 ans. Écosystème hybride structuré sur le corridor France-Afrique. Marge nette 25% projetée en 2029. Modèle de revenus récurrents et diversifiés.</p>
+    <button class="btn-blue">Voir le dossier investisseur</button>
+  </div>
+</div>
   </section>
 
-  <!-- VISION & ROADMAP -->
   <div class="vision" id="vision">
     <div class="vision-left">
       <div class="section-label">Notre vision</div>
@@ -303,7 +254,6 @@
     </div>
   </div>
 
-  <!-- CONFORMITÉ -->
   <section class="section">
     <div class="section-label">Conformité & sécurité</div>
     <h2>Une confiance institutionnelle irréprochable</h2>
@@ -316,20 +266,8 @@
     </div>
   </section>
 
-  <!-- FOOTER CTA -->
-  <div class="footer-cta" id="contact">
-    <div>
-      <h3>Prêt à rejoindre l'écosystème WARFIRA ?</h3>
-      <p>Notre équipe est à votre disposition pour étudier votre projet et déployer notre expertise au service de vos ambitions.</p>
-    </div>
-    <button class="footer-cta-btn" onclick="window.location.href='mailto:direction@warfira.com'">NOUS CONTACTER ↗</button>
-  </div>
-
-  <!-- FOOTER -->
   <footer>
-    <div class="footer-logo">
-      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
-    </div>
+    <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
@@ -340,7 +278,6 @@
     <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
-  <!-- BOUTON WARFIRA.COM -->
   <a href="https://www.warfira.com" class="back-btn" target="_blank">
     <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     Réserver sur warfira.com

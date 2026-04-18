@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="Logo Warfira.jpeg"/>
   <title>WARFIRA — Partenaires</title>
   <link rel="icon" type="image/x-icon" href="favicon-16x16.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -19,7 +20,17 @@
 
     /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 12px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo { 
+  font-size: 15px; 
+  font-weight: 700; 
+  color: #1A2E5A;  /* ← bleu foncé WARFIRA */
+  letter-spacing: 2px; 
+  text-decoration: none; 
+  text-transform: uppercase; 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+}
     .nav-logo img { height: 44px; width: auto; object-fit: contain; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
@@ -139,18 +150,19 @@
 </head>
 <body>
 
-  <nav class="nav">
+ <nav class="nav">
     <a href="index.html" class="nav-logo">
-      <img src="Logo_Warfira.jpeg" alt="WARFIRA"/>
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
+      WARFIRA
     </a>
     <ul class="nav-links">
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-  <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
-  <li><a href="warfira_partenaires.html">Partenaires</a></li>
-  <li><a href="warfira_contact.html">Contact</a></li>
-</ul>
-    <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
+      <li><a href="warfira_partenaires.html" class="active">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-cta" onclick="document.getElementById('partenaires').scrollIntoView({behavior:'smooth'})">NOUS REJOINDRE</button>
   </nav>
 
   <section class="hero">
@@ -329,7 +341,7 @@
   </div>
 
   <footer>
-    <div class="footer-logo">WARFIRA</div>
+    <div class="footer-logo" style="color: #FFFFFF;">WARFIRA</div>
     <ul class="footer-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="warfira_ecosysteme.html">Écosystème</a></li>

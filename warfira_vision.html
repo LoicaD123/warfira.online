@@ -6,7 +6,7 @@
   <title>WARFIRA — Vision & Fondateur</title>
   <link rel="icon" href="favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -15,88 +15,106 @@
       --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
-    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .topbar-reserve:hover { opacity: 0.88; }
 
     /* NAVBAR */
-    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
     .nav-logo img { height: 28px; width: auto; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
-    .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--blue-dark); }
+    .nav-links a.active { color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-cta { font-size: 12px; font-weight: 700; padding: 9px 22px; background: var(--blue); color: var(--white); border: none; border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
 
     /* HERO */
-    .hero { background: var(--blue); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 40px; }
-    .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
-    .hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 540px; margin-bottom: 14px; }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 460px; line-height: 1.8; }
+    .hero { background: var(--blue); min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); }
+    .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
+    .hero h1 { font-size: 38px; font-weight: 800; line-height: 1.15; color: var(--white); max-width: 560px; margin-bottom: 16px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 480px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; }
 
-    /* FONDATEUR — blanc à gauche, crème à droite */
+    /* FONDATEUR */
     .fondateur { display: grid; grid-template-columns: 1fr 1fr; }
-
-    .fondateur-left { background: var(--white); padding: 60px 52px; border-right: 1px solid var(--border); }
-    .fondateur-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 20px; text-transform: uppercase; opacity: 0.55; }
-    .fondateur-avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
-    .fondateur-left h2 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
+    .fondateur-left { background: var(--white); padding: 64px 56px; border-right: 1px solid var(--border); }
+    .fondateur-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--blue); margin-bottom: 20px; text-transform: uppercase; opacity: 0.6; }
+    .fondateur-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 18px; transition: transform 0.3s; }
+    .fondateur-avatar:hover { transform: scale(1.08); }
+    .fondateur-left h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 5px; }
     .fondateur-title { font-size: 11px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
-    .fondateur-left p { font-size: 13px; color: var(--gray); line-height: 1.85; margin-bottom: 16px; }
-    .fondateur-quote { border-left: 3px solid var(--blue); padding-left: 16px; margin-top: 24px; background: var(--blue-light); padding: 16px 20px; border-radius: 0 4px 4px 0; }
-    .fondateur-quote p { font-style: italic; font-size: 13px; color: var(--blue-dark); line-height: 1.7; margin-bottom: 10px; }
-    .fondateur-quote cite { font-size: 10px; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-weight: 600; }
+    .fondateur-left p { font-size: 13px; color: var(--gray); line-height: 1.9; margin-bottom: 16px; }
+    .fondateur-quote { border-left: 3px solid var(--blue); padding: 18px 22px; margin-top: 28px; background: var(--blue-light); border-radius: 0 6px 6px 0; transition: box-shadow 0.2s; }
+    .fondateur-quote:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.1); }
+    .fondateur-quote p { font-style: italic; font-size: 13px; color: var(--blue-dark); line-height: 1.75; margin-bottom: 10px; }
+    .fondateur-quote cite { font-size: 10px; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-weight: 700; }
 
-    .fondateur-right { background: var(--cream); padding: 60px 52px; }
-    .fondateur-right-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; text-transform: uppercase; opacity: 0.55; }
-    .fondateur-right h3 { font-size: 22px; font-weight: 700; color: var(--blue-dark); margin-bottom: 28px; }
+    .fondateur-right { background: var(--cream); padding: 64px 52px; }
+    .fondateur-right-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; text-transform: uppercase; opacity: 0.6; }
+    .fondateur-right h3 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 30px; }
     .pillars-eval { display: flex; flex-direction: column; gap: 14px; }
-    .pillar-eval { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; transition: box-shadow 0.2s; }
-    .pillar-eval:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.08); }
-    .pillar-eval-icon { width: 36px; height: 36px; border-radius: 6px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--blue); }
+    .pillar-eval { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; transition: box-shadow 0.2s, transform 0.2s; }
+    .pillar-eval:hover { box-shadow: 0 6px 20px rgba(40,54,140,0.08); transform: translateX(4px); }
+    .pillar-eval-icon { width: 38px; height: 38px; border-radius: 6px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--blue); }
     .pillar-eval h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 4px; }
     .pillar-eval p { font-size: 12px; color: var(--gray); line-height: 1.6; }
 
     /* MISSION */
-    .mission { padding: 64px 60px; background: var(--white); }
-    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
-    .mission h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
-    .mission-sub { font-size: 13px; color: var(--gray); max-width: 500px; line-height: 1.8; margin-bottom: 36px; }
+    .mission { padding: 72px 60px; background: var(--white); }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.6; }
+    .mission h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.2; }
+    .mission-sub { font-size: 14px; color: var(--gray); max-width: 520px; line-height: 1.85; margin-bottom: 40px; }
     .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .mission-item { padding: 28px 24px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); transition: box-shadow 0.2s; }
-    .mission-item:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.08); }
-    .mission-item h4 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
-    .mission-item p { font-size: 12px; color: var(--gray); line-height: 1.75; }
+    .mission-item { padding: 32px 26px; border: 1px solid var(--border); border-radius: 6px; background: var(--white); transition: box-shadow 0.3s, transform 0.3s; }
+    .mission-item:hover { box-shadow: 0 12px 32px rgba(40,54,140,0.08); transform: translateY(-4px); }
+    .mission-num { font-size: 40px; font-weight: 800; color: rgba(40,54,140,0.06); line-height: 1; margin-bottom: -4px; }
+    .mission-item h4 { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+    .mission-item p { font-size: 13px; color: var(--gray); line-height: 1.75; }
 
     /* ROADMAP */
-    .roadmap-section { background: var(--blue-dark); padding: 64px 60px; }
-    .roadmap-section .section-label { color: rgba(255,255,255,0.45); opacity: 1; }
-    .roadmap-section h2 { font-size: 26px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-    .roadmap-sub { font-size: 13px; color: rgba(255,255,255,0.5); max-width: 460px; line-height: 1.8; margin-bottom: 40px; }
-    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
-    .roadmap-item { background: var(--blue-dark); padding: 28px 24px; }
-    .roadmap-year { font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
-    .roadmap-phase { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.5); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
-    .roadmap-details { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .roadmap-section { background: var(--blue-dark); padding: 72px 60px; }
+    .roadmap-section .section-label { color: rgba(255,255,255,0.4); opacity: 1; }
+    .roadmap-section h2 { font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .roadmap-sub { font-size: 14px; color: rgba(255,255,255,0.45); max-width: 480px; line-height: 1.85; margin-bottom: 44px; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; }
+    .roadmap-item { background: var(--blue-dark); padding: 32px 24px; transition: background 0.2s; }
+    .roadmap-item:hover { background: rgba(255,255,255,0.04); }
+    .roadmap-year { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .roadmap-phase { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
+    .roadmap-details { list-style: none; display: flex; flex-direction: column; gap: 7px; }
     .roadmap-details li { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; gap: 8px; }
-    .roadmap-details li::before { content: '—'; color: rgba(255,255,255,0.25); flex-shrink: 0; }
+    .roadmap-details li::before { content: '—'; color: rgba(255,255,255,0.2); flex-shrink: 0; }
 
     /* CONFORMITÉ */
-    .conformite { padding: 64px 60px; background: var(--cream); }
-    .conformite h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
-    .conformite-sub { font-size: 13px; color: var(--gray); max-width: 460px; line-height: 1.8; margin-bottom: 40px; }
-    .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .conformite-item { background: var(--white); padding: 24px; border-radius: 6px; border: 1px solid var(--border); }
-    .conformite-num { font-size: 28px; font-weight: 700; color: var(--blue); opacity: 0.2; margin-bottom: 10px; line-height: 1; }
+    .conformite { padding: 72px 60px; background: var(--cream); }
+    .conformite h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
+    .conformite-sub { font-size: 14px; color: var(--gray); max-width: 480px; line-height: 1.85; margin-bottom: 44px; }
+    .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .conformite-item { background: var(--white); padding: 28px 22px; border-radius: 6px; border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+    .conformite-item:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(40,54,140,0.08); }
+    .conformite-num { font-size: 32px; font-weight: 800; color: var(--blue); opacity: 0.15; margin-bottom: 12px; line-height: 1; }
     .conformite-item h4 { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
     .conformite-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
 
     /* FOOTER CTA */
-    .footer-cta { padding: 44px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; border-top: 1px solid var(--border); }
-    .footer-cta h3 { font-size: 22px; font-weight: 700; color: var(--blue-dark); }
-    .footer-cta p { font-size: 13px; color: var(--gray); margin-top: 4px; }
-    .footer-cta-btn { background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 11px 26px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-    .footer-cta-btn:hover { background: var(--blue-dark); }
+    .footer-cta { background: var(--blue); padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-cta h3 { font-size: 26px; font-weight: 700; color: var(--white); line-height: 1.25; }
+    .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+    .footer-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--blue); font-family: var(--font); font-size: 13px; font-weight: 700; padding: 12px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
 
     /* FOOTER */
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -106,26 +124,44 @@
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
 
-    .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
-    .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
+    /* BOUTON FLOTTANT */
+    .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
+    /* ANIMATIONS */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
+      .topbar { display: none; }
       .nav { padding: 12px 20px; } .nav-links { display: none; }
-      .hero h1 { font-size: 26px; }
+      .hero h1 { font-size: 28px; }
       .fondateur { grid-template-columns: 1fr; }
-      .fondateur-left, .fondateur-right { padding: 40px 24px; }
-      .mission { padding: 44px 20px; } .mission-grid { grid-template-columns: 1fr; }
-      .roadmap-section { padding: 44px 20px; } .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
-      .conformite { padding: 44px 20px; } .conformite-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+      .fondateur-left, .fondateur-right { padding: 44px 24px; }
+      .mission { padding: 48px 24px; } .mission-grid { grid-template-columns: 1fr; }
+      .roadmap-section { padding: 48px 24px; } .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+      .conformite { padding: 48px 24px; } .conformite-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-cta { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
       footer { padding: 24px 20px; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-
-  <nav class="nav">
+<!-- NAVBAR -->
+  <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
       WARFIRA
@@ -136,18 +172,24 @@
       <li><a href="warfira_vision.html" class="active">Vision & Fondateur</a></li>
       <li><a href="warfira_partenaires.html">Partenaires</a></li>
       <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="warfira_serenite.html">Sérénité</a></li>
     </ul>
-    <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
+    <div class="nav-actions">
+      <a href="warfira_contact.html" class="nav-cta-outline">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">VISION · MISSION · FONDATEUR</div>
-    <h1>Bâtir un champion franco-africain</h1>
+    <div class="hero-badge">Vision · Mission · Fondateur</div>
+    <h1>Bâtir un champion<br/>franco-africain</h1>
     <p class="hero-sub">La vision de WARFIRA est portée par une ambition claire : devenir l'opérateur touristique hybride de référence entre la France et l'Afrique francophone.</p>
   </section>
 
+  <!-- FONDATEUR -->
   <div class="fondateur">
-    <div class="fondateur-left">
+    <div class="fondateur-left reveal-left">
       <div class="fondateur-label">Le fondateur</div>
       <div class="fondateur-avatar">SN</div>
       <h2>Serge 1er NKOA</h2>
@@ -158,7 +200,7 @@
         <cite>— Serge 1er NKOA, Président Directeur Général</cite>
       </div>
     </div>
-    <div class="fondateur-right">
+    <div class="fondateur-right reveal-right">
       <div class="fondateur-right-label">L'évaluation investisseur</div>
       <h3>Ce que le fondateur incarne</h3>
       <div class="pillars-eval">
@@ -182,49 +224,85 @@
     </div>
   </div>
 
+  <!-- MISSION -->
   <section class="mission">
-    <div class="section-label">Notre mission</div>
-    <h2>Connecter la France et l'Afrique par le voyage</h2>
-    <p class="mission-sub">WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.</p>
+    <div class="section-label reveal">Notre mission</div>
+    <h2 class="reveal">Connecter la France et l'Afrique par le voyage</h2>
+    <p class="mission-sub reveal">WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.</p>
     <div class="mission-grid">
-      <div class="mission-item"><h4>Technologie</h4><p>Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p></div>
-      <div class="mission-item"><h4>Proximité</h4><p>Un maillage d'agences ancré localement. 250 boutiques partenaires WRB d'ici 2027, en France et en Afrique francophone.</p></div>
-      <div class="mission-item"><h4>Expansion</h4><p>Un déploiement maîtrisé sur les deux continents. France, Cameroun, Gabon, Sénégal, Côte d'Ivoire — 5 pays cibles prioritaires.</p></div>
+      <div class="mission-item reveal delay-1">
+        <div class="mission-num">01</div>
+        <h4>Technologie</h4>
+        <p>Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p>
+      </div>
+      <div class="mission-item reveal delay-2">
+        <div class="mission-num">02</div>
+        <h4>Proximité</h4>
+        <p>Un maillage d'agences ancré localement. 250 boutiques partenaires WRB d'ici 2027, en France et en Afrique francophone.</p>
+      </div>
+      <div class="mission-item reveal delay-3">
+        <div class="mission-num">03</div>
+        <h4>Expansion</h4>
+        <p>Un déploiement maîtrisé sur les deux continents. France, Cameroun, Gabon, Sénégal, Côte d'Ivoire — 5 pays cibles prioritaires.</p>
+      </div>
     </div>
   </section>
 
+  <!-- ROADMAP -->
   <section class="roadmap-section">
-    <div class="section-label">Feuille de route</div>
-    <h2>Notre déploiement 2026–2029</h2>
-    <p class="roadmap-sub">Une croissance structurée et maîtrisée, phase par phase, jusqu'à l'expansion internationale en Afrique francophone.</p>
+    <div class="section-label reveal">Feuille de route</div>
+    <h2 class="reveal">Notre déploiement 2026–2029</h2>
+    <p class="roadmap-sub reveal">Une croissance structurée et maîtrisée, phase par phase, jusqu'à l'expansion internationale en Afrique francophone.</p>
     <div class="roadmap-grid">
-      <div class="roadmap-item"><div class="roadmap-year">2026</div><div class="roadmap-phase">Lancement & conformité</div><ul class="roadmap-details"><li>25 boutiques pilotes</li><li>Agrément Atout France</li><li>Licence IATA</li><li>CA 420 000€</li></ul></div>
-      <div class="roadmap-item"><div class="roadmap-year">2027</div><div class="roadmap-phase">Montée en puissance</div><ul class="roadmap-details"><li>100 boutiques actives</li><li>Rentabilité atteinte</li><li>CA 1,35M€</li><li>Lancement WHS</li></ul></div>
-      <div class="roadmap-item"><div class="roadmap-year">2028</div><div class="roadmap-phase">Hôtellerie & prestige</div><ul class="roadmap-details"><li>250 boutiques</li><li>Parc hôtelier WHS</li><li>CA 3,2M€</li><li>Événementiel hôtelier</li></ul></div>
-      <div class="roadmap-item"><div class="roadmap-year">2029</div><div class="roadmap-phase">Expansion africaine</div><ul class="roadmap-details"><li>400 boutiques</li><li>Cameroun, Gabon, Sénégal</li><li>CA 5M€</li><li>Marge nette 25%</li></ul></div>
+      <div class="roadmap-item reveal delay-1">
+        <div class="roadmap-year">2026</div>
+        <div class="roadmap-phase">Lancement & conformité</div>
+        <ul class="roadmap-details"><li>25 boutiques pilotes</li><li>Agrément Atout France</li><li>Licence IATA</li><li>CA 420 000€</li></ul>
+      </div>
+      <div class="roadmap-item reveal delay-2">
+        <div class="roadmap-year">2027</div>
+        <div class="roadmap-phase">Montée en puissance</div>
+        <ul class="roadmap-details"><li>100 boutiques actives</li><li>Rentabilité atteinte</li><li>CA 1,35M€</li><li>Lancement WHS</li></ul>
+      </div>
+      <div class="roadmap-item reveal delay-3">
+        <div class="roadmap-year">2028</div>
+        <div class="roadmap-phase">Hôtellerie & prestige</div>
+        <ul class="roadmap-details"><li>250 boutiques</li><li>Parc hôtelier WHS</li><li>CA 3,2M€</li><li>Événementiel hôtelier</li></ul>
+      </div>
+      <div class="roadmap-item reveal delay-4">
+        <div class="roadmap-year">2029</div>
+        <div class="roadmap-phase">Expansion africaine</div>
+        <ul class="roadmap-details"><li>400 boutiques</li><li>Cameroun, Gabon, Sénégal</li><li>CA 5M€</li><li>Marge nette 25%</li></ul>
+      </div>
     </div>
   </section>
 
+  <!-- CONFORMITÉ -->
   <section class="conformite">
-    <div class="section-label">Conformité & sécurité</div>
-    <h2>Une confiance institutionnelle irréprochable</h2>
-    <p class="conformite-sub">Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.</p>
+    <div class="section-label reveal">Conformité & sécurité</div>
+    <h2 class="reveal">Une confiance institutionnelle irréprochable</h2>
+    <p class="conformite-sub reveal">Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.</p>
     <div class="conformite-grid">
-      <div class="conformite-item"><div class="conformite-num">01</div><h4>Accréditation IATA</h4><p>Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p></div>
-      <div class="conformite-item"><div class="conformite-num">02</div><h4>Atout France</h4><p>Immatriculation obligatoire validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p></div>
-      <div class="conformite-item"><div class="conformite-num">03</div><h4>Garantie financière</h4><p>Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p></div>
-      <div class="conformite-item"><div class="conformite-num">04</div><h4>Conformité RGPD</h4><p>Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p></div>
+      <div class="conformite-item reveal delay-1"><div class="conformite-num">01</div><h4>Accréditation IATA</h4><p>Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p></div>
+      <div class="conformite-item reveal delay-2"><div class="conformite-num">02</div><h4>Atout France</h4><p>Immatriculation obligatoire validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p></div>
+      <div class="conformite-item reveal delay-3"><div class="conformite-num">03</div><h4>Garantie financière</h4><p>Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p></div>
+      <div class="conformite-item reveal delay-4"><div class="conformite-num">04</div><h4>Conformité RGPD</h4><p>Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p></div>
     </div>
   </section>
 
-  <div class="footer-cta">
+  <!-- FOOTER CTA -->
+  <div class="footer-cta reveal">
     <div>
       <h3>Vous partagez notre vision ?</h3>
       <p>Rejoignez l'écosystème WARFIRA en tant que partenaire ou investisseur.</p>
     </div>
-    <button class="footer-cta-btn" onclick="window.location.href='warfira_contact.html'">NOUS CONTACTER ↗</button>
+    <div class="footer-cta-actions">
+      <a href="warfira_contact.html" class="btn-white">Nous contacter ↗</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white">✈ Réserver sur warfira.com</a>
+    </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
@@ -237,10 +315,25 @@
     <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
-  <a href="https://www.warfira.com" class="back-btn" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  <!-- BOUTON FLOTTANT -->
+  <a href="https://www.warfira.com" target="_blank" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
     Réserver sur warfira.com
   </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    allReveals.forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>

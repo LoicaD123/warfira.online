@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="Logo Warfira.jpeg"/>
   <title>WARFIRA — Écosystème</title>
-  <link rel="icon" type="image/x-icon" href="favicon-16x16.png"/>
+  <link rel="icon" href="favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -16,131 +15,226 @@
       --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
-    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; }
-    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 16px 60px; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
-    .nav-logo { font-size: 15px; font-weight: 700; color: var(--blue-dark); letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .topbar-reserve:hover { opacity: 0.88; }
+
+    /* NAVBAR */
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
     .nav-logo img { height: 28px; width: auto; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
     .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
-    .nav-links a.active { border-bottom: 1px solid var(--blue); padding-bottom: 2px; }
-    .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 20px; background: var(--blue); color: var(--white); border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
-    .nav-cta:hover { background: var(--blue-dark); }
-    .hero { background: var(--blue); min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 56px 40px; }
-    .hero-badge { font-size: 10px; font-weight: 500; letter-spacing: 2px; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.2); padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; text-transform: uppercase; }
-    .hero h1 { font-size: 32px; font-weight: 700; line-height: 1.2; color: var(--white); max-width: 540px; margin-bottom: 14px; }
-    .hero-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 460px; line-height: 1.8; }
-    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--white); }
-    .tab { flex: 1; padding: 20px; text-align: center; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; text-decoration: none; display: block; }
-    .tab:hover { background: var(--cream); }
-    .tab.active { border-bottom: 2px solid var(--blue); }
-    .tab-num { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
-    .tab-label { font-size: 14px; font-weight: 600; color: var(--blue-dark); }
-    .tab-sub { font-size: 10px; color: var(--gray); margin-top: 2px; letter-spacing: 1px; text-transform: uppercase; }
-    .pillar-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 420px; border-top: 1px solid var(--border); }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-cta { font-size: 12px; font-weight: 700; padding: 9px 22px; background: var(--blue); color: var(--white); border: none; border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
+
+    /* HERO */
+    .hero { background: var(--blue); min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
+    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); }
+    .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
+    .hero h1 { font-size: 38px; font-weight: 800; line-height: 1.15; color: var(--white); max-width: 600px; margin-bottom: 16px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
+    .hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 500px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; }
+
+    /* TABS */
+    .tabs { display: flex; border-bottom: 1px solid var(--border); background: var(--white); position: sticky; top: 65px; z-index: 90; box-shadow: 0 2px 12px rgba(40,54,140,0.05); }
+    .tab { flex: 1; padding: 20px; text-align: center; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.25s; text-decoration: none; display: block; }
+    .tab:hover { background: var(--blue-light); }
+    .tab.active { border-bottom: 3px solid var(--blue); background: var(--blue-light); }
+    .tab-num { font-size: 11px; color: var(--gray); margin-bottom: 4px; font-weight: 500; }
+    .tab-label { font-size: 15px; font-weight: 700; color: var(--blue-dark); }
+    .tab.active .tab-label { color: var(--blue); }
+    .tab-sub { font-size: 10px; color: var(--gray); margin-top: 3px; letter-spacing: 1px; text-transform: uppercase; }
+
+    /* PILIERS */
+    .pillar-section { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; border-top: 1px solid var(--border); }
     .pillar-section.reverse { direction: rtl; }
     .pillar-section.reverse > * { direction: ltr; }
-    .pillar-content { padding: 60px 52px; display: flex; flex-direction: column; justify-content: center; }
-    .pillar-num { font-size: 60px; font-weight: 700; color: rgba(40,54,140,0.06); line-height: 1; margin-bottom: -10px; }
-    .pillar-tag { font-size: 10px; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; font-weight: 600; }
-    .pillar-content h2 { font-size: 20px; font-weight: 700; color: var(--blue); margin-bottom: 12px; }
-    .pillar-content > p { font-size: 13px; color: var(--gray); line-height: 1.8; margin-bottom: 20px; }
-    .features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
-    .features li { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--blue-dark); }
-    .features li::before { content: '•'; color: var(--blue); flex-shrink: 0; font-weight: 700; }
-    .argument { background: var(--blue-light); border-left: 2px solid var(--blue); padding: 12px 16px; margin-bottom: 24px; }
-    .argument p { font-size: 12px; color: var(--blue-dark); line-height: 1.7; font-style: italic; }
-    .btn-blue { display: inline-block; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--white); background: var(--blue); padding: 10px 22px; border-radius: 4px; border: none; cursor: pointer; transition: background 0.2s; text-decoration: none; }
-    .btn-blue:hover { background: var(--blue-dark); }
-    .pillar-visual { display: flex; align-items: center; justify-content: center; padding: 48px; }
+    .pillar-content { padding: 64px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .pillar-num { font-size: 80px; font-weight: 800; color: rgba(40,54,140,0.05); line-height: 1; margin-bottom: -14px; }
+    .pillar-tag { font-size: 10px; letter-spacing: 2px; color: var(--blue); margin-bottom: 12px; text-transform: uppercase; opacity: 0.6; font-weight: 700; }
+    .pillar-content h2 { font-size: 24px; font-weight: 700; color: var(--blue); margin-bottom: 14px; line-height: 1.25; }
+    .pillar-content > p { font-size: 13px; color: var(--gray); line-height: 1.85; margin-bottom: 22px; }
+    .features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .features li { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--blue-dark); line-height: 1.5; }
+    .features li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-weight: 700; font-size: 12px; margin-top: 1px; }
+    .argument { background: var(--blue-light); border-left: 3px solid var(--blue); padding: 14px 18px; margin-bottom: 28px; border-radius: 0 4px 4px 0; }
+    .argument p { font-size: 13px; color: var(--blue-dark); line-height: 1.75; font-style: italic; }
+    .btn-blue { display: inline-block; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--white); background: var(--blue); padding: 12px 26px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(40,54,140,0.2); }
+
+    /* VISUELS PILIERS */
+    .pillar-visual { display: flex; align-items: center; justify-content: center; padding: 48px; position: relative; overflow: hidden; }
     .pillar-visual.dark { background: var(--blue); }
     .pillar-visual.mid { background: var(--blue-dark); }
     .pillar-visual.cream { background: var(--cream); }
+    .pillar-visual::before { content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.03); top: -80px; right: -80px; }
+
+    /* WRS */
     .wrs-diagram { width: 100%; max-width: 290px; }
-    .wrs-box { background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.18); border-radius: 4px; padding: 12px 14px; margin-bottom: 8px; }
-    .wrs-box-label { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.45); margin-bottom: 4px; text-transform: uppercase; }
-    .wrs-box-val { font-size: 16px; font-weight: 600; color: var(--white); }
-    .wrs-connect { display: flex; align-items: center; gap: 8px; margin: 4px 0; padding: 0 14px; }
-    .wrs-line { flex: 1; height: 0.5px; background: rgba(255,255,255,0.12); }
-    .wrs-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.35); flex-shrink: 0; }
-    .wrs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .wrb-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; width: 100%; max-width: 280px; }
-    .wrb-city { background: rgba(255,255,255,0.05); border: 0.5px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 9px 7px; text-align: center; }
-    .wrb-city.highlight { border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.1); }
-    .wrb-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.35); margin: 0 auto 5px; }
-    .wrb-city.highlight .wrb-dot { background: var(--white); }
+    .wrs-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; transition: background 0.2s; }
+    .wrs-box:hover { background: rgba(255,255,255,0.13); }
+    .wrs-box-label { font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 5px; text-transform: uppercase; }
+    .wrs-box-val { font-size: 18px; font-weight: 700; color: var(--white); }
+    .wrs-connect { display: flex; align-items: center; gap: 8px; margin: 6px 0; padding: 0 14px; }
+    .wrs-line { flex: 1; height: 1px; background: rgba(255,255,255,0.1); }
+    .wrs-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.4); flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.4); } }
+    .wrs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* WRB */
+    .wrb-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 300px; }
+    .wrb-city { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 10px 8px; text-align: center; transition: all 0.2s; cursor: pointer; }
+    .wrb-city:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+    .wrb-city.highlight { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); }
+    .wrb-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); margin: 0 auto 6px; }
+    .wrb-city.highlight .wrb-dot { background: var(--white); box-shadow: 0 0 6px rgba(255,255,255,0.6); }
     .wrb-city strong { display: block; font-size: 11px; color: var(--white); font-weight: 600; }
-    .wrb-city span { display: block; font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 1px; }
-    .whs-cards { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 280px; }
-    .whs-card { background: var(--white); border-radius: 4px; padding: 11px 14px; display: flex; align-items: center; gap: 11px; border: 1px solid var(--border); }
-    .whs-card-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .whs-card-icon svg { width: 12px; height: 12px; stroke: var(--blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .whs-card h4 { font-size: 12px; font-weight: 600; color: var(--blue-dark); margin-bottom: 1px; }
-    .whs-card p { font-size: 10px; color: var(--gray); }
-    .synergy { background: var(--cream); padding: 60px; }
-    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.55; }
-    .synergy h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; }
-    .section-sub { font-size: 13px; color: var(--gray); max-width: 500px; line-height: 1.85; margin-bottom: 36px; }
-    .synergy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-    .synergy-item { background: var(--white); padding: 26px 22px; }
-    .synergy-item h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 8px; }
-    .synergy-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
-    .footer-cta { background: var(--blue-dark); padding: 40px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-    .footer-cta h3 { font-size: 20px; font-weight: 700; color: var(--white); }
-    .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; }
-    .footer-cta-btn { background: var(--white); color: var(--blue); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 24px; border-radius: 4px; border: none; cursor: pointer; transition: opacity 0.2s; }
-    .footer-cta-btn:hover { opacity: 0.88; }
+    .wrb-city span { display: block; font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+    /* WHS */
+    .whs-cards { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+    .whs-card { background: var(--white); border-radius: 6px; padding: 14px 16px; display: flex; align-items: center; gap: 14px; border: 1px solid var(--border); transition: all 0.2s; }
+    .whs-card:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(40,54,140,0.1); border-color: rgba(40,54,140,0.25); }
+    .whs-card-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .whs-card-icon svg { width: 14px; height: 14px; stroke: var(--blue); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .whs-card h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 2px; }
+    .whs-card p { font-size: 11px; color: var(--gray); }
+
+    /* SYNERGIES */
+    .synergy { background: var(--blue-darker); padding: 72px 60px; }
+    .synergy .section-label { color: rgba(255,255,255,0.4); opacity: 1; }
+    .synergy h2 { font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .synergy .section-sub { color: rgba(255,255,255,0.5); margin-bottom: 48px; }
+    .synergy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    .synergy-item { background: rgba(255,255,255,0.03); padding: 32px 28px; transition: background 0.2s; }
+    .synergy-item:hover { background: rgba(255,255,255,0.07); }
+    .synergy-arrow { font-size: 24px; font-weight: 800; color: rgba(255,255,255,0.08); margin-bottom: 12px; }
+    .synergy-item h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .synergy-item p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75; }
+
+    /* SECTION LABEL */
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.6; }
+    .section-sub { font-size: 14px; color: var(--gray); max-width: 520px; line-height: 1.85; margin-bottom: 36px; }
+
+    /* FOOTER CTA */
+    .footer-cta { background: var(--blue); padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-cta h3 { font-size: 26px; font-weight: 700; color: var(--white); line-height: 1.25; }
+    .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; max-width: 400px; }
+    .footer-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--blue); font-family: var(--font); font-size: 13px; font-weight: 700; padding: 12px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* FOOTER */
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
-    .back-btn { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 600; padding: 10px 18px; border-radius: 24px; text-decoration: none; box-shadow: 0 4px 16px rgba(40,54,140,0.3); display: flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.2s; }
-    .back-btn:hover { background: var(--blue-dark); transform: translateY(-2px); color: var(--white); }
+
+    /* BOUTON FLOTTANT */
+    .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ANIMATIONS */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .nav { padding: 14px 20px; } .nav-links { display: none; }
-      .hero h1 { font-size: 24px; } .tabs { flex-direction: column; }
+      .topbar { padding: 7px 20px; display: none; }
+      .nav { padding: 12px 20px; } .nav-links { display: none; }
+      .hero h1 { font-size: 26px; } .tabs { flex-direction: column; top: 57px; }
       .pillar-section { grid-template-columns: 1fr; } .pillar-section.reverse { direction: ltr; }
-      .pillar-content { padding: 36px 20px; } .pillar-visual { min-height: 220px; }
-      .synergy { padding: 40px 20px; } .synergy-grid { grid-template-columns: 1fr; }
-      .footer-cta { padding: 32px 20px; flex-direction: column; align-items: flex-start; }
+      .pillar-content { padding: 40px 24px; } .pillar-visual { min-height: 240px; padding: 32px; }
+      .synergy { padding: 48px 24px; } .synergy-grid { grid-template-columns: 1fr; }
+      .footer-cta { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
       footer { padding: 24px 20px; flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span>WARFIRA CRS Technologies · SAS · Capital 30 000€ · RCS 931 304 299 Versailles</span>
+    <a href="https://www.warfira.com" target="_blank" class="topbar-reserve">✈ RÉSERVER SUR WARFIRA.COM</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
-      <img src="https://www.warfira.com/uploads/global/logo.png" alt="WARFIRA"/>
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
       WARFIRA
     </a>
     <ul class="nav-links">
-  <li><a href="index.html">Accueil</a></li>
-  <li><a href="warfira_ecosysteme.html" class="active">Écosystème</a></li>
-  <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
-  <li><a href="warfira_partenaires.html">Partenaires</a></li>
-  <li><a href="warfira_contact.html">Contact</a></li>
-</ul>
-    <button class="nav-cta" onclick="window.location.href='warfira_contact.html'">NOUS REJOINDRE</button>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" class="active">Écosystème</a></li>
+      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="warfira_partenaires.html" class="nav-cta-outline">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-badge">LES TROIS PILIERS — WRS · WRB · WHS</div>
-    <h1>Un écosystème intégré pour le tourisme de demain</h1>
+    <h1>Un écosystème intégré<br/>pour le tourisme de demain</h1>
     <p class="hero-sub">Technologie, distribution physique et excellence hôtelière — trois piliers complémentaires et indissociables au service d'une ambition franco-africaine.</p>
   </section>
 
+  <!-- TABS STICKY -->
   <div class="tabs">
-    <a href="#wrs" class="tab active"><div class="tab-num">01</div><div class="tab-label">WRS</div><div class="tab-sub">RÉSERVATION & TECH</div></a>
-    <a href="#wrb" class="tab"><div class="tab-num">02</div><div class="tab-label">WRB</div><div class="tab-sub">RÉSEAU BOUTIQUES</div></a>
-    <a href="#whs" class="tab"><div class="tab-num">03</div><div class="tab-label">WHS</div><div class="tab-sub">HÔTELLERIE</div></a>
+    <a href="#wrs" class="tab active">
+      <div class="tab-num">01</div>
+      <div class="tab-label">WRS</div>
+      <div class="tab-sub">Réservation & Tech</div>
+    </a>
+    <a href="#wrb" class="tab">
+      <div class="tab-num">02</div>
+      <div class="tab-label">WRB</div>
+      <div class="tab-sub">Réseau Boutiques</div>
+    </a>
+    <a href="#whs" class="tab">
+      <div class="tab-num">03</div>
+      <div class="tab-label">WHS</div>
+      <div class="tab-sub">Hôtellerie</div>
+    </a>
   </div>
 
+  <!-- PILIER 01 — WRS -->
   <div class="pillar-section" id="wrs">
-    <div class="pillar-content">
+    <div class="pillar-content reveal-left">
       <div class="pillar-num">01</div>
       <div class="pillar-tag">Pilier 1 — WRS</div>
       <h2>Warfira Reservation Services</h2>
@@ -152,24 +246,25 @@
         <li>Accessible aux agences partenaires WRB et aux clients finaux</li>
       </ul>
       <div class="argument"><p>WRS orchestre chaque transaction au sein de l'écosystème. C'est l'atout technologique central garantissant notre efficacité opérationnelle et la valeur de notre modèle pour les investisseurs.</p></div>
-      <a href="warfira_contact.html" class="btn-blue">Découvrir wrs.warfira.com ↗</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-blue">Accéder à wrs.warfira.com ↗</a>
     </div>
-    <div class="pillar-visual dark">
+    <div class="pillar-visual dark reveal-right">
       <div class="wrs-diagram">
         <div class="wrs-box"><div class="wrs-box-label">Moteur GDS</div><div class="wrs-box-val">AMADEUS</div></div>
         <div class="wrs-connect"><div class="wrs-line"></div><div class="wrs-dot"></div><div class="wrs-line"></div></div>
         <div class="wrs-box"><div class="wrs-box-label">Plateforme WRS</div><div class="wrs-box-val">wrs.warfira.com</div></div>
         <div class="wrs-connect"><div class="wrs-line"></div><div class="wrs-dot"></div><div class="wrs-line"></div></div>
         <div class="wrs-grid">
-          <div class="wrs-box"><div class="wrs-box-label">Agences WRB</div><div class="wrs-box-val" style="font-size:14px;">250+</div></div>
-          <div class="wrs-box"><div class="wrs-box-label">Clients finaux</div><div class="wrs-box-val" style="font-size:14px;">B2C</div></div>
+          <div class="wrs-box"><div class="wrs-box-label">Agences WRB</div><div class="wrs-box-val" style="font-size:16px;">250+</div></div>
+          <div class="wrs-box"><div class="wrs-box-label">Clients finaux</div><div class="wrs-box-val" style="font-size:16px;">B2C</div></div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- PILIER 02 — WRB -->
   <div class="pillar-section reverse" id="wrb">
-    <div class="pillar-visual mid">
+    <div class="pillar-visual mid reveal-left">
       <div class="wrb-map">
         <div class="wrb-city highlight"><div class="wrb-dot"></div><strong>Paris</strong><span>Hub FR</span></div>
         <div class="wrb-city"><div class="wrb-dot"></div><strong>Lyon</strong><span>Boutique</span></div>
@@ -179,10 +274,10 @@
         <div class="wrb-city"><div class="wrb-dot"></div><strong>Dakar</strong><span>Sénégal</span></div>
         <div class="wrb-city"><div class="wrb-dot"></div><strong>Libreville</strong><span>Gabon</span></div>
         <div class="wrb-city"><div class="wrb-dot"></div><strong>Abidjan</strong><span>Côte d'Ivoire</span></div>
-        <div class="wrb-city" style="opacity:0.45;"><div class="wrb-dot"></div><strong>+242</strong><span>à venir</span></div>
+        <div class="wrb-city" style="opacity:0.4;"><div class="wrb-dot"></div><strong>+242</strong><span>à venir</span></div>
       </div>
     </div>
-    <div class="pillar-content">
+    <div class="pillar-content reveal-right">
       <div class="pillar-num">02</div>
       <div class="pillar-tag">Pilier 2 — WRB</div>
       <h2>Réseau de Boutiques de Proximité</h2>
@@ -194,12 +289,13 @@
         <li>Abonnement 149€/mois · Droits d'entrée 5 000€</li>
       </ul>
       <div class="argument"><p>WRB transforme des points de vente existants en hubs de services touristiques, garantissant un maillage territorial unique entre la France et l'Afrique.</p></div>
-      <a href="warfira_contact.html" class="btn-blue">Devenir partenaire WRB ↗</a>
+      <a href="warfira_partenaires.html" class="btn-blue">Devenir partenaire WRB ↗</a>
     </div>
   </div>
 
+  <!-- PILIER 03 — WHS -->
   <div class="pillar-section" id="whs">
-    <div class="pillar-content">
+    <div class="pillar-content reveal-left">
       <div class="pillar-num">03</div>
       <div class="pillar-tag">Pilier 3 — WHS</div>
       <h2>Warfira Hotel Services</h2>
@@ -213,7 +309,7 @@
       <div class="argument"><p>WHS offre aux hôteliers indépendants une alternative juste et transparente aux OTAs, en leur garantissant visibilité et performance via notre réseau de 250 boutiques.</p></div>
       <a href="warfira_contact.html" class="btn-blue">Rejoindre le réseau WHS ↗</a>
     </div>
-    <div class="pillar-visual cream">
+    <div class="pillar-visual cream reveal-right">
       <div class="whs-cards">
         <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h4>Hôtels partenaires</h4><p>Visibilité internationale GDS</p></div></div>
         <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4>Hôtels sous mandat</h4><p>Gestion opérationnelle complète</p></div></div>
@@ -223,22 +319,43 @@
     </div>
   </div>
 
+  <!-- SYNERGIES -->
   <section class="synergy">
-    <div class="section-label">La force du triptyque</div>
-    <h2>Pourquoi les trois piliers sont indissociables</h2>
-    <p class="section-sub">Ensemble, WRS, WRB et WHS forment une infrastructure robuste qu'aucun acteur seul ne peut reproduire. C'est cette complémentarité qui fait la force de WARFIRA.</p>
+    <div class="section-label reveal">La force du triptyque</div>
+    <h2 class="reveal" style="font-size:32px;font-weight:700;color:var(--white);margin-bottom:10px;">Pourquoi les trois piliers sont indissociables</h2>
+    <p class="section-sub reveal" style="color:rgba(255,255,255,0.5);">Ensemble, WRS, WRB et WHS forment une infrastructure robuste qu'aucun acteur seul ne peut reproduire. C'est cette complémentarité qui fait la force de WARFIRA.</p>
     <div class="synergy-grid">
-      <div class="synergy-item"><h4>WRS alimente WRB</h4><p>Les boutiques partenaires accèdent à la plateforme WRS pour effectuer toutes leurs réservations. La technologie est le carburant du réseau.</p></div>
-      <div class="synergy-item"><h4>WRB remplit WHS</h4><p>Le réseau de boutiques génère des flux de voyageurs qualifiés vers les hôtels partenaires WHS, optimisant leur taux d'occupation.</p></div>
-      <div class="synergy-item"><h4>WHS enrichit WRS</h4><p>Les établissements WHS intègrent le CRS de WARFIRA, enrichissant l'inventaire de la plateforme et créant une offre hôtelière exclusive.</p></div>
+      <div class="synergy-item reveal delay-1">
+        <div class="synergy-arrow">→</div>
+        <h4>WRS alimente WRB</h4>
+        <p>Les boutiques partenaires accèdent à la plateforme WRS pour effectuer toutes leurs réservations. La technologie est le carburant du réseau.</p>
+      </div>
+      <div class="synergy-item reveal delay-2">
+        <div class="synergy-arrow">→</div>
+        <h4>WRB remplit WHS</h4>
+        <p>Le réseau de boutiques génère des flux de voyageurs qualifiés vers les hôtels partenaires WHS, optimisant leur taux d'occupation.</p>
+      </div>
+      <div class="synergy-item reveal delay-3">
+        <div class="synergy-arrow">→</div>
+        <h4>WHS enrichit WRS</h4>
+        <p>Les établissements WHS intègrent le CRS de WARFIRA, enrichissant l'inventaire de la plateforme et créant une offre hôtelière exclusive.</p>
+      </div>
     </div>
   </section>
 
-  <div class="footer-cta">
-    <div><h3>Intégrez l'écosystème WARFIRA</h3><p>Hôtelier, agence ou investisseur — une place vous attend dans notre réseau.</p></div>
-    <button class="footer-cta-btn" onclick="window.location.href='warfira_contact.html'">NOUS CONTACTER ↗</button>
+  <!-- FOOTER CTA -->
+  <div class="footer-cta reveal">
+    <div>
+      <h3>Intégrez l'écosystème WARFIRA</h3>
+      <p>Hôtelier, agence ou investisseur — une place vous attend dans notre réseau franco-africain.</p>
+    </div>
+    <div class="footer-cta-actions">
+      <a href="https://www.warfira.com" target="_blank" class="btn-white">✈ Réserver maintenant</a>
+      <a href="warfira_contact.html" class="btn-outline-white">Nous contacter ↗</a>
+    </div>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
@@ -251,14 +368,35 @@
     <div class="footer-info">SAS · Capital 30 000€ · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
-  <a href="https://www.warfira.com" class="back-btn" target="_blank">
-    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  <!-- BOUTON FLOTTANT -->
+  <a href="https://www.warfira.com" target="_blank" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
     Réserver sur warfira.com
   </a>
 
   <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
     const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => { tab.addEventListener('click', () => { tabs.forEach(t => t.classList.remove('active')); tab.classList.add('active'); }); });
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+
+    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    allReveals.forEach(el => observer.observe(el));
   </script>
 
 </body>

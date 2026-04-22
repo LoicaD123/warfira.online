@@ -315,6 +315,40 @@
     }, { threshold: 0.1 });
     allReveals.forEach(el => observer.observe(el));
   </script>
+<script>
+  document.querySelector('.btn-submit').addEventListener('click', async (e) => {
+    e.preventDefault();
 
+    const prenom = document.querySelector('input[placeholder="Jean"]').value;
+    const nom = document.querySelector('input[placeholder="Dupont"]').value;
+    const email = document.querySelector('input[type="email"]').value;
+    const telephone = document.querySelector('input[type="tel"]').value;
+    const profil = document.querySelector('select').value;
+    const message = document.querySelector('textarea').value;
+
+    if (!prenom || !nom || !email || !message) {
+      alert('⚠️ Merci de remplir tous les champs obligatoires.');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prenom, nom, email, telephone, profil, message })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('✅ Message envoyé avec succès ! Nous vous répondrons sous 48h.');
+      } else {
+        alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
+      }
+    } catch (error) {
+      alert('❌ Impossible de contacter le serveur.');
+    }
+  });
+</script>
 </body>
 </html>

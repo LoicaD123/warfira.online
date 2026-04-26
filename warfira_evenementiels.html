@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WARFIRA — Événementiels & Espaces de Prestige</title>
+  <link rel="icon" href="favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root {
+      --blue: #28368C; --blue-dark: #1A2E5A; --blue-darker: #111E3A;
+      --blue-light: #EEF1FA; --cream: #F5F4EF; --white: #FFFFFF;
+      --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
+    }
+    body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+    /* TOPBAR */
+    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .topbar-reserve:hover { opacity: 0.88; }
+
+    /* NAVBAR */
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
+    .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
+    .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--gray); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 2px; }
+    .nav-actions { display: flex; gap: 10px; align-items: center; }
+    .nav-cta { font-size: 12px; font-weight: 700; padding: 9px 22px; background: var(--blue); color: var(--white); border: none; border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
+    .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 20px; font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+    .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
+    .nav-mobile-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 16px; width: 100%; padding: 0 40px; }
+    .nav-mobile-actions a { text-align: center; width: 100%; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
+    .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
+
+    /* HERO */
+    .hero { background: #000; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; position: relative; overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; z-index: 0; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(17,30,58,0.5) 0%, rgba(17,30,58,0.3) 50%, rgba(17,30,58,0.7) 100%); z-index: 1; }
+    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); z-index: 3; }
+    .hero > *:not(.hero-video):not(.hero-overlay) { position: relative; z-index: 2; }
+    .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
+    .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.1; color: var(--white); max-width: 660px; margin-bottom: 18px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
+    .hero h1 span { color: rgba(255,255,255,0.4); font-weight: 300; }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; margin-bottom: 32px; }
+    .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; animation: fadeDown 0.7s 0.45s ease both; }
+    .hero-pill { font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); letter-spacing: 0.5px; }
+
+    /* INTRO */
+    .intro { padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .intro-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 12px; text-transform: uppercase; opacity: 0.6; }
+    .intro h2 { font-size: 30px; font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; line-height: 1.25; }
+    .intro p { font-size: 13px; color: var(--gray); line-height: 1.9; margin-bottom: 12px; }
+    .intro-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .istat { background: var(--cream); padding: 22px 20px; border-radius: 6px; transition: transform 0.2s, box-shadow 0.2s; }
+    .istat:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(40,54,140,0.08); }
+    .istat-num { font-size: 32px; font-weight: 800; color: var(--blue-dark); line-height: 1; }
+    .istat-label { font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-top: 5px; text-transform: uppercase; }
+
+    /* SECTIONS */
+    .section { padding: 80px 60px; }
+    .section-alt { background: var(--cream); }
+    .section-dark { background: var(--blue-darker); }
+    .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.6; }
+    .section-label.light { color: rgba(255,255,255,0.45); opacity: 1; }
+    .section h2 { font-size: 30px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.2; }
+    .section h2.light { color: var(--white); }
+    .section-sub { font-size: 14px; color: var(--gray); max-width: 520px; line-height: 1.85; margin-bottom: 48px; }
+    .section-sub.light { color: rgba(255,255,255,0.5); }
+
+    /* ESPACES GRID */
+    .espaces-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .espace-card { border-radius: 8px; overflow: hidden; background: var(--white); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
+    .espace-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(40,54,140,0.12); }
+    .espace-card-top { padding: 36px 28px; }
+    .espace-card-top.chateau { background: var(--blue); }
+    .espace-card-top.domaine { background: var(--blue-dark); }
+    .espace-card-top.salle { background: var(--blue-darker); }
+    .espace-icon { font-size: 38px; margin-bottom: 14px; display: block; }
+    .espace-card-top h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .espace-card-top p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .espace-card-body { padding: 24px 28px; }
+    .espace-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
+    .espace-list li { font-size: 13px; color: var(--blue-dark); display: flex; gap: 10px; align-items: flex-start; }
+    .espace-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-weight: 700; font-size: 11px; margin-top: 2px; }
+    .espace-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: var(--blue-light); color: var(--blue); letter-spacing: 0.5px; }
+    .espace-capacity { font-size: 11px; color: var(--gray); margin-top: 8px; font-style: italic; }
+
+    /* ÉVÉNEMENTS TYPES */
+    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .event-item { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 28px; display: flex; gap: 20px; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
+    .event-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(40,54,140,0.08); }
+    .event-icon-wrap { width: 52px; height: 52px; border-radius: 8px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+    .event-item h4 { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
+    .event-item p { font-size: 13px; color: var(--gray); line-height: 1.75; }
+    .event-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: var(--blue-light); color: var(--blue); letter-spacing: 0.5px; margin-top: 10px; }
+
+    /* FORMATS */
+    .formats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .format-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 24px 20px; text-align: center; transition: all 0.2s; }
+    .format-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+    .format-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+    .format-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .format-card p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+
+    /* KPIs */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; margin-top: 48px; }
+    .kpi { background: rgba(255,255,255,0.03); padding: 32px 24px; text-align: center; transition: background 0.2s; }
+    .kpi:hover { background: rgba(255,255,255,0.07); }
+    .kpi-num { font-size: 38px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
+    .kpi-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+
+    /* PROCESSUS */
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-grid::before { content: ''; position: absolute; top: 22px; left: 12%; right: 12%; height: 1px; background: var(--border); z-index: 0; }
+    .process-step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
+    .process-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--white); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; transition: all 0.2s; }
+    .process-step:hover .process-circle { background: var(--blue); }
+    .process-circle span { font-size: 15px; font-weight: 700; color: var(--blue); transition: color 0.2s; }
+    .process-step:hover .process-circle span { color: var(--white); }
+    .process-step h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
+    .process-step p { font-size: 12px; color: var(--gray); line-height: 1.65; }
+
+    /* TÉMOIGNAGES */
+    .tgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+    .tcard { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 28px; transition: background 0.2s; }
+    .tcard:hover { background: rgba(255,255,255,0.08); }
+    .tcard-quote { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; font-style: italic; margin-bottom: 20px; }
+    .tcard-author { display: flex; align-items: center; gap: 12px; }
+    .tcard-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--white); flex-shrink: 0; }
+    .tcard-name { font-size: 13px; font-weight: 600; color: var(--white); }
+    .tcard-role { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
+
+    /* FOOTER CTA */
+    .footer-cta { background: var(--blue); padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
+    .footer-cta h3 { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.25; }
+    .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; max-width: 400px; }
+    .footer-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-white { background: var(--white); color: var(--blue); font-family: var(--font); font-size: 13px; font-weight: 700; padding: 12px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    /* FOOTER */
+    footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
+    .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
+    .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
+    .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; }
+    }
+    @media (max-width: 768px) {
+      .topbar { display: none; } .nav { padding: 12px 20px; }
+      .hero h1 { font-size: 28px; } .hero-pills { display: none; }
+      .intro { grid-template-columns: 1fr; padding: 48px 24px; gap: 36px; }
+      .section { padding: 48px 24px; }
+      .espaces-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; }
+      .formats-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpis { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+      .process-grid::before { display: none; }
+      .tgrid { grid-template-columns: 1fr; }
+      .footer-cta { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
+      footer { padding: 24px 20px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span>WARFIRA CRS Technologies · SAS · Capital 30 000€ · RCS 931 304 299 Versailles</span>
+    <a href="https://www.warfira.com" target="_blank" class="topbar-reserve">✈ RÉSERVER SUR WARFIRA.COM</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="nav" id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
+      WARFIRA
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
+      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_evenementiels.html" class="active">Événementiels</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="warfira_serenite.html">Sérénité</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="warfira_contact.html" class="nav-cta-outline">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMenu()">Accueil</a>
+    <a href="warfira_ecosysteme.html" onclick="closeMenu()">Écosystème</a>
+    <a href="warfira_vision.html" onclick="closeMenu()">Vision & Fondateur</a>
+    <a href="warfira_partenaires.html" onclick="closeMenu()">Partenaires</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()">Événementiels</a>
+    <a href="warfira_contact.html" onclick="closeMenu()">Contact</a>
+    <a href="warfira_serenite.html" onclick="closeMenu()">Sérénité</a>
+    <div class="nav-mobile-actions">
+      <a href="warfira_contact.html" class="btn-m-outline" onclick="closeMenu()">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid">✈ Réserver maintenant</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="Video evenementiels.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-badge">Location d'espaces · Galas · Privatisations · Événements</div>
+    <h1>Des lieux d'exception <span>pour</span><br/>vos grands événements</h1>
+    <p class="hero-sub">WARFIRA met à disposition des espaces de prestige — châteaux, domaines et salles d'apparat — pour que vos événements deviennent des moments inoubliables.</p>
+    <div class="hero-pills">
+      <span class="hero-pill"> Châteaux & Domaines</span>
+      <span class="hero-pill"> Galas & ONG</span>
+      <span class="hero-pill"> Séminaires & Conférences</span>
+      <span class="hero-pill"> Événements Privés</span>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <div class="intro-text reveal-left">
+      <div class="intro-label">Notre approche</div>
+      <h2>WARFIRA, gestionnaire<br/>d'espaces de prestige</h2>
+      <p>WARFIRA loue et gère des espaces d'exception pour permettre aux entreprises, ONG, associations et institutions d'organiser leurs grands événements dans des cadres uniques en France.</p>
+      <p>Du gala caritatif dans un château à la conférence internationale dans un domaine privatisé — nous prenons en charge la mise à disposition du lieu et la coordination logistique complète.</p>
+    </div>
+    <div class="intro-stats reveal-right">
+      <div class="istat"><div class="istat-num">100%</div><div class="istat-label">Privatisable</div></div>
+      <div class="istat"><div class="istat-num">24/7</div><div class="istat-label">Support dédié</div></div>
+      <div class="istat"><div class="istat-num">48h</div><div class="istat-label">Délai de réponse</div></div>
+      <div class="istat"><div class="istat-num">5 étoiles </div><div class="istat-label">Niveau de service</div></div>
+    </div>
+  </div>
+
+  <!-- NOS ESPACES -->
+  <section class="section section-alt">
+    <div class="section-label reveal">Nos espaces</div>
+    <h2 class="reveal">Des lieux taillés pour l'excellence</h2>
+    <p class="section-sub reveal">Châteaux historiques, domaines viticoles ou salles de réception contemporaines — WARFIRA sélectionne et gère des espaces adaptés à chaque envergure d'événement.</p>
+    <div class="espaces-grid">
+
+      <div class="espace-card reveal delay-1">
+        <div class="espace-card-top chateau">
+          <h3>Châteaux historiques</h3>
+          <p>Des écrins patrimoniaux pour des événements d'exception à la française.</p>
+        </div>
+        <div class="espace-card-body">
+          <ul class="espace-list">
+            <li>Salons et salles de réception historiques</li>
+            <li>Parcs et jardins privatisables</li>
+            <li>Hébergement sur place possible</li>
+            <li>Cuisine gastronomique à la demande</li>
+          </ul>
+          <span class="espace-tag">Galas · Cérémonies · Dîners de prestige</span>
+          <p class="espace-capacity">Capacité : 50 à 500 personnes</p>
+        </div>
+      </div>
+
+      <div class="espace-card reveal delay-2">
+        <div class="espace-card-top domaine">
+          <h3>Domaines & Propriétés</h3>
+          <p>De vastes propriétés pour des événements en plein air ou en intérieur.</p>
+        </div>
+        <div class="espace-card-body">
+          <ul class="espace-list">
+            <li>Espaces extérieurs aménageables</li>
+            <li>Salles modulables selon vos besoins</li>
+            <li>Parking privatif et accès facilité</li>
+            <li>Logistique complète prise en charge</li>
+          </ul>
+          <span class="espace-tag">Conférences · Séminaires · Incentives</span>
+          <p class="espace-capacity">Capacité : 100 à 1000 personnes</p>
+        </div>
+      </div>
+
+      <div class="espace-card reveal delay-3">
+        <div class="espace-card-top salle">
+          <h3>Salles d'apparat</h3>
+          <p>Des espaces contemporains et élégants au cœur des grandes villes.</p>
+        </div>
+        <div class="espace-card-body">
+          <ul class="espace-list">
+            <li>Équipements audiovisuels dernier cri</li>
+            <li>Configuration modulable</li>
+            <li>Accès transports en commun</li>
+            <li>Service traiteur partenaire disponible</li>
+          </ul>
+          <span class="espace-tag">Conférences · Remises de prix · Galas</span>
+          <p class="espace-capacity">Capacité : 30 à 800 personnes</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TYPES D'ÉVÉNEMENTS -->
+  <section class="section">
+    <div class="section-label reveal">Pour qui ?</div>
+    <h2 class="reveal">Tous types d'événements</h2>
+    <p class="section-sub reveal">Nos espaces accueillent une grande variété d'événements — qu'il s'agisse d'une soirée caritative, d'un séminaire d'entreprise ou d'une cérémonie institutionnelle.</p>
+    <div class="events-grid">
+
+      <div class="event-item reveal delay-1">
+        <div class="event-icon-wrap">🎗️</div>
+        <div>
+          <h4>Galas & Événements caritatifs</h4>
+          <p>ONG, fondations et associations — nos espaces de prestige donnent à vos galas caritatifs le cadre qu'ils méritent pour maximiser votre impact et lever des fonds.</p>
+          <span class="event-tag">ONG · Fondations · Associations</span>
+        </div>
+      </div>
+
+      <div class="event-item reveal delay-2">
+        <div class="event-icon-wrap">🏢</div>
+        <div>
+          <h4>Séminaires & Conférences d'entreprise</h4>
+          <p>Sortez vos équipes du cadre ordinaire. Nos domaines et châteaux offrent un environnement inspirant pour vos réunions stratégiques et formations.</p>
+          <span class="event-tag">Corporate · Entreprises · Institutions</span>
+        </div>
+      </div>
+
+      <div class="event-item reveal delay-3">
+        <div class="event-icon-wrap">🏆</div>
+        <div>
+          <h4>Cérémonies & Remises de prix</h4>
+          <p>Remises de trophées, cérémonies de distinction, Awards — nos espaces apportent la solennité et le prestige qu'exigent ces moments forts.</p>
+          <span class="event-tag">Cérémonies · Awards · Distinctions</span>
+        </div>
+      </div>
+
+      <div class="event-item reveal delay-4">
+        <div class="event-icon-wrap">🥂</div>
+        <div>
+          <h4>Événements privés & Privatisations</h4>
+          <p>Anniversaires d'entreprise, cocktails de lancement, soirées de fin d'année — nous privatisons nos espaces pour des moments sur-mesure et exclusifs.</p>
+          <span class="event-tag">Privé · Exclusif · Sur-mesure</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORMATS & KPIS -->
+  <section class="section section-dark">
+    <div class="section-label light reveal">Ce que nous offrons</div>
+    <h2 class="light reveal">Un service clé en main</h2>
+    <p class="section-sub light reveal">WARFIRA ne se contente pas de louer un espace. Nous coordonnons chaque détail pour que votre événement soit parfait de A à Z.</p>
+    <div class="formats-grid">
+      <div class="format-card reveal delay-1">
+        <span class="format-icon">🏰</span>
+        <h4>Location de l'espace</h4>
+        <p>Mise à disposition exclusive du lieu pour la durée de votre événement.</p>
+      </div>
+      <div class="format-card reveal delay-2">
+        <span class="format-icon">🍽️</span>
+        <h4>Traiteur & Restauration</h4>
+        <p>Coordination avec nos partenaires gastronomiques pour un service irréprochable.</p>
+      </div>
+      <div class="format-card reveal delay-3">
+        <span class="format-icon">🎭</span>
+        <h4>Décoration & Scénographie</h4>
+        <p>Mise en scène de l'espace selon votre thème et votre identité visuelle.</p>
+      </div>
+      <div class="format-card reveal delay-4">
+        <span class="format-icon">🚌</span>
+        <h4>Transferts & Logistique</h4>
+        <p>Organisation des navettes et transferts pour vos invités via notre réseau WRS.</p>
+      </div>
+    </div>
+    <div class="kpis reveal">
+      <div class="kpi"><div class="kpi-num">48h</div><div class="kpi-label">Délai de réponse</div></div>
+      <div class="kpi"><div class="kpi-num">100%</div><div class="kpi-label">Privatisation exclusive</div></div>
+      <div class="kpi"><div class="kpi-num">24/7</div><div class="kpi-label">Support événementiel</div></div>
+      <div class="kpi"><div class="kpi-num">5★</div><div class="kpi-label">Niveau de service</div></div>
+    </div>
+  </section>
+
+  <!-- PROCESSUS -->
+  <section class="section section-alt">
+    <div class="section-label reveal">Comment ça marche</div>
+    <h2 class="reveal">Votre événement en 4 étapes</h2>
+    <p class="section-sub reveal">Un accompagnement de A à Z, avec un interlocuteur unique dédié à votre projet.</p>
+    <div class="process-grid">
+      <div class="process-step reveal delay-1">
+        <div class="process-circle"><span>1</span></div>
+        <h4>Brief & Cahier des charges</h4>
+        <p>Décrivez-nous votre projet — type d'événement, nombre d'invités, date et budget estimé</p>
+      </div>
+      <div class="process-step reveal delay-2">
+        <div class="process-circle"><span>2</span></div>
+        <h4>Proposition sur-mesure</h4>
+        <p>Notre équipe vous soumet une sélection d'espaces adaptés sous 48h</p>
+      </div>
+      <div class="process-step reveal delay-3">
+        <div class="process-circle"><span>3</span></div>
+        <h4>Validation & Réservation</h4>
+        <p>Contrat signé, nous sécurisons l'espace et coordonnons tous les prestataires</p>
+      </div>
+      <div class="process-step reveal delay-4">
+        <div class="process-circle"><span>4</span></div>
+        <h4>Jour J & Suivi</h4>
+        <p>Un coordinateur WARFIRA est présent le jour de votre événement pour gérer chaque détail</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section section-dark">
+    <div class="section-label light reveal">Ils nous font confiance</div>
+    <h2 class="light reveal">Ce que disent nos clients</h2>
+    <div class="tgrid">
+      <div class="tcard reveal delay-1">
+        <p class="tcard-quote">"WARFIRA nous a trouvé un château exceptionnel pour notre gala annuel. 200 invités, une soirée mémorable. La coordination était parfaite du début à la fin."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">SC</div>
+          <div><div class="tcard-name">Sophie C.</div><div class="tcard-role">Directrice · ONG Humanitaire France</div></div>
+        </div>
+      </div>
+      <div class="tcard reveal delay-2">
+        <p class="tcard-quote">"Notre séminaire de direction dans un domaine privatisé a marqué les esprits. WARFIRA a géré l'espace, le traiteur et les transferts. Nous n'avons eu qu'à profiter."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">MR</div>
+          <div><div class="tcard-name">Marc R.</div><div class="tcard-role">DRH · Groupe industriel français</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <div class="footer-cta reveal">
+    <div>
+      <h3>Vous avez un projet<br/>événementiel ?</h3>
+      <p>Parlez-nous de votre événement. Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure.</p>
+    </div>
+    <div class="footer-cta-actions">
+      <a href="warfira_contact.html" class="btn-white">Nous contacter ↗</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white">✈ Réserver sur warfira.com</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">WARFIRA</div>
+    <ul class="footer-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
+      <li><a href="warfira_serenite.html">Sérénité</a></li>
+      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="mailto:contact@warfira.com">contact@warfira.com</a></li>
+    </ul>
+    <div class="footer-info">Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+  </footer>
+
+  <a href="https://www.warfira.com" target="_blank" class="back-btn">
+    <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+    Réserver sur warfira.com
+  </a>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+
+    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    allReveals.forEach(el => observer.observe(el));
+
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+      document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+    });
+    navClose.addEventListener('click', closeMenu);
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>

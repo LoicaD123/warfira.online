@@ -37,10 +37,28 @@
     .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 20px; font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+    .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
+    .nav-mobile-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 16px; width: 100%; padding: 0 40px; }
+    .nav-mobile-actions a { text-align: center; width: 100%; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
+    .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
 
-    /* HERO */
-    .hero { background: var(--blue); min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
-    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); }
+    /* VIDÉO HERO */
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.55; z-index: 0; }
+
+    /* HERO avec particules */
+    .hero { background: #000; min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
+    .hero-canvas { position: absolute; inset: 0; z-index: 0; }
+    .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); z-index: 2; }
+    .hero > *:not(.hero-canvas) { position: relative; z-index: 1; }
     .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
     .hero h1 { font-size: 38px; font-weight: 800; line-height: 1.15; color: var(--white); max-width: 600px; margin-bottom: 16px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
     .hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 500px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; }
@@ -154,7 +172,6 @@
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes slideRight { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes slideLeft { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -167,9 +184,12 @@
     .delay-4 { transition-delay: 0.4s; }
 
     /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; }
+    }
     @media (max-width: 768px) {
       .topbar { padding: 7px 20px; display: none; }
-      .nav { padding: 12px 20px; } .nav-links { display: none; }
+      .nav { padding: 12px 20px; }
       .hero h1 { font-size: 26px; } .tabs { flex-direction: column; top: 57px; }
       .pillar-section { grid-template-columns: 1fr; } .pillar-section.reverse { direction: ltr; }
       .pillar-content { padding: 40px 24px; } .pillar-visual { min-height: 240px; padding: 32px; }
@@ -180,7 +200,14 @@
   </style>
 </head>
 <body>
-<!-- NAVBAR -->
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span>WARFIRA CRS Technologies · SAS · Capital 30 000€ · RCS 931 304 299 Versailles</span>
+    <a href="https://www.warfira.com" target="_blank" class="topbar-reserve">✈ RÉSERVER SUR WARFIRA.COM</a>
+  </div>
+
+  <!-- NAVBAR -->
   <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
@@ -193,15 +220,39 @@
       <li><a href="warfira_partenaires.html">Partenaires</a></li>
       <li><a href="warfira_contact.html">Contact</a></li>
       <li><a href="warfira_serenite.html">Sérénité</a></li>
+      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
     </ul>
     <div class="nav-actions">
       <a href="warfira_partenaires.html" class="nav-cta-outline">Nous rejoindre</a>
       <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- HERO -->
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMenu()">Accueil</a>
+    <a href="warfira_ecosysteme.html" onclick="closeMenu()">Écosystème</a>
+    <a href="warfira_vision.html" onclick="closeMenu()">Vision & Fondateur</a>
+    <a href="warfira_partenaires.html" onclick="closeMenu()">Partenaires</a>
+    <a href="warfira_contact.html" onclick="closeMenu()">Contact</a>
+    <a href="warfira_serenite.html" onclick="closeMenu()">Sérénité</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()">Événementiels</a>
+    <div class="nav-mobile-actions">
+      <a href="warfira_partenaires.html" class="btn-m-outline" onclick="closeMenu()">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid">✈ Réserver maintenant</a>
+    </div>
+  </div>
+
+  <!-- HERO avec particules -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+    <source src="Video aeroport.mp4" type="video/mp4">
+  </video>
+  <canvas class="hero-canvas" id="particleCanvas"></canvas>
     <div class="hero-badge">LES TROIS PILIERS — WRS · WRB · WHS</div>
     <h1>Un écosystème intégré<br/>pour le tourisme de demain</h1>
     <p class="hero-sub">Une offre intégrée pour le tourisme de demain.</p>
@@ -356,11 +407,27 @@
   </a>
 
   <script>
+    // NAVBAR
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
 
+    // HAMBURGER
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+      document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
+    });
+    navClose.addEventListener('click', closeMenu);
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // TABS
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
@@ -369,12 +436,59 @@
       });
     });
 
+    // PARTICULES HERO
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for (let i = 0; i < 55; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        dx: (Math.random() - 0.5) * 0.4,
+        dy: (Math.random() - 0.5) * 0.4,
+        o: Math.random() * 0.35 + 0.1
+      });
+    }
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${p.o})`;
+        ctx.fill();
+        p.x += p.dx; p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      });
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+          if (dist < 90) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255,255,255,${0.04 * (1 - dist / 90)})`;
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // REVEAL AU SCROLL
     const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12 });
     allReveals.forEach(el => observer.observe(el));

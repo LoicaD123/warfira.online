@@ -17,8 +17,6 @@
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-
-    /* TOPBAR */
     .topbar { background: var(--blue-dark); padding: 8px 60px; display: flex; align-items: center; justify-content: space-between; }
     .topbar-left { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
     .topbar-right { display: flex; gap: 20px; align-items: center; }
@@ -26,8 +24,6 @@
     .topbar-right a:hover { color: var(--white); }
     .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 5px 14px; border-radius: 2px; text-decoration: none; letter-spacing: 0.5px; transition: opacity 0.2s; }
     .topbar-reserve:hover { opacity: 0.88; }
-
-    /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
@@ -41,15 +37,11 @@
     .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 20px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
-
-    /* HAMBURGER */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
     .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); border-radius: 2px; transition: all 0.3s; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    /* MENU MOBILE */
     .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
     .nav-mobile.open { display: flex; }
     .nav-mobile a { font-size: 20px; font-weight: 600; color: var(--blue-dark); text-decoration: none; letter-spacing: 1px; transition: color 0.2s; }
@@ -61,10 +53,11 @@
     .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
     .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; line-height: 1; }
 
-    /* HERO */
-    .hero { position: relative; overflow: hidden; min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px 120px; background-color: var(--blue); background-image: url('Avion_Airfrance.jpg'); background-size: cover; background-position: center 40%; }
-    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,30,58,0.82) 0%, rgba(40,54,140,0.70) 60%, rgba(17,30,58,0.95) 100%); z-index: 1; }
-    .hero > * { position: relative; z-index: 2; }
+    /* HERO AVEC VIDÉO */
+    .hero { position: relative; overflow: hidden; min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px 120px; background-color: #000; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75; z-index: 0; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,30,58,0.65) 0%, rgba(40,54,140,0.45) 60%, rgba(17,30,58,0.92) 100%); z-index: 1; }
+    .hero > *:not(.hero-video) { position: relative; z-index: 2; }
     .hero-eyebrow { font-size: 10px; font-weight: 600; letter-spacing: 3px; color: rgba(255,255,255,0.55); text-transform: uppercase; margin-bottom: 20px; animation: fadeDown 0.8s ease both; }
     .hero h1 { font-size: 40px; font-weight: 800; color: var(--white); line-height: 1.05; max-width: 800px; margin-bottom: 8px; animation: fadeDown 0.8s 0.15s ease both; letter-spacing: -1px; }
     .hero h1 span { color: rgba(255,255,255,0.45); font-weight: 300; }
@@ -74,8 +67,6 @@
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
     .btn-ghost { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 13px 32px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.4); cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-
-    /* BOOKING BAR */
     .booking-bar { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; max-width: 1000px; width: 100%; border-radius: 6px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: fadeUp 0.8s 0.6s ease both; }
     .booking-card { background: rgba(255,255,255,0.96); padding: 22px 20px; cursor: pointer; transition: background 0.2s, transform 0.2s; border-right: 1px solid rgba(40,54,140,0.1); text-decoration: none; display: block; }
     .booking-card:last-child { border-right: none; }
@@ -85,8 +76,6 @@
     .booking-card-title { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
     .booking-card-sub { font-size: 11px; color: var(--gray); line-height: 1.5; }
     .booking-card-arrow { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 8px; display: block; }
-
-    /* STATS */
     .stats-strip { background: var(--blue-darker); padding: 0; overflow: hidden; }
     .stats-track { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; }
     .stats-track:hover { animation-play-state: paused; }
@@ -94,8 +83,6 @@
     .stat-num { font-size: 22px; font-weight: 700; color: var(--white); }
     .stat-label { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; }
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-    /* SECTIONS */
     .section { padding: 88px 60px; }
     .section-alt { background: var(--cream); }
     .section-dark { background: var(--blue-darker); }
@@ -121,7 +108,19 @@
     .offer-link::after { content: '↗'; transition: transform 0.2s; }
     .offer-card:hover .offer-link::after { transform: translate(2px, -2px); }
 
-    /* BOUTIQUES */
+    /* BANNIÈRE AVION */
+    .avion-banner { grid-column: 1 / -1; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 1.2fr 1fr; min-height: 240px; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; }
+    .avion-banner:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(40,54,140,0.12); }
+    .avion-banner-img { position: relative; overflow: hidden; }
+    .avion-banner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .avion-banner:hover .avion-banner-img img { transform: scale(1.04); }
+    .avion-banner-badge { position: absolute; top: 16px; left: 16px; background: var(--blue); color: white; font-size: 10px; font-weight: 600; padding: 5px 12px; border-radius: 2px; letter-spacing: 0.5px; }
+    .avion-banner-body { background: var(--blue-dark); padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; }
+    .avion-banner-body h3 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.25; }
+    .avion-banner-body p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 20px; }
+    .avion-banner-link { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 6px; }
+    .avion-banner-link::after { content: '↗'; }
+
     .boutiques { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     .boutiques-left { padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
     .boutiques-right { position: relative; overflow: hidden; min-height: 300px; max-height: 300px; background: var(--blue-light); }
@@ -136,20 +135,14 @@
     .boutique-ville.featured span { color: rgba(255,255,255,0.6); }
     .btn-blue-solid { display: inline-block; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--white); background: var(--blue); padding: 12px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; margin-top: 28px; }
     .btn-blue-solid:hover { background: var(--blue-dark); transform: translateY(-1px); }
-
-    /* CITATION */
     .quote-section { background: var(--blue); padding: 72px 60px; text-align: center; }
     .quote-text { font-size: 26px; font-style: italic; font-weight: 300; color: var(--white); max-width: 800px; margin: 0 auto 20px; line-height: 1.6; }
     .quote-author { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 2px; text-transform: uppercase; }
-
-    /* CONFORMITÉ */
     .conformite-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
     .conformite-item { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 28px 22px; }
     .conformite-num { font-size: 32px; font-weight: 700; color: var(--blue); opacity: 0.15; margin-bottom: 10px; line-height: 1; }
     .conformite-item h4 { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
     .conformite-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
-
-    /* FOOTER CTA */
     .footer-cta { background: var(--blue-dark); padding: 72px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
     .footer-cta h3 { font-size: 30px; font-weight: 700; color: var(--white); line-height: 1.25; max-width: 480px; }
     .footer-cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -157,8 +150,6 @@
     .btn-white:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 12px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-
-    /* FOOTER */
     footer { background: var(--blue-darker); padding: 40px 60px; }
     .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .footer-brand { flex-shrink: 0; }
@@ -170,13 +161,9 @@
     .footer-col a:hover { color: rgba(255,255,255,0.85); }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.25); }
-
-    /* BOUTON FLOTTANT */
     .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 22px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; letter-spacing: 0.3px; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ANIMATIONS */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -185,34 +172,9 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .topbar { padding: 8px 24px; }
-      .nav { padding: 14px 24px; }
-      .section { padding: 60px 24px; }
-      .footer-cta { padding: 48px 24px; }
-      footer { padding: 32px 24px; }
-    }
-    @media (max-width: 900px) {
-      .nav-links { display: none; }
-      .nav-actions { display: none; }
-      .hamburger { display: flex; }
-    }
-    @media (max-width: 768px) {
-      .topbar { display: none; }
-      .nav { padding: 12px 20px; }
-      .hero h1 { font-size: 24px; }
-      .hero-tagline { font-size: 15px; }
-      .booking-bar { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
-      .offers-grid { grid-template-columns: 1fr; }
-      .boutiques { grid-template-columns: 1fr; }
-      .conformite-grid { grid-template-columns: repeat(2, 1fr); }
-      .footer-top { flex-direction: column; }
-      .footer-cta { flex-direction: column; align-items: flex-start; }
-      .stats-track { animation-duration: 12s; }
-      .quote-text { font-size: 18px; }
-    }
+    @media (max-width: 1024px) { .topbar { padding: 8px 24px; } .nav { padding: 14px 24px; } .section { padding: 60px 24px; } .footer-cta { padding: 48px 24px; } footer { padding: 32px 24px; } }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 768px) { .topbar { display: none; } .nav { padding: 12px 20px; } .hero h1 { font-size: 24px; } .hero-tagline { font-size: 15px; } .booking-bar { grid-template-columns: repeat(2, 1fr); max-width: 100%; } .offers-grid { grid-template-columns: 1fr; } .avion-banner { grid-template-columns: 1fr; } .avion-banner-img { height: 200px; } .boutiques { grid-template-columns: 1fr; } .conformite-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { flex-direction: column; } .footer-cta { flex-direction: column; align-items: flex-start; } .stats-track { animation-duration: 12s; } .quote-text { font-size: 18px; } }
   </style>
 </head>
 <body>
@@ -236,11 +198,8 @@
       <a href="warfira_partenaires.html" class="nav-cta-outline">Nous rejoindre</a>
       <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
     </div>
-    <!-- HAMBURGER -->
     <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </nav>
 
@@ -253,14 +212,18 @@
     <a href="warfira_partenaires.html" onclick="closeMenu()">Partenaires</a>
     <a href="warfira_contact.html" onclick="closeMenu()">Contact</a>
     <a href="warfira_serenite.html" onclick="closeMenu()">Sérénité</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()">Événementiels</a>
     <div class="nav-mobile-actions">
       <a href="warfira_partenaires.html" class="btn-m-outline" onclick="closeMenu()">Nous rejoindre</a>
       <a href="https://www.warfira.com" target="_blank" class="btn-m-solid">✈ Réserver maintenant</a>
     </div>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO AVEC VIDÉO -->
   <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="avion aller2.mp4" type="video/mp4">
+    </video>
     <p class="hero-eyebrow">Une Infrastructure Touristique</p>
     <h1>Voyagez! <span>Séjournez!</span> Vivez!<br/>l'expérience WARFIRA</h1>
     <p class="hero-tagline">Réservez vos titres de voyages, vos nuitées d'hôtels et locations saisonnières, directement avec WARFIRA, votre réseau de confiance.</p>
@@ -322,6 +285,20 @@
     <h2>L'hospitalité<br/>à votre portée</h2>
     <p class="section-sub">De la réservation d'hôtel aux châteaux privatisés, en passant par nos séjours sur-mesure — WARFIRA vous ouvre les portes d'une expérience unique.</p>
     <div class="offers-grid">
+
+      <!-- Bannière avion Air France — pleine largeur -->
+      <a href="https://www.warfira.com" target="_blank" class="avion-banner reveal">
+        <div class="avion-banner-img">
+          <img src="Avion_voyage.jpg" alt="Vols WARFIRA Air France"/>
+          <span class="avion-banner-badge">✈ VOLS MONDIAUX</span>
+        </div>
+        <div class="avion-banner-body">
+          <h3>Vols & Destinations<br/>partout dans le monde</h3>
+          <p>Nos compagnies partenaires vous emmènent en France et partout dans le monde — avec le conseil humain WARFIRA à chaque étape de votre voyage.</p>
+          <span class="avion-banner-link">Réserver un vol sur warfira.com</span>
+        </div>
+      </a>
+
       <a href="https://www.warfira.com/hotels" target="_blank" class="offer-card reveal reveal-delay-1">
         <div class="offer-img"><img src="hotel.jpeg" alt="Hôtels WARFIRA"/><span class="offer-badge">DISPONIBLE</span></div>
         <div class="offer-body"><h3>Hôtels indépendants</h3><p>Accédez à notre réseau d'hôtels partenaires sélectionnés pour leur qualité et leur authenticité.</p><span class="offer-link">Réserver sur warfira.com</span></div>
@@ -432,28 +409,21 @@
 
   <script>
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
-
     const hamburger = document.getElementById('hamburger');
     const navMobile = document.getElementById('navMobile');
     const navClose = document.getElementById('navClose');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('open');
       navMobile.classList.toggle('open');
       document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
     });
-
     navClose.addEventListener('click', closeMenu);
-
     function closeMenu() {
       hamburger.classList.remove('open');
       navMobile.classList.remove('open');

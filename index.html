@@ -175,6 +175,23 @@
     @media (max-width: 1024px) { .topbar { padding: 8px 24px; } .nav { padding: 14px 24px; } .section { padding: 60px 24px; } .footer-cta { padding: 48px 24px; } footer { padding: 32px 24px; } }
     @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
     @media (max-width: 768px) { .topbar { display: none; } .nav { padding: 12px 20px; } .hero h1 { font-size: 24px; } .hero-tagline { font-size: 15px; } .booking-bar { grid-template-columns: repeat(2, 1fr); max-width: 100%; } .offers-grid { grid-template-columns: 1fr; } .avion-banner { grid-template-columns: 1fr; } .avion-banner-img { height: 200px; } .boutiques { grid-template-columns: 1fr; } .conformite-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { flex-direction: column; } .footer-cta { flex-direction: column; align-items: flex-start; } .stats-track { animation-duration: 12s; } .quote-text { font-size: 18px; } }
+
+    /* SÉLECTEUR DE LANGUE */
+    .lang-selector { position: relative; display: flex; align-items: center; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 3px; border: 1.5px solid rgba(40,54,140,0.2); background: transparent; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--blue-dark); transition: all 0.2s; }
+    .lang-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+    .lang-btn .lang-flag { font-size: 14px; }
+    .lang-btn .lang-code { letter-spacing: 0.5px; }
+    .lang-btn .lang-arrow { font-size: 8px; color: var(--gray); transition: transform 0.2s; }
+    .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; min-width: 140px; box-shadow: 0 8px 24px rgba(40,54,140,0.12); z-index: 200; }
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-family: var(--font); font-size: 13px; color: var(--blue-dark); transition: background 0.15s; border: none; background: transparent; width: 100%; text-align: left; }
+    .lang-option:hover { background: var(--blue-light); }
+    .lang-option.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .lang-option .lang-option-flag { font-size: 16px; }
+    .lang-option .lang-option-name { flex: 1; }
+    .lang-option .lang-option-check { color: var(--blue); font-size: 12px; }
   </style>
 </head>
 <body>
@@ -186,17 +203,41 @@
       WARFIRA
     </a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
-      <li><a href="warfira_contact.html">Contact</a></li>
-      <li><a href="warfira_serenite.html">Sérénité</a></li>
-      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
+      <li><a href="index.html" class="active" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Écosystème</a></li>
+      <li><a href="warfira_vision.html" data-i18n="nav_vision">Vision & Fondateur</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
+      <li><a href="warfira_contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="warfira_serenite.html" data-i18n="nav_serenite">Sérénité</a></li>
+      <li><a href="warfira_evenementiels.html" data-i18n="nav_evenementiels">Événementiels</a></li>
     </ul>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang(event)">
+        <span class="lang-flag" id="currentFlag">🇫🇷</span>
+        <span class="lang-code" id="currentCode">FR</span>
+        <span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" onclick="setLang('fr', '🇫🇷', 'FR', this)">
+          <span class="lang-option-flag">🇫🇷</span>
+          <span class="lang-option-name">Français</span>
+          <span class="lang-option-check" id="check-fr">✓</span>
+        </button>
+        <button class="lang-option" onclick="setLang('en', '🇬🇧', 'EN', this)">
+          <span class="lang-option-flag">🇬🇧</span>
+          <span class="lang-option-name">English</span>
+          <span class="lang-option-check" id="check-en" style="display:none;">✓</span>
+        </button>
+        <button class="lang-option" onclick="setLang('es', '🇪🇸', 'ES', this)">
+          <span class="lang-option-flag">🇪🇸</span>
+          <span class="lang-option-name">Español</span>
+          <span class="lang-option-check" id="check-es" style="display:none;">✓</span>
+        </button>
+      </div>
+    </div>
     <div class="nav-actions">
-      <a href="warfira_partenaires.html" class="nav-cta-outline">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+      <a href="warfira_partenaires.html" class="nav-cta-outline" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta" data-i18n="nav_reserver">Réserver ↗</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -294,7 +335,7 @@
         </div>
         <div class="avion-banner-body">
           <h3>Vols & Destinations<br/>partout dans le monde</h3>
-          <p>Nos compagnies partenaires vous emmènent en France et partout dans le monde — avec le conseil humain WARFIRA à chaque étape de votre voyage.</p>
+          <p>Nos compagnies partenaires vous emmènent en France et partout dans le monde —  WARFIRA  vous accompagne à chaque étape de votre voyage.</p>
           <span class="avion-banner-link">Réserver un vol sur warfira.com</span>
         </div>
       </a>
@@ -319,7 +360,7 @@
     <div class="boutiques-left reveal">
       <div class="section-label">Notre réseau</div>
       <h2 style="font-size:32px;font-weight:700;color:var(--blue-dark);margin-bottom:12px;line-height:1.2;">3000 boutiques de proximité<br/>près de chez vous</h2>
-      <p style="font-size:14px;color:var(--gray);line-height:1.85;margin-bottom:8px;">Notre réseau WRB transforme des agences de voyage locales en points de vente WARFIRA connectés. Un conseiller humain, une technologie de pointe — à deux pas de chez vous.</p>
+      <p style="font-size:14px;color:var(--gray);line-height:1.85;margin-bottom:8px;">Notre réseau WRB transforme des boutiques de proximité  en points de vente WARFIRA connectés. Un conseiller humain, une technologie de pointe — à deux pas de chez vous.</p>
       <p style="font-size:14px;color:var(--gray);line-height:1.85;">Nos boutiques partenaires sont votre porte d'entrée vers toutes les expériences WARFIRA.</p>
       <div class="boutiques-map">
         <div class="boutique-ville featured"><strong>Paris</strong><span>Hub principal</span></div>
@@ -385,7 +426,7 @@
         <div class="footer-col">
           <h5>Notre groupe</h5>
           <a href="warfira_ecosysteme.html">Écosystème WRS/WRB/WHS</a>
-          <a href="warfira_vision.html">Vision & Fondateur</a>
+          <a href="warfira_vision.html" data-i18n="nav_vision">Vision & Fondateur</a>
           <a href="warfira_partenaires.html">Devenir partenaire</a>
         </div>
         <div class="footer-col">
@@ -397,7 +438,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-info">© WARFIRA 2026 · Tous droits réservés</div>
+      <div class="footer-info" data-i18n="footer_droits">© WARFIRA 2026 · Tous droits réservés</div>
       <div class="footer-info">Atout France IM078260004 · Garantie Accélérant · RGPD compliant</div>
     </div>
   </footer>
@@ -408,6 +449,12 @@
   </a>
 
   <script>
+    // Vidéo au ralenti x0.5
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      heroVideo.addEventListener('loadeddata', () => { heroVideo.playbackRate = 0.5; });
+    }
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
     const reveals = document.querySelectorAll('.reveal');
@@ -429,6 +476,56 @@
       navMobile.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // ── SÉLECTEUR DE LANGUE ──
+    function toggleLang(e) {
+      e.stopPropagation();
+      document.getElementById('langSelector').classList.toggle('open');
+    }
+
+    function setLang(code, flag, label, el) {
+      document.getElementById('currentFlag').textContent = flag;
+      document.getElementById('currentCode').textContent = label;
+      document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+      el.classList.add('active');
+      ['fr','en','es'].forEach(l => {
+        const check = document.getElementById('check-' + l);
+        if (check) check.style.display = l === code ? 'block' : 'none';
+      });
+      localStorage.setItem('warfira_lang', code);
+      applyTranslations(code);
+      document.getElementById('langSelector').classList.remove('open');
+    }
+
+    document.addEventListener('click', () => {
+      const sel = document.getElementById('langSelector');
+      if (sel) sel.classList.remove('open');
+    });
+
+    const translations = {
+      fr: { nav_accueil:'Accueil', nav_ecosysteme:'Écosystème', nav_vision:'Vision & Fondateur', nav_partenaires:'Partenaires', nav_evenementiels:'Événementiels', nav_contact:'Contact', nav_serenite:'Sérénité', nav_rejoindre:'Nous rejoindre', nav_reserver:'Réserver ↗', footer_droits:'© WARFIRA 2026 · Tous droits réservés' },
+      en: { nav_accueil:'Home', nav_ecosysteme:'Ecosystem', nav_vision:'Vision & Founder', nav_partenaires:'Partners', nav_evenementiels:'Events', nav_contact:'Contact', nav_serenite:'Serenity', nav_rejoindre:'Join us', nav_reserver:'Book now ↗', footer_droits:'© WARFIRA 2026 · All rights reserved' },
+      es: { nav_accueil:'Inicio', nav_ecosysteme:'Ecosistema', nav_vision:'Visión & Fundador', nav_partenaires:'Socios', nav_evenementiels:'Eventos', nav_contact:'Contacto', nav_serenite:'Serenidad', nav_rejoindre:'Únete', nav_reserver:'Reservar ↗', footer_droits:'© WARFIRA 2026 · Todos los derechos reservados' }
+    };
+
+    function applyTranslations(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('warfira_lang') || 'fr';
+      if (saved !== 'fr') {
+        const flags = { en: '🇬🇧', es: '🇪🇸' };
+        const labels = { en: 'EN', es: 'ES' };
+        const btn = document.querySelector('.lang-option[onclick*="\'' + saved + '\'"]');
+        if (btn) setLang(saved, flags[saved], labels[saved], btn);
+      }
+    });
   </script>
 
 </body>

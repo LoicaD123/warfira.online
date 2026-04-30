@@ -16,14 +16,6 @@
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-
-    /* TOPBAR */
-    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
-    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
-    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
-    .topbar-reserve:hover { opacity: 0.88; }
-
-    /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
@@ -37,28 +29,47 @@
     .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
-
-    /* HERO */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 20px; font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+    .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
+    .nav-mobile-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 16px; width: 100%; padding: 0 40px; }
+    .nav-mobile-actions a { text-align: center; width: 100%; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
+    .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
+    .lang-selector { position: relative; display: flex; align-items: center; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 3px; border: 1.5px solid rgba(40,54,140,0.2); background: transparent; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--blue-dark); transition: all 0.2s; }
+    .lang-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+    .lang-btn .lang-arrow { font-size: 8px; color: var(--gray); transition: transform 0.2s; }
+    .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; min-width: 140px; box-shadow: 0 8px 24px rgba(40,54,140,0.12); z-index: 200; }
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-family: var(--font); font-size: 13px; color: var(--blue-dark); transition: background 0.15s; border: none; background: transparent; width: 100%; text-align: left; }
+    .lang-option:hover { background: var(--blue-light); }
+    .lang-option.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .lang-option .lang-option-flag { font-size: 16px; }
+    .lang-option .lang-option-name { flex: 1; }
+    .lang-option .lang-option-check { color: var(--blue); font-size: 12px; }
     .hero { background: var(--blue); min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
     .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); }
     .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
     .hero h1 { font-size: 38px; font-weight: 800; line-height: 1.15; color: var(--white); max-width: 560px; margin-bottom: 16px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
     .hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 480px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; }
-
-    /* FONDATEUR */
     .fondateur { display: grid; grid-template-columns: 1fr 1fr; }
     .fondateur-left { background: var(--white); padding: 64px 56px; border-right: 1px solid var(--border); }
     .fondateur-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--blue); margin-bottom: 20px; text-transform: uppercase; opacity: 0.6; }
-    .fondateur-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 18px; transition: transform 0.3s; }
-    .fondateur-avatar:hover { transform: scale(1.08); }
+    .fondateur-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--blue-light); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 18px; }
     .fondateur-left h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 5px; }
     .fondateur-title { font-size: 11px; color: var(--gray); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
     .fondateur-left p { font-size: 13px; color: var(--gray); line-height: 1.9; margin-bottom: 16px; }
-    .fondateur-quote { border-left: 3px solid var(--blue); padding: 18px 22px; margin-top: 28px; background: var(--blue-light); border-radius: 0 6px 6px 0; transition: box-shadow 0.2s; }
-    .fondateur-quote:hover { box-shadow: 0 4px 16px rgba(40,54,140,0.1); }
+    .fondateur-quote { border-left: 3px solid var(--blue); padding: 18px 22px; margin-top: 28px; background: var(--blue-light); border-radius: 0 6px 6px 0; }
     .fondateur-quote p { font-style: italic; font-size: 13px; color: var(--blue-dark); line-height: 1.75; margin-bottom: 10px; }
     .fondateur-quote cite { font-size: 10px; color: var(--blue); letter-spacing: 1px; text-transform: uppercase; font-style: normal; font-weight: 700; }
-
     .fondateur-right { background: var(--cream); padding: 64px 52px; }
     .fondateur-right-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--blue); margin-bottom: 14px; text-transform: uppercase; opacity: 0.6; }
     .fondateur-right h3 { font-size: 24px; font-weight: 700; color: var(--blue-dark); margin-bottom: 30px; }
@@ -68,8 +79,6 @@
     .pillar-eval-icon { width: 38px; height: 38px; border-radius: 6px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 700; color: var(--blue); }
     .pillar-eval h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 4px; }
     .pillar-eval p { font-size: 12px; color: var(--gray); line-height: 1.6; }
-
-    /* MISSION */
     .mission { padding: 72px 60px; background: var(--white); }
     .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.6; }
     .mission h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.2; }
@@ -80,22 +89,6 @@
     .mission-num { font-size: 40px; font-weight: 800; color: rgba(40,54,140,0.06); line-height: 1; margin-bottom: -4px; }
     .mission-item h4 { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
     .mission-item p { font-size: 13px; color: var(--gray); line-height: 1.75; }
-
-    /* ROADMAP */
-    .roadmap-section { background: var(--blue-dark); padding: 72px 60px; }
-    .roadmap-section .section-label { color: rgba(255,255,255,0.4); opacity: 1; }
-    .roadmap-section h2 { font-size: 28px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
-    .roadmap-sub { font-size: 14px; color: rgba(255,255,255,0.45); max-width: 480px; line-height: 1.85; margin-bottom: 44px; }
-    .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; }
-    .roadmap-item { background: var(--blue-dark); padding: 32px 24px; transition: background 0.2s; }
-    .roadmap-item:hover { background: rgba(255,255,255,0.04); }
-    .roadmap-year { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
-    .roadmap-phase { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 18px; }
-    .roadmap-details { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .roadmap-details li { font-size: 12px; color: rgba(255,255,255,0.5); display: flex; gap: 8px; }
-    .roadmap-details li::before { content: '—'; color: rgba(255,255,255,0.2); flex-shrink: 0; }
-
-    /* CONFORMITÉ */
     .conformite { padding: 72px 60px; background: var(--cream); }
     .conformite h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; }
     .conformite-sub { font-size: 14px; color: var(--gray); max-width: 480px; line-height: 1.85; margin-bottom: 44px; }
@@ -105,8 +98,6 @@
     .conformite-num { font-size: 32px; font-weight: 800; color: var(--blue); opacity: 0.15; margin-bottom: 12px; line-height: 1; }
     .conformite-item h4 { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 8px; }
     .conformite-item p { font-size: 12px; color: var(--gray); line-height: 1.7; }
-
-    /* FOOTER CTA */
     .footer-cta { background: var(--blue); padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
     .footer-cta h3 { font-size: 26px; font-weight: 700; color: var(--white); line-height: 1.25; }
     .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
@@ -115,44 +106,30 @@
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-
-    /* FOOTER */
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
-
-    /* BOUTON FLOTTANT */
     .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ANIMATIONS */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal-left.visible { opacity: 1; transform: translateX(0); }
     .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-    .delay-4 { transition-delay: 0.4s; }
-
-    /* RESPONSIVE */
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
     @media (max-width: 768px) {
-      .topbar { display: none; }
-      .nav { padding: 12px 20px; } .nav-links { display: none; }
-      .hero h1 { font-size: 28px; }
+      .nav { padding: 12px 20px; } .hero h1 { font-size: 28px; }
       .fondateur { grid-template-columns: 1fr; }
       .fondateur-left, .fondateur-right { padding: 44px 24px; }
       .mission { padding: 48px 24px; } .mission-grid { grid-template-columns: 1fr; }
-      .roadmap-section { padding: 48px 24px; } .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
       .conformite { padding: 48px 24px; } .conformite-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-cta { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
       footer { padding: 24px 20px; flex-direction: column; }
@@ -160,65 +137,117 @@
   </style>
 </head>
 <body>
-<!-- NAVBAR -->
+
+  <!-- NAVBAR -->
   <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
       <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
       WARFIRA
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_vision.html" class="active">Vision</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
-      <li><a href="warfira_contact.html">Contact</a></li>
-      <li><a href="warfira_serenite.html">Sérénité</a></li>
-      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Écosystème</a></li>
+      <li><a href="warfira_vision.html" class="active" data-i18n="nav_vision">Vision</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
+      <li><a href="warfira_contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="warfira_serenite.html" data-i18n="nav_serenite">Sérénité</a></li>
+      <li><a href="warfira_evenementiels.html" data-i18n="nav_evenementiels">Événementiels</a></li>
     </ul>
-    <div class="nav-actions">
-      <a href="warfira_contact.html" class="nav-cta-outline">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang(event)">
+        <span class="lang-flag" id="currentFlag">🇫🇷</span>
+        <span class="lang-code" id="currentCode">FR</span>
+        <span class="lang-arrow">▼</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" onclick="setLang('fr','🇫🇷','FR',this)">
+          <span class="lang-option-flag">🇫🇷</span><span class="lang-option-name">Français</span>
+          <span class="lang-option-check" id="check-fr">✓</span>
+        </button>
+        <button class="lang-option" onclick="setLang('en','🇬🇧','EN',this)">
+          <span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span>
+          <span class="lang-option-check" id="check-en" style="display:none;">✓</span>
+        </button>
+        <button class="lang-option" onclick="setLang('es','🇪🇸','ES',this)">
+          <span class="lang-option-flag">🇪🇸</span><span class="lang-option-name">Español</span>
+          <span class="lang-option-check" id="check-es" style="display:none;">✓</span>
+        </button>
+      </div>
     </div>
+    <div class="nav-actions">
+      <a href="warfira_contact.html" class="nav-cta-outline" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta" data-i18n="nav_reserver">Réserver ↗</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navClose">✕</button>
+    <a href="index.html" onclick="closeMenu()" data-i18n="nav_accueil">Accueil</a>
+    <a href="warfira_ecosysteme.html" onclick="closeMenu()" data-i18n="nav_ecosysteme">Écosystème</a>
+    <a href="warfira_vision.html" onclick="closeMenu()" data-i18n="nav_vision">Vision</a>
+    <a href="warfira_partenaires.html" onclick="closeMenu()" data-i18n="nav_partenaires">Partenaires</a>
+    <a href="warfira_contact.html" onclick="closeMenu()" data-i18n="nav_contact">Contact</a>
+    <a href="warfira_serenite.html" onclick="closeMenu()" data-i18n="nav_serenite">Sérénité</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()" data-i18n="nav_evenementiels">Événementiels</a>
+    <div class="nav-mobile-actions">
+      <a href="warfira_contact.html" class="btn-m-outline" onclick="closeMenu()" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid" data-i18n="nav_reserver">Réserver ↗</a>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">Vision · Mission · Fondateur</div>
-    <h1>Bâtir un champion<br/></h1>
-    <p class="hero-sub">La vision de WARFIRA est portée par une ambition claire : devenir l'opérateur touristique hybride de référence entre la France et l'Afrique.</p>
+    <div class="hero-badge" data-i18n="hero_badge">Vision · Mission · Fondateur</div>
+    <h1 data-i18n="hero_h1">Bâtir un champion</h1>
+    <p class="hero-sub" data-i18n="hero_sub">La vision de WARFIRA est portée par une ambition claire : devenir l'opérateur touristique hybride de référence entre la France et l'Afrique.</p>
   </section>
 
   <!-- FONDATEUR -->
   <div class="fondateur">
     <div class="fondateur-left reveal-left">
-      <div class="fondateur-label">Le fondateur</div>
+      <div class="fondateur-label" data-i18n="fond_label">Le fondateur</div>
       <div class="fondateur-avatar">SN</div>
-      <div class="fondateur-title">Président — WARFIRA CRS Technologies</div>
-      <p>Entrepreneur visionnaire, Serge 1er NKOA a fondé WARFIRA avec une conviction forte : le marché touristique méritait un acteur structuré, digital et ancré localement. Fort d'une expertise sectorielle et d'un réseau solide  , il pilote le déploiement d'un géant touristique de nouvelle génération.</p>
+      <h2>Serge 1er NKOA</h2>
+      <div class="fondateur-title" data-i18n="fond_titre">Président — WARFIRA CRS Technologies</div>
+      <p data-i18n="fond_bio">Entrepreneur visionnaire, Serge 1er NKOA a fondé WARFIRA avec une conviction forte : le marché touristique méritait un acteur structuré, digital et ancré localement. Fort d'une expertise sectorielle et d'un réseau solide, il pilote le déploiement d'un géant touristique de nouvelle génération.</p>
       <div class="fondateur-quote">
-        <p>"WARFIRA n'est pas simplement une entreprise touristique de plus. C'est une construction méthodique capable de rivaliser avec les géants internationaux."</p>
-        <cite>— Serge 1er NKOA, Président Directeur Général</cite>
+        <p data-i18n="fond_quote">"WARFIRA n'est pas simplement une entreprise touristique de plus. C'est une construction méthodique capable de rivaliser avec les géants internationaux."</p>
+        <cite data-i18n="fond_cite">— Serge 1er NKOA, Président Directeur Général</cite>
       </div>
     </div>
     <div class="fondateur-right reveal-right">
-      <div class="fondateur-right-label">L'évaluation investisseur</div>
-      <h3>Ce que le fondateur incarne</h3>
+      <div class="fondateur-right-label" data-i18n="invest_label">L'évaluation investisseur</div>
+      <h3 data-i18n="invest_titre">Ce que le fondateur incarne</h3>
       <div class="pillars-eval">
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Vis</div>
-          <div><h4>Vision</h4><p>Clarté, cohérence et audace stratégique. Une feuille de route précise de 2026 à 2029 avec des jalons mesurables.</p></div>
+          <div>
+            <h4 data-i18n="p1_titre">Vision</h4>
+            <p data-i18n="p1_desc">Clarté, cohérence et audace stratégique. Une feuille de route précise de 2026 à 2029 avec des jalons mesurables.</p>
+          </div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Rés</div>
-          <div><h4>Résilience</h4><p>Capacité d'anticipation et de gestion des enjeux sectoriels. Un modèle hybride conçu pour résister aux crises.</p></div>
+          <div>
+            <h4 data-i18n="p2_titre">Résilience</h4>
+            <p data-i18n="p2_desc">Capacité d'anticipation et de gestion des enjeux sectoriels. Un modèle hybride conçu pour résister aux crises.</p>
+          </div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Rés</div>
-          <div><h4>Réseau</h4><p>Accès privilégié aux décideurs du tourisme.</p></div>
+          <div>
+            <h4 data-i18n="p3_titre">Réseau</h4>
+            <p data-i18n="p3_desc">Accès privilégié aux décideurs du tourisme en France et en Afrique.</p>
+          </div>
         </div>
         <div class="pillar-eval">
           <div class="pillar-eval-icon">Exp</div>
-          <div><h4>Expertise</h4><p>Maîtrise pointue du marché et des systèmes GDS/CRS. Compréhension profonde des deux continents.</p></div>
+          <div>
+            <h4 data-i18n="p4_titre">Expertise</h4>
+            <p data-i18n="p4_desc">Maîtrise pointue du marché et des systèmes GDS/CRS. Compréhension profonde des deux continents.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -226,52 +255,66 @@
 
   <!-- MISSION -->
   <section class="mission">
-    <div class="section-label reveal">Notre mission</div>
-    <h2 class="reveal">Connecter le monde par le voyage</h2>
-    <p class="mission-sub reveal">WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.</p>
+    <div class="section-label reveal" data-i18n="mission_label">Notre mission</div>
+    <h2 class="reveal" data-i18n="mission_titre">Connecter le monde par le voyage</h2>
+    <p class="mission-sub reveal" data-i18n="mission_sub">WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.</p>
     <div class="mission-grid">
       <div class="mission-item reveal delay-1">
         <div class="mission-num">01</div>
-        <h4>Technologie</h4>
-        <p>Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p>
+        <h4 data-i18n="m1_titre">Technologie</h4>
+        <p data-i18n="m1_desc">Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.</p>
       </div>
       <div class="mission-item reveal delay-2">
         <div class="mission-num">02</div>
-        <h4>Proximité</h4>
-        <p>Un maillage d'agences ancré localement. 3000 distributeurs WRB d'ici 2027.</p>
+        <h4 data-i18n="m2_titre">Proximité</h4>
+        <p data-i18n="m2_desc">Un maillage d'agences ancré localement. 3000 distributeurs WRB d'ici 2027.</p>
       </div>
       <div class="mission-item reveal delay-3">
         <div class="mission-num">03</div>
-        <h4>Expansion</h4>
-        <p>Un déploiement maîtrisé sur les deux continents. L'Europe et l'Afrique.</p>
+        <h4 data-i18n="m3_titre">Expansion</h4>
+        <p data-i18n="m3_desc">Un déploiement maîtrisé sur les deux continents. L'Europe et l'Afrique.</p>
       </div>
     </div>
   </section>
 
-  
-
   <!-- CONFORMITÉ -->
   <section class="conformite">
-    <div class="section-label reveal">Conformité & sécurité</div>
-    <h2 class="reveal">Une confiance institutionnelle irréprochable</h2>
-    <p class="conformite-sub reveal">Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.</p>
+    <div class="section-label reveal" data-i18n="conf_label">Conformité & sécurité</div>
+    <h2 class="reveal" data-i18n="conf_titre">Une confiance institutionnelle irréprochable</h2>
+    <p class="conformite-sub reveal" data-i18n="conf_sub">Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.</p>
     <div class="conformite-grid">
-      <div class="conformite-item reveal delay-1"><div class="conformite-num">01</div><h4>Accréditation IATA</h4><p>Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p></div>
-      <div class="conformite-item reveal delay-2"><div class="conformite-num">02</div><h4>Atout France</h4><p>Immatriculation IM078260004 , obligatoire validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p></div>
-      <div class="conformite-item reveal delay-3"><div class="conformite-num">03</div><h4>Garantie financière</h4><p>Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p></div>
-      <div class="conformite-item reveal delay-4"><div class="conformite-num">04</div><h4>Conformité RGPD</h4><p>Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p></div>
+      <div class="conformite-item reveal delay-1">
+        <div class="conformite-num">01</div>
+        <h4 data-i18n="c1_titre">Accréditation IATA</h4>
+        <p data-i18n="c1_desc">Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.</p>
+      </div>
+      <div class="conformite-item reveal delay-2">
+        <div class="conformite-num">02</div>
+        <h4 data-i18n="c2_titre">Atout France</h4>
+        <p data-i18n="c2_desc">Immatriculation IM078260004, validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.</p>
+      </div>
+      <div class="conformite-item reveal delay-3">
+        <div class="conformite-num">03</div>
+        <h4 data-i18n="c3_titre">Garantie financière</h4>
+        <p data-i18n="c3_desc">Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.</p>
+      </div>
+      <div class="conformite-item reveal delay-4">
+        <div class="conformite-num">04</div>
+        <h4 data-i18n="c4_titre">Conformité RGPD</h4>
+        <p data-i18n="c4_desc">Tous nos outils numériques respectent strictement le règlement général sur la protection des données.</p>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER CTA -->
   <div class="footer-cta reveal">
     <div>
-      <h3>Partagez-vous notre vision ?</h3>
-      <p>Rejoignez l'écosystème WARFIRA en tant que partenaire ou investisseur.</p>
+      <h3 data-i18n="fcta_titre">Partagez-vous notre vision ?</h3>
+      <p data-i18n="fcta_desc">Rejoignez l'écosystème WARFIRA en tant que partenaire ou investisseur.</p>
     </div>
     <div class="footer-cta-actions">
-      <a href="warfira_contact.html" class="btn-white">Nous contacter ↗</a>
-      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white">✈ Réserver sur warfira.com</a>
+      <a href="warfira_contact.html" class="btn-white" data-i18n="fcta_btn1">Nous contacter ↗</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white" data-i18n="fcta_btn2">✈ Réserver sur warfira.com</a>
     </div>
   </div>
 
@@ -279,33 +322,197 @@
   <footer>
     <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Écosystème</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
       <li><a href="mailto:contact@warfira.com">contact@warfira.com</a></li>
     </ul>
-    <div class="footer-info"> Référence ATOUT France IM078260004  · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+    <div class="footer-info" data-i18n="footer_info">Référence ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
-  <!-- BOUTON FLOTTANT -->
   <a href="https://www.warfira.com" target="_blank" class="back-btn">
     <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-    Réserver sur warfira.com
+    <span data-i18n="back_btn">Réserver sur warfira.com</span>
   </a>
 
   <script>
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+      document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
     });
-    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    navClose.addEventListener('click', closeMenu);
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+      document.body.style.overflow = '';
+    }
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-    allReveals.forEach(el => observer.observe(el));
-  </script>
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
+    // SÉLECTEUR DE LANGUE
+    function toggleLang(e) {
+      e.stopPropagation();
+      document.getElementById('langSelector').classList.toggle('open');
+    }
+    function setLang(code, flag, label, el) {
+      document.getElementById('currentFlag').textContent = flag;
+      document.getElementById('currentCode').textContent = label;
+      document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+      ['fr','en','es'].forEach(l => {
+        const c = document.getElementById('check-'+l);
+        if (c) c.style.display = l === code ? 'block' : 'none';
+      });
+      localStorage.setItem('warfira_lang', code);
+      applyTranslations(code);
+      document.getElementById('langSelector').classList.remove('open');
+    }
+    document.addEventListener('click', () => {
+      const s = document.getElementById('langSelector');
+      if (s) s.classList.remove('open');
+    });
+
+    const T = {
+      fr: {
+        nav_accueil:'Accueil', nav_ecosysteme:'Écosystème', nav_vision:'Vision',
+        nav_partenaires:'Partenaires', nav_contact:'Contact', nav_serenite:'Sérénité',
+        nav_evenementiels:'Événementiels', nav_rejoindre:'Nous rejoindre', nav_reserver:'Réserver ↗',
+        hero_badge:'Vision · Mission · Fondateur',
+        hero_h1:'Bâtir un champion',
+        hero_sub:"La vision de WARFIRA est portée par une ambition claire : devenir l'opérateur touristique hybride de référence entre la France et l'Afrique.",
+        fond_label:'Le fondateur',
+        fond_titre:'Président — WARFIRA CRS Technologies',
+        fond_bio:"Entrepreneur visionnaire, Serge 1er NKOA a fondé WARFIRA avec une conviction forte : le marché touristique méritait un acteur structuré, digital et ancré localement. Fort d'une expertise sectorielle et d'un réseau solide, il pilote le déploiement d'un géant touristique de nouvelle génération.",
+        fond_quote:'"WARFIRA n\'est pas simplement une entreprise touristique de plus. C\'est une construction méthodique capable de rivaliser avec les géants internationaux."',
+        fond_cite:'— Serge 1er NKOA, Président Directeur Général',
+        invest_label:"L'évaluation investisseur",
+        invest_titre:'Ce que le fondateur incarne',
+        p1_titre:'Vision', p1_desc:'Clarté, cohérence et audace stratégique. Une feuille de route précise de 2026 à 2029 avec des jalons mesurables.',
+        p2_titre:'Résilience', p2_desc:"Capacité d'anticipation et de gestion des enjeux sectoriels. Un modèle hybride conçu pour résister aux crises.",
+        p3_titre:'Réseau', p3_desc:"Accès privilégié aux décideurs du tourisme en France et en Afrique.",
+        p4_titre:'Expertise', p4_desc:'Maîtrise pointue du marché et des systèmes GDS/CRS. Compréhension profonde des deux continents.',
+        mission_label:'Notre mission',
+        mission_titre:'Connecter le monde par le voyage',
+        mission_sub:"WARFIRA s'affirme comme une marque parapluie structurante, reconnue par les institutions et partenaires pour sa fiabilité et son ancrage territorial stratégique.",
+        m1_titre:'Technologie', m1_desc:"Des outils digitaux performants et accessibles. Plateforme WRS connectée à AMADEUS et aux GDS mondiaux pour une distribution optimale.",
+        m2_titre:'Proximité', m2_desc:"Un maillage d'agences ancré localement. 3000 distributeurs WRB d'ici 2027.",
+        m3_titre:'Expansion', m3_desc:"Un déploiement maîtrisé sur les deux continents. L'Europe et l'Afrique.",
+        conf_label:'Conformité & sécurité',
+        conf_titre:'Une confiance institutionnelle irréprochable',
+        conf_sub:'Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.',
+        c1_titre:'Accréditation IATA', c1_desc:"Émission directe de billets d'avion. Conformité totale avec le cadre réglementaire international de l'aviation civile.",
+        c2_titre:'Atout France', c2_desc:"Immatriculation IM078260004, validant notre professionnalisme en tant qu'opérateur de voyages agréé par l'État français.",
+        c3_titre:'Garantie financière', c3_desc:"Protection intégrale des fonds clients auprès d'organismes agréés conformément à la législation en vigueur.",
+        c4_titre:'Conformité RGPD', c4_desc:"Tous nos outils numériques respectent strictement le règlement général sur la protection des données.",
+        fcta_titre:'Partagez-vous notre vision ?',
+        fcta_desc:"Rejoignez l'écosystème WARFIRA en tant que partenaire ou investisseur.",
+        fcta_btn1:'Nous contacter ↗', fcta_btn2:'✈ Réserver sur warfira.com',
+        footer_info:'Référence ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Réserver sur warfira.com'
+      },
+      en: {
+        nav_accueil:'Home', nav_ecosysteme:'Ecosystem', nav_vision:'Vision',
+        nav_partenaires:'Partners', nav_contact:'Contact', nav_serenite:'Serenity',
+        nav_evenementiels:'Events', nav_rejoindre:'Join us', nav_reserver:'Book now ↗',
+        hero_badge:'Vision · Mission · Founder',
+        hero_h1:'Building a champion',
+        hero_sub:"WARFIRA's vision is driven by a clear ambition: to become the reference hybrid tourism operator between France and Africa.",
+        fond_label:'The founder',
+        fond_titre:'President — WARFIRA CRS Technologies',
+        fond_bio:"A visionary entrepreneur, Serge 1st NKOA founded WARFIRA with a strong conviction: the tourism market deserved a structured, digital and locally-rooted player. With solid sector expertise and a strong network, he is leading the deployment of a next-generation tourism giant.",
+        fond_quote:'"WARFIRA is not simply another tourism company. It is a methodical construction capable of competing with international giants."',
+        fond_cite:'— Serge 1st NKOA, Chief Executive Officer',
+        invest_label:'The investor assessment',
+        invest_titre:'What the founder embodies',
+        p1_titre:'Vision', p1_desc:'Clarity, coherence and strategic boldness. A precise roadmap from 2026 to 2029 with measurable milestones.',
+        p2_titre:'Resilience', p2_desc:'Ability to anticipate and manage sector challenges. A hybrid model designed to withstand crises.',
+        p3_titre:'Network', p3_desc:'Privileged access to tourism decision-makers in France and Africa.',
+        p4_titre:'Expertise', p4_desc:'In-depth mastery of the market and GDS/CRS systems. Deep understanding of both continents.',
+        mission_label:'Our mission',
+        mission_titre:'Connecting the world through travel',
+        mission_sub:'WARFIRA establishes itself as a structuring umbrella brand, recognised by institutions and partners for its reliability and strategic territorial anchoring.',
+        m1_titre:'Technology', m1_desc:'High-performance and accessible digital tools. WRS platform connected to AMADEUS and global GDS for optimal distribution.',
+        m2_titre:'Proximity', m2_desc:'A locally-anchored agency network. 3,000 WRB distributors by 2027.',
+        m3_titre:'Expansion', m3_desc:'A controlled deployment across two continents. Europe and Africa.',
+        conf_label:'Compliance & security',
+        conf_titre:'Irreproachable institutional trust',
+        conf_sub:'Our regulatory commitments are the foundation of our credibility with our financial, banking and hotel partners.',
+        c1_titre:'IATA Accreditation', c1_desc:'Direct airline ticket issuance. Full compliance with the international civil aviation regulatory framework.',
+        c2_titre:'Atout France', c2_desc:'Registration IM078260004, validating our professionalism as a travel operator approved by the French State.',
+        c3_titre:'Financial guarantee', c3_desc:'Full protection of client funds with approved organisations in accordance with current legislation.',
+        c4_titre:'GDPR Compliance', c4_desc:'All our digital tools strictly comply with the General Data Protection Regulation.',
+        fcta_titre:'Do you share our vision?',
+        fcta_desc:'Join the WARFIRA ecosystem as a partner or investor.',
+        fcta_btn1:'Contact us ↗', fcta_btn2:'✈ Book on warfira.com',
+        footer_info:'ATOUT France Reference IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Book on warfira.com'
+      },
+      es: {
+        nav_accueil:'Inicio', nav_ecosysteme:'Ecosistema', nav_vision:'Visión',
+        nav_partenaires:'Socios', nav_contact:'Contacto', nav_serenite:'Serenidad',
+        nav_evenementiels:'Eventos', nav_rejoindre:'Únete', nav_reserver:'Reservar ↗',
+        hero_badge:'Visión · Misión · Fundador',
+        hero_h1:'Construir un campeón',
+        hero_sub:'La visión de WARFIRA está impulsada por una ambición clara: convertirse en el operador turístico híbrido de referencia entre Francia y África.',
+        fond_label:'El fundador',
+        fond_titre:'Presidente — WARFIRA CRS Technologies',
+        fond_bio:'Empresario visionario, Serge 1er NKOA fundó WARFIRA con una convicción firme: el mercado turístico merecía un actor estructurado, digital y arraigado localmente. Con sólida experiencia sectorial y una red fuerte, lidera el despliegue de un gigante turístico de nueva generación.',
+        fond_quote:'"WARFIRA no es simplemente otra empresa de turismo. Es una construcción metódica capaz de competir con los gigantes internacionales."',
+        fond_cite:'— Serge 1er NKOA, Director General',
+        invest_label:'La evaluación del inversor',
+        invest_titre:'Lo que encarna el fundador',
+        p1_titre:'Visión', p1_desc:'Claridad, coherencia y audacia estratégica. Una hoja de ruta precisa de 2026 a 2029 con hitos medibles.',
+        p2_titre:'Resiliencia', p2_desc:'Capacidad de anticipación y gestión de los desafíos sectoriales. Un modelo híbrido diseñado para resistir las crisis.',
+        p3_titre:'Red', p3_desc:'Acceso privilegiado a los decisores del turismo en Francia y África.',
+        p4_titre:'Experiencia', p4_desc:'Dominio profundo del mercado y los sistemas GDS/CRS. Comprensión profunda de ambos continentes.',
+        mission_label:'Nuestra misión',
+        mission_titre:'Conectar el mundo a través del viaje',
+        mission_sub:'WARFIRA se afirma como una marca paraguas estructurante, reconocida por las instituciones y socios por su fiabilidad y su arraigo territorial estratégico.',
+        m1_titre:'Tecnología', m1_desc:'Herramientas digitales de alto rendimiento y accesibles. Plataforma WRS conectada a AMADEUS y GDS mundiales para una distribución óptima.',
+        m2_titre:'Proximidad', m2_desc:'Una red de agencias arraigada localmente. 3.000 distribuidores WRB para 2027.',
+        m3_titre:'Expansión', m3_desc:'Un despliegue controlado en dos continentes. Europa y África.',
+        conf_label:'Cumplimiento & seguridad',
+        conf_titre:'Una confianza institucional irreprochable',
+        conf_sub:'Nuestros compromisos reglamentarios son la base de nuestra credibilidad ante nuestros socios financieros, bancarios y hoteleros.',
+        c1_titre:'Acreditación IATA', c1_desc:'Emisión directa de billetes de avión. Cumplimiento total con el marco regulatorio internacional de la aviación civil.',
+        c2_titre:'Atout France', c2_desc:'Inscripción IM078260004, que valida nuestro profesionalismo como operador de viajes aprobado por el Estado francés.',
+        c3_titre:'Garantía financiera', c3_desc:'Protección integral de los fondos de los clientes en organismos autorizados de conformidad con la legislación vigente.',
+        c4_titre:'Cumplimiento RGPD', c4_desc:'Todas nuestras herramientas digitales cumplen estrictamente el Reglamento General de Protección de Datos.',
+        fcta_titre:'¿Comparte nuestra visión?',
+        fcta_desc:'Únase al ecosistema WARFIRA como socio o inversor.',
+        fcta_btn1:'Contáctenos ↗', fcta_btn2:'✈ Reservar en warfira.com',
+        footer_info:'Referencia ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Reservar en warfira.com'
+      }
+    };
+
+    function applyTranslations(lang) {
+      const t = T[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.documentElement.lang = lang;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('warfira_lang') || 'fr';
+      if (saved !== 'fr') {
+        const flags = { en:'🇬🇧', es:'🇪🇸' };
+        const labels = { en:'EN', es:'ES' };
+        const btn = document.querySelector('.lang-option[onclick*="\''+saved+'\'"]');
+        if (btn) setLang(saved, flags[saved], labels[saved], btn);
+      }
+    });
+  </script>
 </body>
 </html>

@@ -17,6 +17,12 @@
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
 
+    /* TOPBAR */
+    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
+    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
+    .topbar-reserve:hover { opacity: 0.88; }
+
     /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
@@ -206,7 +212,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_vision.html">Vision</a></li>
+      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
       <li><a href="warfira_partenaires.html">Partenaires</a></li>
       <li><a href="warfira_evenementiels.html" class="active">Événementiels</a></li>
       <li><a href="warfira_contact.html">Contact</a></li>
@@ -226,7 +232,7 @@
     <button class="nav-mobile-close" id="navClose">✕</button>
     <a href="index.html" onclick="closeMenu()">Accueil</a>
     <a href="warfira_ecosysteme.html" onclick="closeMenu()">Écosystème</a>
-    <a href="warfira_vision.html" onclick="closeMenu()">Vision</a>
+    <a href="warfira_vision.html" onclick="closeMenu()">Vision & Fondateur</a>
     <a href="warfira_partenaires.html" onclick="closeMenu()">Partenaires</a>
     <a href="warfira_evenementiels.html" onclick="closeMenu()">Événementiels</a>
     <a href="warfira_contact.html" onclick="closeMenu()">Contact</a>
@@ -259,14 +265,14 @@
     <div class="intro-text reveal-left">
       <div class="intro-label">Notre approche</div>
       <h2>WARFIRA, gestionnaire<br/>d'espaces de prestige</h2>
-      <p>WARFIRA loue et gère des espaces d'exception pour permettre aux entreprises, ONG, associations et institutions d'organiser leurs grands événements dans des cadres uniques en France. Dans la formule "week-ends prestige" du vendredi au dimanche pour une destination de proximité agrémentée d'événements culturels</p>
+      <p>WARFIRA loue et gère des espaces d'exception pour permettre aux entreprises, ONG, associations et institutions d'organiser leurs grands événements dans des cadres uniques en France.</p>
       <p>Du gala caritatif dans un château à la conférence internationale dans un domaine privatisé — nous prenons en charge la mise à disposition du lieu et la coordination logistique complète.</p>
     </div>
     <div class="intro-stats reveal-right">
       <div class="istat"><div class="istat-num">100%</div><div class="istat-label">Privatisable</div></div>
       <div class="istat"><div class="istat-num">24/7</div><div class="istat-label">Support dédié</div></div>
       <div class="istat"><div class="istat-num">48h</div><div class="istat-label">Délai de réponse</div></div>
-      <div class="istat"><div class="istat-num">5 étoiles </div><div class="istat-label">Niveau de service</div></div>
+      <div class="istat"><div class="istat-num">5 étoiles</div><div class="istat-label">Niveau de service</div></div>
     </div>
   </div>
 
@@ -296,6 +302,7 @@
 
       <div class="espace-card reveal delay-2">
         <div class="espace-card-top domaine">
+
           <h3>Domaines & Propriétés</h3>
           <p>De vastes propriétés pour des événements en plein air ou en intérieur.</p>
         </div>
@@ -365,7 +372,7 @@
       <div class="event-item reveal delay-4">
         <div>
           <h4>Événements privés & Privatisations</h4>
-          <p>Anniversaires d'entreprise, cocktails de lancement, soirées de fin d'année ou de week-ends "WARFIRA" — nous privatisons nos espaces pour des moments sur-mesure et exclusifs.</p>
+          <p>Anniversaires d'entreprise, cocktails de lancement, soirées de fin d'année — nous privatisons nos espaces pour des moments sur-mesure et exclusifs.</p>
           <span class="event-tag">Privé · Exclusif · Sur-mesure</span>
         </div>
       </div>
@@ -380,7 +387,6 @@
     <p class="section-sub light reveal">WARFIRA ne se contente pas de louer un espace. Nous coordonnons chaque détail pour que votre événement soit parfait de A à Z.</p>
     <div class="formats-grid">
       <div class="format-card reveal delay-1">
-
         <h4>Location de l'espace</h4>
         <p>Mise à disposition exclusive du lieu pour la durée de votre événement.</p>
       </div>
@@ -389,10 +395,12 @@
         <p>Coordination avec nos partenaires gastronomiques pour un service irréprochable.</p>
       </div>
       <div class="format-card reveal delay-3">
+
         <h4>Décoration & Scénographie</h4>
         <p>Mise en scène de l'espace selon votre thème et votre identité visuelle.</p>
       </div>
       <div class="format-card reveal delay-4">
+    
         <h4>Transferts & Logistique</h4>
         <p>Organisation des navettes et transferts pour vos invités via notre réseau WRS.</p>
       </div>
@@ -401,7 +409,7 @@
       <div class="kpi"><div class="kpi-num">48h</div><div class="kpi-label">Délai de réponse</div></div>
       <div class="kpi"><div class="kpi-num">100%</div><div class="kpi-label">Privatisation exclusive</div></div>
       <div class="kpi"><div class="kpi-num">24/7</div><div class="kpi-label">Support événementiel</div></div>
-      <div class="kpi"><div class="kpi-num">5★</div><div class="kpi-label">Niveau de service</div></div>
+      <div class="kpi"><div class="kpi-num">5 étoiles</div><div class="kpi-label">Niveau de service</div></div>
     </div>
   </section>
 
@@ -456,11 +464,242 @@
     </div>
   </section>
 
+
+  <!-- ══ FORMULAIRE ÉVÉNEMENTIELS ══ -->
+  <section id="formulaire-evenement" style="background:#F5F4EF;padding:72px 60px;">
+    <div style="max-width:860px;margin:0 auto;">
+
+      <div class="reveal" style="text-align:center;margin-bottom:48px;">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;color:#28368C;opacity:0.6;text-transform:uppercase;margin-bottom:10px;">Événementiels · Demande de devis</div>
+        <h2 style="font-size:32px;font-weight:800;color:#1A2E5A;margin-bottom:12px;font-family:Poppins,sans-serif;">Décrivez-nous votre projet</h2>
+        <p style="font-size:15px;color:#999;line-height:1.8;max-width:560px;margin:0 auto;">Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure adaptés à votre événement.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(40,54,140,0.1);border-radius:10px;padding:40px;" class="reveal">
+
+        <!-- NOTE EMAIL -->
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#EEF1FA;border-radius:4px;margin-bottom:28px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#28368C;flex-shrink:0;"></div>
+          <span style="font-size:12px;color:#666;">Formulaire envoyé à <strong style="color:#1A2E5A;">evenements@warfira.com</strong></span>
+        </div>
+
+        <form id="formEvenement" onsubmit="submitEvenement(event)">
+
+          <!-- SECTION 1 : ORGANISATEUR -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Informations de l'organisateur</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Prénom <span style="color:#E24B4A;">*</span></label>
+              <input type="text" name="prenom" placeholder="ex: Marie" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Nom <span style="color:#E24B4A;">*</span></label>
+              <input type="text" name="nom" placeholder="ex: Dupont" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Email <span style="color:#E24B4A;">*</span></label>
+              <input type="email" name="email" placeholder="contact@organisation.com" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Téléphone <span style="color:#E24B4A;">*</span></label>
+              <input type="tel" name="telephone" placeholder="+33 6 00 00 00 00" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Organisme / Structure</label>
+              <input type="text" name="organisme" placeholder="ex: ONG Solidarité, SAS Event Co." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Type d'organisme <span style="color:#E24B4A;">*</span></label>
+              <select name="type_organisme" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="ong_association">ONG / Association</option>
+                <option value="entreprise">Entreprise / Société</option>
+                <option value="institution_publique">Institution publique</option>
+                <option value="particulier">Particulier</option>
+                <option value="federation_sportive">Fédération sportive</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SECTION 2 : ÉVÉNEMENT -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Type d'événement</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Nature de l'événement <span style="color:#E24B4A;">*</span></label>
+              <select name="type_evenement" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="gala_caritatif">Gala caritatif / ONG</option>
+                <option value="seminaire">Séminaire d'entreprise</option>
+                <option value="conference">Conférence / Colloque</option>
+                <option value="ceremonie">Cérémonie / Remise de prix</option>
+                <option value="evenement_sportif">Événement sportif</option>
+                <option value="mariage">Mariage / Anniversaire</option>
+                <option value="cocktail_prive">Cocktail / Soirée privée</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Type d'espace souhaité <span style="color:#E24B4A;">*</span></label>
+              <select name="type_espace" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="chateau">Château historique</option>
+                <option value="domaine">Domaine / Propriété</option>
+                <option value="salle_apparat">Salle d'apparat</option>
+                <option value="espace_exterieur">Espace extérieur</option>
+                <option value="au_choix">Au choix de WARFIRA</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Nombre d'invités <span style="color:#E24B4A;">*</span></label>
+              <select name="nb_invites" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="moins_50">Moins de 50 personnes</option>
+                <option value="50_100">50 à 100 personnes</option>
+                <option value="100_200">100 à 200 personnes</option>
+                <option value="200_500">200 à 500 personnes</option>
+                <option value="plus_500">Plus de 500 personnes</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Ville / Région souhaitée</label>
+              <input type="text" name="ville_souhaitee" placeholder="ex: Paris, Île-de-France, Lyon..." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+          </div>
+
+          <!-- SECTION 3 : DATE -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Date et durée</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Date souhaitée</label>
+              <input type="date" name="date_evenement" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Date alternative</label>
+              <input type="date" name="date_alternative" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Heure de début</label>
+              <input type="time" name="heure_debut" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Durée <span style="color:#E24B4A;">*</span></label>
+              <select name="duree" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="demi_journee">Demi-journée (4h)</option>
+                <option value="journee">Journée complète</option>
+                <option value="weekend">Week-end (2 jours)</option>
+                <option value="plusieurs_jours">Plusieurs jours</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SECTION 4 : SERVICES -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Services souhaités</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Traiteur & Restauration</label>
+              <select name="besoins_traiteur" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite">Non souhaité</option>
+                <option value="cocktail">Cocktail dinatoire</option>
+                <option value="diner">Dîner assis</option>
+                <option value="buffet">Buffet</option>
+                <option value="a_definir">À définir avec WARFIRA</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Décoration & Scénographie</label>
+              <select name="besoins_decoration" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite">Non souhaité</option>
+                <option value="standard">Décoration standard</option>
+                <option value="sur_mesure">Décoration sur-mesure</option>
+                <option value="a_definir">À définir avec WARFIRA</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Transferts & Navettes</label>
+              <select name="besoins_transferts" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite">Non souhaité</option>
+                <option value="navettes_paris">Navettes depuis Paris</option>
+                <option value="transferts_aeroport">Transferts aéroport</option>
+                <option value="organisation_complete">Organisation complète</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Équipements audiovisuels</label>
+              <select name="besoins_av" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite">Non souhaité</option>
+                <option value="sono_simple">Sonorisation simple</option>
+                <option value="video_projection">Vidéo / Projection</option>
+                <option value="complet">Équipement complet</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- SECTION 5 : BUDGET & MESSAGE -->
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Budget & Message</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Budget estimé</label>
+              <select name="budget_estime" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="moins_5000">Moins de 5 000€</option>
+                <option value="5000_15000">5 000€ à 15 000€</option>
+                <option value="15000_30000">15 000€ à 30 000€</option>
+                <option value="30000_50000">30 000€ à 50 000€</option>
+                <option value="plus_50000">Plus de 50 000€</option>
+                <option value="a_definir">À définir</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Comment nous avez-vous connu ?</label>
+              <select name="source" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="">Choisir...</option>
+                <option value="bouche_oreille">Bouche à oreille</option>
+                <option value="reseaux_sociaux">Réseaux sociaux</option>
+                <option value="google">Google</option>
+                <option value="partenaire">Partenaire WARFIRA</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:28px;">
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <label style="font-size:12px;color:#999;font-weight:600;">Décrivez votre projet</label>
+              <textarea name="message" placeholder="Ex: Gala annuel de notre ONG pour 150 invités, avec dîner assis, remise de prix et discours. Nous souhaitons un château dans la région parisienne..." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;min-height:90px;resize:vertical;"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" style="width:100%;padding:14px;background:#28368C;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:800;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;">
+             Envoyer ma demande
+          </button>
+
+          <div id="success-evt" style="display:none;background:#EAF3DE;border:1px solid #97C459;border-radius:6px;padding:14px 18px;margin-top:14px;">
+            <p style="font-size:13px;color:#27500A;font-weight:600;">✅ Demande envoyée ! Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure.</p>
+          </div>
+          <div id="error-evt" style="display:none;background:#FCEBEB;border:1px solid #E24B4A;border-radius:6px;padding:14px 18px;margin-top:14px;">
+            <p style="font-size:13px;color:#E24B4A;">❌ Erreur. Contactez-nous directement sur  evenements@warfira.com</p>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- ══ FIN FORMULAIRE ÉVÉNEMENTIELS ══ -->
+
   <!-- FOOTER CTA -->
   <div class="footer-cta reveal">
     <div>
       <h3>Vous avez un projet<br/>événementiel ?</h3>
-      <p>Parlez-nous de votre événement. Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure.</p>
+      <p>Parlez-nous de votre événement. Notre équipe vous répond sous 48h avec notre sélection d'espaces sur-mesure.</p>
     </div>
     <div class="footer-cta-actions">
       <a href="warfira_contact.html" class="btn-white">Nous contacter ↗</a>
@@ -476,7 +715,6 @@
       <li><a href="warfira_partenaires.html">Partenaires</a></li>
       <li><a href="warfira_evenementiels.html">Événementiels</a></li>
       <li><a href="warfira_serenite.html">Sérénité</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
       <li><a href="warfira_contact.html">Contact</a></li>
       <li><a href="mailto:contact@warfira.com">contact@warfira.com</a></li>
     </ul>
@@ -512,6 +750,33 @@
       navMobile.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // FORMULAIRE ÉVÉNEMENTIELS
+    const BACKEND_EVT = 'http://localhost:3000';
+    async function submitEvenement(e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      document.getElementById('success-evt').style.display = 'none';
+      document.getElementById('error-evt').style.display = 'none';
+      try {
+        const res = await fetch(BACKEND_EVT + '/api/evenements', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const result = await res.json();
+        if (result.success) {
+          document.getElementById('success-evt').style.display = 'block';
+          e.target.reset();
+          document.getElementById('success-evt').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          document.getElementById('error-evt').style.display = 'block';
+        }
+      } catch(err) {
+        document.getElementById('error-evt').style.display = 'block';
+      }
+    }
+
   </script>
 
 </body>

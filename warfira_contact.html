@@ -16,14 +16,6 @@
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-
-    /* TOPBAR */
-    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
-    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
-    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
-    .topbar-reserve:hover { opacity: 0.88; }
-
-    /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
@@ -37,18 +29,38 @@
     .nav-cta:hover { background: var(--blue-dark); transform: translateY(-1px); }
     .nav-cta-outline { font-size: 12px; font-weight: 600; padding: 8px 18px; background: transparent; color: var(--blue); border: 1.5px solid var(--blue); border-radius: 3px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .nav-cta-outline:hover { background: var(--blue); color: var(--white); }
-
-    /* HERO */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--blue-dark); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.99); backdrop-filter: blur(20px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { font-size: 20px; font-weight: 600; color: var(--blue-dark); text-decoration: none; }
+    .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
+    .nav-mobile-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 16px; width: 100%; padding: 0 40px; }
+    .nav-mobile-actions a { text-align: center; width: 100%; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
+    .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
+    .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
+    .lang-selector { position: relative; display: flex; align-items: center; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 3px; border: 1.5px solid rgba(40,54,140,0.2); background: transparent; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--blue-dark); transition: all 0.2s; }
+    .lang-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+    .lang-arrow { font-size: 8px; color: var(--gray); transition: transform 0.2s; }
+    .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; min-width: 140px; box-shadow: 0 8px 24px rgba(40,54,140,0.12); z-index: 200; }
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-family: var(--font); font-size: 13px; color: var(--blue-dark); transition: background 0.15s; border: none; background: transparent; width: 100%; text-align: left; }
+    .lang-option:hover { background: var(--blue-light); }
+    .lang-option.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .lang-option-flag { font-size: 16px; }
+    .lang-option-name { flex: 1; }
+    .lang-option-check { color: var(--blue); font-size: 12px; }
     .hero { background: var(--blue); min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 64px 40px; position: relative; overflow: hidden; }
     .hero::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 60px; background: var(--white); clip-path: ellipse(55% 100% at 50% 100%); }
     .hero-badge { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; margin-bottom: 20px; text-transform: uppercase; animation: fadeDown 0.7s ease both; }
     .hero h1 { font-size: 38px; font-weight: 800; color: var(--white); margin-bottom: 14px; animation: fadeDown 0.7s 0.15s ease both; letter-spacing: -0.5px; }
     .hero-sub { font-size: 14px; color: rgba(255,255,255,0.6); max-width: 460px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; }
-
-    /* CONTACT MAIN */
     .contact-main { display: grid; grid-template-columns: 1fr 1fr; }
-
-    /* FORMULAIRE */
     .form-section { padding: 64px 56px; }
     .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 10px; text-transform: uppercase; opacity: 0.6; }
     .form-section h2 { font-size: 26px; font-weight: 700; color: var(--blue-dark); margin-bottom: 8px; line-height: 1.2; }
@@ -56,27 +68,15 @@
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
     .form-group label { font-size: 12px; font-weight: 600; color: var(--blue-dark); }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      font-family: var(--font); font-size: 13px; color: var(--blue-dark);
-      padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 4px;
-      background: var(--white); outline: none; transition: border-color 0.25s, box-shadow 0.25s;
-      width: 100%;
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: var(--gray); }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(40,54,140,0.08); }
+    .form-group input, .form-group select, .form-group textarea { font-family: var(--font); font-size: 13px; color: var(--blue-dark); padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 4px; background: var(--white); outline: none; transition: border-color 0.25s, box-shadow 0.25s; width: 100%; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gray); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(40,54,140,0.08); }
     .form-group textarea { resize: vertical; min-height: 120px; }
     .form-group select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
     .btn-submit { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font); font-size: 13px; font-weight: 700; color: var(--white); background: var(--blue); padding: 14px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; margin-top: 8px; letter-spacing: 0.3px; }
     .btn-submit:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(40,54,140,0.2); }
     .btn-submit svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s; }
     .btn-submit:hover svg { transform: translateX(3px); }
-
-    /* COORDONNÉES */
     .coords-section { background: var(--blue-dark); padding: 64px 52px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
     .coords-section::before { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.02); top: -100px; right: -100px; }
     .coords-section .section-label { color: rgba(255,255,255,0.4); opacity: 1; }
@@ -96,8 +96,6 @@
     .social-links { display: flex; gap: 8px; flex-wrap: wrap; }
     .social-btn { font-family: var(--font); font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.55); background: transparent; border: 1px solid rgba(255,255,255,0.15); padding: 7px 16px; border-radius: 20px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .social-btn:hover { border-color: rgba(255,255,255,0.45); color: var(--white); background: rgba(255,255,255,0.06); }
-
-    /* CONTACTS SPÉCIALISÉS */
     .specialized { padding: 72px 60px; background: var(--cream); }
     .specialized h2 { font-size: 28px; font-weight: 700; color: var(--blue-dark); margin-bottom: 10px; line-height: 1.2; }
     .specialized-sub { font-size: 14px; color: var(--gray); max-width: 480px; line-height: 1.85; margin-bottom: 40px; }
@@ -110,21 +108,19 @@
     .spec-card p { font-size: 12px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
     .spec-card a { font-size: 12px; font-weight: 600; color: var(--blue); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.2s; }
     .spec-card a:hover { gap: 8px; }
-
-    /* FOOTER */
+    .success-msg { display: none; background: #EAF3DE; border: 1px solid #97C459; border-radius: 6px; padding: 14px 18px; margin-top: 16px; }
+    .success-msg p { font-size: 13px; color: #27500A; font-weight: 600; }
+    .error-msg { display: none; background: #FCEBEB; border: 1px solid #E24B4A; border-radius: 6px; padding: 14px 18px; margin-top: 16px; }
+    .error-msg p { font-size: 13px; color: #E24B4A; }
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
     .footer-links a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: rgba(255,255,255,0.85); }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.3); }
-
-    /* BOUTON FLOTTANT */
     .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-    /* ANIMATIONS */
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -132,26 +128,20 @@
     .reveal-left.visible { opacity: 1; transform: translateX(0); }
     .reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
-    .delay-1 { transition-delay: 0.1s; }
-    .delay-2 { transition-delay: 0.2s; }
-    .delay-3 { transition-delay: 0.3s; }
-
-    /* RESPONSIVE */
+    .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
     @media (max-width: 768px) {
-      .topbar { display: none; }
-      .nav { padding: 12px 20px; } .nav-links { display: none; }
-      .hero h1 { font-size: 28px; }
+      .nav { padding: 12px 20px; } .hero h1 { font-size: 28px; }
       .contact-main { grid-template-columns: 1fr; }
-      .form-section { padding: 44px 24px; }
-      .form-row { grid-template-columns: 1fr; }
+      .form-section { padding: 44px 24px; } .form-row { grid-template-columns: 1fr; }
       .coords-section { padding: 44px 24px; }
-      .specialized { padding: 48px 24px; }
-      .spec-grid { grid-template-columns: 1fr; }
+      .specialized { padding: 48px 24px; } .spec-grid { grid-template-columns: 1fr; }
       footer { padding: 24px 20px; flex-direction: column; }
     }
   </style>
 </head>
 <body>
+
   <!-- NAVBAR -->
   <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
@@ -159,96 +149,136 @@
       WARFIRA
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_vision.html">Vision</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
-      <li><a href="warfira_contact.html" class="active">Contact</a></li>
-      <li><a href="warfira_serenite.html">Sérénité</a></li>
-      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Ecosysteme</a></li>
+      <li><a href="warfira_vision.html" data-i18n="nav_vision">Vision</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
+      <li><a href="warfira_contact.html" class="active" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="warfira_serenite.html" data-i18n="nav_serenite">Serenite</a></li>
+      <li><a href="warfira_evenementiels.html" data-i18n="nav_evenementiels">Evenementiels</a></li>
     </ul>
-    <div class="nav-actions">
-      <a href="warfira_partenaires.html" class="nav-cta-outline">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" onclick="toggleLang(event)">
+        <span id="currentFlag">&#127467;&#127479;</span>
+        <span id="currentCode">FR</span>
+        <span class="lang-arrow">&#9660;</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" onclick="setLang('fr','&#127467;&#127479;','FR',this)">
+          <span class="lang-option-flag">&#127467;&#127479;</span><span class="lang-option-name">Fran&#231;ais</span>
+          <span class="lang-option-check" id="check-fr">&#10003;</span>
+        </button>
+        <button class="lang-option" onclick="setLang('en','&#127468;&#127463;','EN',this)">
+          <span class="lang-option-flag">&#127468;&#127463;</span><span class="lang-option-name">English</span>
+          <span class="lang-option-check" id="check-en" style="display:none;">&#10003;</span>
+        </button>
+        <button class="lang-option" onclick="setLang('es','&#127466;&#127480;','ES',this)">
+          <span class="lang-option-flag">&#127466;&#127480;</span><span class="lang-option-name">Espa&#241;ol</span>
+          <span class="lang-option-check" id="check-es" style="display:none;">&#10003;</span>
+        </button>
+      </div>
     </div>
+    <div class="nav-actions">
+      <a href="warfira_partenaires.html" class="nav-cta-outline" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta" data-i18n="nav_reserver">Reserver</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
+
+  <!-- MENU MOBILE -->
+  <div class="nav-mobile" id="navMobile">
+    <button class="nav-mobile-close" id="navClose">&#10005;</button>
+    <a href="index.html" onclick="closeMenu()" data-i18n="nav_accueil">Accueil</a>
+    <a href="warfira_ecosysteme.html" onclick="closeMenu()" data-i18n="nav_ecosysteme">Ecosysteme</a>
+    <a href="warfira_vision.html" onclick="closeMenu()" data-i18n="nav_vision">Vision</a>
+    <a href="warfira_partenaires.html" onclick="closeMenu()" data-i18n="nav_partenaires">Partenaires</a>
+    <a href="warfira_contact.html" onclick="closeMenu()" data-i18n="nav_contact">Contact</a>
+    <a href="warfira_serenite.html" onclick="closeMenu()" data-i18n="nav_serenite">Serenite</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()" data-i18n="nav_evenementiels">Evenementiels</a>
+    <div class="nav-mobile-actions">
+      <a href="warfira_partenaires.html" class="btn-m-outline" onclick="closeMenu()" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid" data-i18n="nav_reserver">Reserver</a>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-badge">Contact · Partenariats · Direction</div>
-    <h1>Parlons de votre projet</h1>
-    <p class="hero-sub">Notre équipe est à votre disposition pour étudier vos projets et déployer notre expertise au service de vos ambitions.</p>
+    <div class="hero-badge" data-i18n="hero_badge">Contact · Partenariats · Direction</div>
+    <h1 data-i18n="hero_h1">Parlons de votre projet</h1>
+    <p class="hero-sub" data-i18n="hero_sub">Notre equipe est a votre disposition pour etudier vos projets et deployer notre expertise au service de vos ambitions.</p>
   </section>
 
-  <!-- FORMULAIRE + COORDONNÉES -->
+  <!-- FORMULAIRE + COORDONNEES -->
   <div class="contact-main">
     <div class="form-section reveal-left">
-      <div class="section-label">Formulaire de contact</div>
-      <h2>Envoyez-nous votre demande</h2>
-      <p>Remplissez ce formulaire et nous reviendrons vers vous sous 48h ouvrées.</p>
+      <div class="section-label" data-i18n="form_label">Formulaire de contact</div>
+      <h2 data-i18n="form_titre">Envoyez-nous votre demande</h2>
+      <p data-i18n="form_sub">Remplissez ce formulaire et nous reviendrons vers vous sous 48h ouvrées.</p>
       <div class="form-row">
         <div class="form-group">
-          <label>Prénom</label>
-          <input type="text" placeholder="Jean"/>
+          <label data-i18n="f_prenom">Prenom</label>
+          <input type="text" id="f-prenom" placeholder="Jean"/>
         </div>
         <div class="form-group">
-          <label>Nom</label>
-          <input type="text" placeholder="Dupont"/>
+          <label data-i18n="f_nom">Nom</label>
+          <input type="text" id="f-nom" placeholder="Dupont"/>
         </div>
       </div>
       <div class="form-group">
-        <label>Email professionnel</label>
-        <input type="email" placeholder="jean.dupont@exemple.com"/>
+        <label data-i18n="f_email">Email professionnel</label>
+        <input type="email" id="f-email" placeholder="jean.dupont@exemple.com"/>
       </div>
       <div class="form-group">
-        <label>Téléphone</label>
-        <input type="tel" placeholder="+33 6 00 00 00 00"/>
+        <label data-i18n="f_tel">Telephone</label>
+        <input type="tel" id="f-tel" placeholder="+33 6 00 00 00 00"/>
       </div>
       <div class="form-group">
-        <label>Vous êtes</label>
-        <select>
-          <option value="">— Sélectionnez votre profil —</option>
-          <option>Hôtelier indépendant</option>
-          <option>Agent de voyage / Agence</option>
-          <option>Investisseur institutionnel</option>
-          <option>Partenaire potentiel</option>
-          <option>Autre</option>
+        <label data-i18n="f_profil">Vous etes</label>
+        <select id="f-profil">
+          <option value="" data-i18n="profil_default">-- Selectionnez votre profil --</option>
+          <option value="hotelier" data-i18n="profil_hot">Hotelier independant</option>
+          <option value="agent_voyage" data-i18n="profil_ag">Agent de voyage / Agence</option>
+          <option value="investisseur" data-i18n="profil_inv">Investisseur institutionnel</option>
+          <option value="partenaire" data-i18n="profil_part">Partenaire potentiel</option>
+          <option value="autre" data-i18n="profil_autre">Autre</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Votre message</label>
-        <textarea placeholder="Décrivez votre projet ou votre demande..."></textarea>
+        <label data-i18n="f_message">Votre message</label>
+        <textarea id="f-message" placeholder="..."></textarea>
       </div>
-      <button class="btn-submit" onclick="window.location.href='mailto:direction@warfira.com'">
-        ENVOYER MA DEMANDE
+      <button class="btn-submit" id="btnSubmit">
+        <span data-i18n="form_submit">ENVOYER MA DEMANDE</span>
         <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
+      <div class="success-msg" id="success-contact"><p data-i18n="form_success">Message envoye ! Nous vous repondrons sous 48h.</p></div>
+      <div class="error-msg" id="error-contact"><p data-i18n="form_error">Erreur. Contactez-nous directement a contact@warfira.com</p></div>
     </div>
 
     <div class="coords-section reveal-right">
-      <div class="section-label">Nos coordonnées</div>
-      <h2>WARFIRA bâtit des synergies durables</h2>
+      <div class="section-label" data-i18n="coords_label">Nos coordonnees</div>
+      <h2 data-i18n="coords_titre">WARFIRA batit des synergies durables</h2>
       <div class="coord-items">
         <div class="coord-item">
           <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="coord-label">Direction</div><div class="coord-value"><a href="mailto:direction@warfira.com">direction@warfira.com</a></div></div>
+          <div><div class="coord-label" data-i18n="coord1_label">Direction</div><div class="coord-value"><a href="mailto:direction@warfira.com">direction@warfira.com</a></div></div>
         </div>
         <div class="coord-item">
           <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-          <div><div class="coord-label">Contact général</div><div class="coord-value"><a href="mailto:contact@warfira.com">contact@warfira.com</a></div></div>
+          <div><div class="coord-label" data-i18n="coord2_label">Contact general</div><div class="coord-value"><a href="mailto:contact@warfira.com">contact@warfira.com</a></div></div>
         </div>
         <div class="coord-item">
           <div class="coord-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 013.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-          <div><div class="coord-label">Téléphone</div><div class="coord-value"><a href="tel:+33753584725">+33 7 53 58 47 25</a></div></div>
+          <div><div class="coord-label" data-i18n="coord3_label">Telephone</div><div class="coord-value"><a href="tel:+33753584725">+33 7 53 58 47 25</a></div></div>
         </div>
         <div class="coord-item">
           <div class="coord-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
-          <div><div class="coord-label">Site commercial</div><div class="coord-value"><a href="https://www.warfira.com" target="_blank">www.warfira.com</a></div></div>
+          <div><div class="coord-label" data-i18n="coord4_label">Site commercial</div><div class="coord-value"><a href="https://www.warfira.com" target="_blank">www.warfira.com</a></div></div>
         </div>
       </div>
       <div class="legal-box">
-        <strong>Informations légales</strong>
-        <p>WARFIRA CRS Technologies · SAS<br/>Capital social 30 000€<br/>RCS 931 304 299 Versailles<br/>Président : Serge 1er NKOA</p>
+        <strong data-i18n="legal_titre">Informations legales</strong>
+        <p data-i18n="legal_desc">WARFIRA CRS Technologies · SAS<br/>Capital social 30 000€<br/>RCS 931 304 299 Versailles<br/>President : Serge 1er NKOA</p>
       </div>
       <div class="social-links">
         <a href="#" class="social-btn">LinkedIn</a>
@@ -258,29 +288,29 @@
     </div>
   </div>
 
-  <!-- CONTACTS SPÉCIALISÉS -->
+  <!-- CONTACTS SPECIALISES -->
   <section class="specialized">
-    <div class="section-label reveal">Contacts spécialisés</div>
-    <h2 class="reveal">Le bon interlocuteur pour votre projet</h2>
-    <p class="specialized-sub reveal">Selon votre profil, adressez directement votre demande au bon département WARFIRA.</p>
+    <div class="section-label reveal" data-i18n="spec_label">Contacts specialises</div>
+    <h2 class="reveal" data-i18n="spec_titre">Le bon interlocuteur pour votre projet</h2>
+    <p class="specialized-sub reveal" data-i18n="spec_sub">Selon votre profil, adressez directement votre demande au bon departement WARFIRA.</p>
     <div class="spec-grid">
       <div class="spec-card reveal delay-1">
         <div class="spec-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h4>Hôteliers — Réseau WHS</h4>
-        <p>Vous êtes hôtelier indépendant et souhaitez rejoindre notre réseau de distribution internationale.</p>
-        <a href="mailto:direction@warfira.com">direction@warfira.com →</a>
+        <h4 data-i18n="sc1_titre">Hoteliers — Reseau WHS</h4>
+        <p data-i18n="sc1_desc">Vous etes hotelier independant et souhaitez rejoindre notre reseau de distribution internationale.</p>
+        <a href="mailto:direction@warfira.com">direction@warfira.com &#8594;</a>
       </div>
       <div class="spec-card reveal delay-2">
         <div class="spec-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
-        <h4>Agences — Réseau WRB</h4>
-        <p>Vous êtes agent de voyage ou entrepreneur et voulez devenir boutique partenaire WARFIRA.</p>
-        <a href="mailto:contact@warfira.com">contact@warfira.com →</a>
+        <h4 data-i18n="sc2_titre">Agences — Reseau WRB</h4>
+        <p data-i18n="sc2_desc">Vous etes agent de voyage ou entrepreneur et voulez devenir boutique partenaire WARFIRA.</p>
+        <a href="mailto:contact@warfira.com">contact@warfira.com &#8594;</a>
       </div>
       <div class="spec-card reveal delay-3">
         <div class="spec-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h4>Investisseurs — Direction</h4>
-        <p>Vous souhaitez participer au financement de l'écosystème WARFIRA et obtenir le dossier investisseur.</p>
-        <a href="mailto:direction@warfira.com">direction@warfira.com →</a>
+        <h4 data-i18n="sc3_titre">Investisseurs — Direction</h4>
+        <p data-i18n="sc3_desc">Vous souhaitez participer au financement de l'ecosysteme WARFIRA et obtenir le dossier investisseur.</p>
+        <a href="mailto:direction@warfira.com">direction@warfira.com &#8594;</a>
       </div>
     </div>
   </section>
@@ -289,67 +319,211 @@
   <footer>
     <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Ecosysteme</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
       <li><a href="mailto:contact@warfira.com">contact@warfira.com</a></li>
     </ul>
-    <div class="footer-info">Référence ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+    <div class="footer-info" data-i18n="footer_info">Reference ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
-  <!-- BOUTON FLOTTANT -->
   <a href="https://www.warfira.com" target="_blank" class="back-btn">
     <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-    Réserver sur warfira.com
+    <span data-i18n="back_btn">Reserver sur warfira.com</span>
   </a>
 
   <script>
+    // NAVBAR
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
-    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.1 });
-    allReveals.forEach(el => observer.observe(el));
-  </script>
-<script>
-  document.querySelector('.btn-submit').addEventListener('click', async (e) => {
-    e.preventDefault();
+    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
 
-    const prenom = document.querySelector('input[placeholder="Jean"]').value;
-    const nom = document.querySelector('input[placeholder="Dupont"]').value;
-    const email = document.querySelector('input[type="email"]').value;
-    const telephone = document.querySelector('input[type="tel"]').value;
-    const profil = document.querySelector('select').value;
-    const message = document.querySelector('textarea').value;
+    // HAMBURGER
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    const navClose = document.getElementById('navClose');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navMobile.classList.toggle('open'); document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : ''; });
+    navClose.addEventListener('click', closeMenu);
+    function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); document.body.style.overflow = ''; }
 
-    if (!prenom || !nom || !email || !message) {
-      alert('⚠️ Merci de remplir tous les champs obligatoires.');
-      return;
-    }
+    // REVEAL
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
 
-    try {
-      const response = await fetch('http://localhost:3000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prenom, nom, email, telephone, profil, message })
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        alert('✅ Message envoyé avec succès ! Nous vous répondrons sous 48h.');
-      } else {
-        alert('❌ Erreur lors de l\'envoi. Veuillez réessayer.');
+    // FORMULAIRE
+    document.getElementById('btnSubmit').addEventListener('click', async () => {
+      const prenom = document.getElementById('f-prenom').value;
+      const nom = document.getElementById('f-nom').value;
+      const email = document.getElementById('f-email').value;
+      const telephone = document.getElementById('f-tel').value;
+      const profil = document.getElementById('f-profil').value;
+      const message = document.getElementById('f-message').value;
+      document.getElementById('success-contact').style.display = 'none';
+      document.getElementById('error-contact').style.display = 'none';
+      if (!prenom || !nom || !email || !message) {
+        alert('Merci de remplir tous les champs obligatoires.');
+        return;
       }
-    } catch (error) {
-      alert('❌ Impossible de contacter le serveur.');
+      try {
+        const res = await fetch('http://localhost:3000/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prenom, nom, email, telephone, profil, message })
+        });
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('success-contact').style.display = 'block';
+          ['f-prenom','f-nom','f-email','f-tel','f-message'].forEach(id => document.getElementById(id).value = '');
+          document.getElementById('f-profil').value = '';
+        } else {
+          document.getElementById('error-contact').style.display = 'block';
+        }
+      } catch(err) {
+        document.getElementById('error-contact').style.display = 'block';
+      }
+    });
+
+    // SELECTEUR DE LANGUE
+    function toggleLang(e) { e.stopPropagation(); document.getElementById('langSelector').classList.toggle('open'); }
+    function setLang(code, flag, label, el) {
+      document.getElementById('currentFlag').textContent = flag;
+      document.getElementById('currentCode').textContent = label;
+      document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+      ['fr','en','es'].forEach(l => { const c = document.getElementById('check-'+l); if (c) c.style.display = l === code ? 'block' : 'none'; });
+      localStorage.setItem('warfira_lang', code);
+      applyTranslations(code);
+      document.getElementById('langSelector').classList.remove('open');
     }
-  });
-</script>
+    document.addEventListener('click', () => { const s = document.getElementById('langSelector'); if (s) s.classList.remove('open'); });
+
+    const T = {
+      fr: {
+        nav_accueil:'Accueil', nav_ecosysteme:'Ecosysteme', nav_vision:'Vision',
+        nav_partenaires:'Partenaires', nav_contact:'Contact', nav_serenite:'Serenite',
+        nav_evenementiels:'Evenementiels', nav_rejoindre:'Nous rejoindre', nav_reserver:'Reserver',
+        hero_badge:'Contact · Partenariats · Direction',
+        hero_h1:'Parlons de votre projet',
+        hero_sub:'Notre equipe est a votre disposition pour etudier vos projets et deployer notre expertise au service de vos ambitions.',
+        form_label:'Formulaire de contact',
+        form_titre:'Envoyez-nous votre demande',
+        form_sub:'Remplissez ce formulaire et nous reviendrons vers vous sous 48h ouvrées.',
+        f_prenom:'Prenom', f_nom:'Nom', f_email:'Email professionnel',
+        f_tel:'Telephone', f_profil:'Vous etes', f_message:'Votre message',
+        profil_default:'-- Selectionnez votre profil --',
+        profil_hot:'Hotelier independant', profil_ag:'Agent de voyage / Agence',
+        profil_inv:'Investisseur institutionnel', profil_part:'Partenaire potentiel', profil_autre:'Autre',
+        form_submit:'ENVOYER MA DEMANDE',
+        form_success:'Message envoye ! Nous vous repondrons sous 48h.',
+        form_error:'Erreur. Contactez-nous a contact@warfira.com',
+        coords_label:'Nos coordonnees',
+        coords_titre:'WARFIRA batit des synergies durables',
+        coord1_label:'Direction', coord2_label:'Contact general',
+        coord3_label:'Telephone', coord4_label:'Site commercial',
+        legal_titre:'Informations legales',
+        legal_desc:'WARFIRA CRS Technologies · SAS · Capital social 30 000€ · RCS 931 304 299 Versailles · President : Serge 1er NKOA',
+        spec_label:'Contacts specialises',
+        spec_titre:'Le bon interlocuteur pour votre projet',
+        spec_sub:'Selon votre profil, adressez directement votre demande au bon departement WARFIRA.',
+        sc1_titre:'Hoteliers — Reseau WHS',
+        sc1_desc:'Vous etes hotelier independant et souhaitez rejoindre notre reseau de distribution internationale.',
+        sc2_titre:'Agences — Reseau WRB',
+        sc2_desc:'Vous etes agent de voyage ou entrepreneur et voulez devenir boutique partenaire WARFIRA.',
+        sc3_titre:'Investisseurs — Direction',
+        sc3_desc:"Vous souhaitez participer au financement de l'ecosysteme WARFIRA et obtenir le dossier investisseur.",
+        footer_info:'Reference ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Reserver sur warfira.com'
+      },
+      en: {
+        nav_accueil:'Home', nav_ecosysteme:'Ecosystem', nav_vision:'Vision',
+        nav_partenaires:'Partners', nav_contact:'Contact', nav_serenite:'Serenity',
+        nav_evenementiels:'Events', nav_rejoindre:'Join us', nav_reserver:'Book now',
+        hero_badge:'Contact · Partnerships · Management',
+        hero_h1:'Let\'s talk about your project',
+        hero_sub:'Our team is at your disposal to study your projects and deploy our expertise in the service of your ambitions.',
+        form_label:'Contact form',
+        form_titre:'Send us your request',
+        form_sub:'Fill in this form and we will get back to you within 48 working hours.',
+        f_prenom:'First name', f_nom:'Last name', f_email:'Professional email',
+        f_tel:'Phone', f_profil:'You are', f_message:'Your message',
+        profil_default:'-- Select your profile --',
+        profil_hot:'Independent hotelier', profil_ag:'Travel agent / Agency',
+        profil_inv:'Institutional investor', profil_part:'Potential partner', profil_autre:'Other',
+        form_submit:'SEND MY REQUEST',
+        form_success:'Message sent! We will reply within 48 hours.',
+        form_error:'Error. Contact us at contact@warfira.com',
+        coords_label:'Our contact details',
+        coords_titre:'WARFIRA builds lasting synergies',
+        coord1_label:'Management', coord2_label:'General contact',
+        coord3_label:'Phone', coord4_label:'Commercial website',
+        legal_titre:'Legal information',
+        legal_desc:'WARFIRA CRS Technologies · SAS · Share capital €30,000 · RCS 931 304 299 Versailles · President: Serge 1st NKOA',
+        spec_label:'Specialised contacts',
+        spec_titre:'The right contact for your project',
+        spec_sub:'Depending on your profile, send your request directly to the right WARFIRA department.',
+        sc1_titre:'Hoteliers — WHS Network',
+        sc1_desc:'You are an independent hotelier and wish to join our international distribution network.',
+        sc2_titre:'Agencies — WRB Network',
+        sc2_desc:'You are a travel agent or entrepreneur and want to become a WARFIRA partner store.',
+        sc3_titre:'Investors — Management',
+        sc3_desc:'You wish to participate in financing the WARFIRA ecosystem and obtain the investor file.',
+        footer_info:'ATOUT France Reference IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Book on warfira.com'
+      },
+      es: {
+        nav_accueil:'Inicio', nav_ecosysteme:'Ecosistema', nav_vision:'Vision',
+        nav_partenaires:'Socios', nav_contact:'Contacto', nav_serenite:'Serenidad',
+        nav_evenementiels:'Eventos', nav_rejoindre:'Unirse', nav_reserver:'Reservar',
+        hero_badge:'Contacto · Asociaciones · Direccion',
+        hero_h1:'Hablemos de su proyecto',
+        hero_sub:'Nuestro equipo esta a su disposicion para estudiar sus proyectos y desplegar nuestra experiencia al servicio de sus ambiciones.',
+        form_label:'Formulario de contacto',
+        form_titre:'Envienos su solicitud',
+        form_sub:'Rellene este formulario y nos pondremos en contacto con usted en un plazo de 48 horas habiles.',
+        f_prenom:'Nombre', f_nom:'Apellido', f_email:'Correo profesional',
+        f_tel:'Telefono', f_profil:'Usted es', f_message:'Su mensaje',
+        profil_default:'-- Seleccione su perfil --',
+        profil_hot:'Hotelero independiente', profil_ag:'Agente de viajes / Agencia',
+        profil_inv:'Inversor institucional', profil_part:'Socio potencial', profil_autre:'Otro',
+        form_submit:'ENVIAR MI SOLICITUD',
+        form_success:'Mensaje enviado. Le responderemos en 48 horas.',
+        form_error:'Error. Contactenos en contact@warfira.com',
+        coords_label:'Nuestros datos de contacto',
+        coords_titre:'WARFIRA construye sinergias duraderas',
+        coord1_label:'Direccion', coord2_label:'Contacto general',
+        coord3_label:'Telefono', coord4_label:'Sitio comercial',
+        legal_titre:'Informacion legal',
+        legal_desc:'WARFIRA CRS Technologies · SAS · Capital social 30.000€ · RCS 931 304 299 Versailles · Presidente: Serge 1er NKOA',
+        spec_label:'Contactos especializados',
+        spec_titre:'El interlocutor adecuado para su proyecto',
+        spec_sub:'Segun su perfil, dirija directamente su solicitud al departamento WARFIRA correspondiente.',
+        sc1_titre:'Hoteleros — Red WHS',
+        sc1_desc:'Es usted un hotelero independiente y desea unirse a nuestra red de distribucion internacional.',
+        sc2_titre:'Agencias — Red WRB',
+        sc2_desc:'Es usted agente de viajes o empresario y desea convertirse en tienda socia de WARFIRA.',
+        sc3_titre:'Inversores — Direccion',
+        sc3_desc:'Desea participar en la financiacion del ecosistema WARFIRA y obtener el dossier de inversores.',
+        footer_info:'Referencia ATOUT France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Reservar en warfira.com'
+      }
+    };
+
+    function applyTranslations(lang) {
+      const t = T[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.documentElement.lang = lang;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('warfira_lang') || 'fr';
+      if (saved !== 'fr') {
+        const btn = document.querySelector('.lang-option[onclick*="' + saved + '"]');
+        if (btn) btn.click();
+      }
+    });
+  </script>
 </body>
 </html>

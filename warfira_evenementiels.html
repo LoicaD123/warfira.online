@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WARFIRA — Événementiels & Espaces de Prestige</title>
+  <title>WARFIRA — Evenementiels & Espaces de Prestige</title>
   <link rel="icon" href="favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
@@ -16,14 +16,6 @@
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-
-    /* TOPBAR */
-    .topbar { background: var(--blue-darker); padding: 7px 60px; display: flex; align-items: center; justify-content: space-between; }
-    .topbar span { font-size: 11px; color: rgba(255,255,255,0.4); }
-    .topbar-reserve { background: var(--white); color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 14px; border-radius: 2px; text-decoration: none; transition: opacity 0.2s; }
-    .topbar-reserve:hover { opacity: 0.88; }
-
-    /* NAVBAR */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
@@ -50,8 +42,19 @@
     .nav-mobile-actions a { text-align: center; width: 100%; padding: 13px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
     .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
     .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
-
-    /* HERO */
+    .lang-selector { position: relative; display: flex; align-items: center; }
+    .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 3px; border: 1.5px solid rgba(40,54,140,0.2); background: transparent; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--blue-dark); transition: all 0.2s; }
+    .lang-btn:hover { border-color: var(--blue); background: var(--blue-light); }
+    .lang-arrow { font-size: 8px; color: var(--gray); transition: transform 0.2s; }
+    .lang-selector.open .lang-arrow { transform: rotate(180deg); }
+    .lang-dropdown { display: none; position: absolute; top: calc(100% + 8px); right: 0; background: var(--white); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; min-width: 140px; box-shadow: 0 8px 24px rgba(40,54,140,0.12); z-index: 200; }
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-family: var(--font); font-size: 13px; color: var(--blue-dark); transition: background 0.15s; border: none; background: transparent; width: 100%; text-align: left; }
+    .lang-option:hover { background: var(--blue-light); }
+    .lang-option.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .lang-option-flag { font-size: 16px; }
+    .lang-option-name { flex: 1; }
+    .lang-option-check { color: var(--blue); font-size: 12px; }
     .hero { background: #000; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px; position: relative; overflow: hidden; }
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.7; z-index: 0; }
     .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(17,30,58,0.5) 0%, rgba(17,30,58,0.3) 50%, rgba(17,30,58,0.7) 100%); z-index: 1; }
@@ -63,8 +66,6 @@
     .hero-sub { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 540px; line-height: 1.85; animation: fadeDown 0.7s 0.3s ease both; margin-bottom: 32px; }
     .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; animation: fadeDown 0.7s 0.45s ease both; }
     .hero-pill { font-size: 11px; font-weight: 600; padding: 6px 16px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); letter-spacing: 0.5px; }
-
-    /* INTRO */
     .intro { padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
     .intro-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--blue); margin-bottom: 12px; text-transform: uppercase; opacity: 0.6; }
     .intro h2 { font-size: 30px; font-weight: 700; color: var(--blue-dark); margin-bottom: 14px; line-height: 1.25; }
@@ -74,8 +75,6 @@
     .istat:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(40,54,140,0.08); }
     .istat-num { font-size: 32px; font-weight: 800; color: var(--blue-dark); line-height: 1; }
     .istat-label { font-size: 10px; color: var(--gray); letter-spacing: 1px; margin-top: 5px; text-transform: uppercase; }
-
-    /* SECTIONS */
     .section { padding: 80px 60px; }
     .section-alt { background: var(--cream); }
     .section-dark { background: var(--blue-darker); }
@@ -85,8 +84,6 @@
     .section h2.light { color: var(--white); }
     .section-sub { font-size: 14px; color: var(--gray); max-width: 520px; line-height: 1.85; margin-bottom: 48px; }
     .section-sub.light { color: rgba(255,255,255,0.5); }
-
-    /* ESPACES GRID */
     .espaces-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .espace-card { border-radius: 8px; overflow: hidden; background: var(--white); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; }
     .espace-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(40,54,140,0.12); }
@@ -94,41 +91,30 @@
     .espace-card-top.chateau { background: var(--blue); }
     .espace-card-top.domaine { background: var(--blue-dark); }
     .espace-card-top.salle { background: var(--blue-darker); }
-    .espace-icon { font-size: 38px; margin-bottom: 14px; display: block; }
     .espace-card-top h3 { font-size: 19px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
     .espace-card-top p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.7; }
     .espace-card-body { padding: 24px 28px; }
     .espace-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
     .espace-list li { font-size: 13px; color: var(--blue-dark); display: flex; gap: 10px; align-items: flex-start; }
-    .espace-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-weight: 700; font-size: 11px; margin-top: 2px; }
+    .espace-list li::before { content: '\2192'; color: var(--blue); flex-shrink: 0; font-weight: 700; font-size: 11px; margin-top: 2px; }
     .espace-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: var(--blue-light); color: var(--blue); letter-spacing: 0.5px; }
     .espace-capacity { font-size: 11px; color: var(--gray); margin-top: 8px; font-style: italic; }
-
-    /* ÉVÉNEMENTS TYPES */
     .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .event-item { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 28px; display: flex; gap: 20px; align-items: flex-start; transition: transform 0.2s, box-shadow 0.2s; }
     .event-item:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(40,54,140,0.08); }
-    .event-icon-wrap { width: 52px; height: 52px; border-radius: 8px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
     .event-item h4 { font-size: 15px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
     .event-item p { font-size: 13px; color: var(--gray); line-height: 1.75; }
     .event-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; background: var(--blue-light); color: var(--blue); letter-spacing: 0.5px; margin-top: 10px; }
-
-    /* FORMATS */
     .formats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .format-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 24px 20px; text-align: center; transition: all 0.2s; }
     .format-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
-    .format-icon { font-size: 28px; margin-bottom: 12px; display: block; }
     .format-card h4 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
     .format-card p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; }
-
-    /* KPIs */
     .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border-radius: 6px; overflow: hidden; margin-top: 48px; }
     .kpi { background: rgba(255,255,255,0.03); padding: 32px 24px; text-align: center; transition: background 0.2s; }
     .kpi:hover { background: rgba(255,255,255,0.07); }
     .kpi-num { font-size: 38px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px; }
     .kpi-label { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
-
-    /* PROCESSUS */
     .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
     .process-grid::before { content: ''; position: absolute; top: 22px; left: 12%; right: 12%; height: 1px; background: var(--border); z-index: 0; }
     .process-step { text-align: center; padding: 0 20px; position: relative; z-index: 1; }
@@ -138,8 +124,6 @@
     .process-step:hover .process-circle span { color: var(--white); }
     .process-step h4 { font-size: 13px; font-weight: 600; color: var(--blue-dark); margin-bottom: 6px; }
     .process-step p { font-size: 12px; color: var(--gray); line-height: 1.65; }
-
-    /* TÉMOIGNAGES */
     .tgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
     .tcard { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 28px; transition: background 0.2s; }
     .tcard:hover { background: rgba(255,255,255,0.08); }
@@ -148,8 +132,6 @@
     .tcard-avatar { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: var(--white); flex-shrink: 0; }
     .tcard-name { font-size: 13px; font-weight: 600; color: var(--white); }
     .tcard-role { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 2px; }
-
-    /* FOOTER CTA */
     .footer-cta { background: var(--blue); padding: 56px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; }
     .footer-cta h3 { font-size: 28px; font-weight: 700; color: var(--white); line-height: 1.25; }
     .footer-cta p { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; max-width: 400px; }
@@ -158,8 +140,6 @@
     .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     .btn-outline-white { background: transparent; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.35); cursor: pointer; transition: all 0.2s; text-decoration: none; }
     .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
-
-    /* FOOTER */
     footer { background: var(--blue-darker); padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .footer-logo { font-size: 14px; font-weight: 700; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
@@ -169,7 +149,6 @@
     .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -179,21 +158,14 @@
     .reveal-right.visible { opacity: 1; transform: translateX(0); }
     .delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
-
-    @media (max-width: 900px) {
-      .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; }
-    }
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
     @media (max-width: 768px) {
-      .topbar { display: none; } .nav { padding: 12px 20px; }
-      .hero h1 { font-size: 28px; } .hero-pills { display: none; }
+      .nav { padding: 12px 20px; } .hero h1 { font-size: 28px; } .hero-pills { display: none; }
       .intro { grid-template-columns: 1fr; padding: 48px 24px; gap: 36px; }
-      .section { padding: 48px 24px; }
-      .espaces-grid { grid-template-columns: 1fr; }
-      .events-grid { grid-template-columns: 1fr; }
-      .formats-grid { grid-template-columns: repeat(2, 1fr); }
+      .section { padding: 48px 24px; } .espaces-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; } .formats-grid { grid-template-columns: repeat(2, 1fr); }
       .kpis { grid-template-columns: repeat(2, 1fr); }
-      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
-      .process-grid::before { display: none; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; } .process-grid::before { display: none; }
       .tgrid { grid-template-columns: 1fr; }
       .footer-cta { padding: 40px 24px; flex-direction: column; align-items: flex-start; }
       footer { padding: 24px 20px; flex-direction: column; }
@@ -202,7 +174,6 @@
 </head>
 <body>
 
-
   <!-- NAVBAR -->
   <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
@@ -210,36 +181,55 @@
       WARFIRA
     </a>
     <ul class="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_ecosysteme.html">Écosystème</a></li>
-      <li><a href="warfira_vision.html">Vision & Fondateur</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
-      <li><a href="warfira_evenementiels.html" class="active">Événementiels</a></li>
-      <li><a href="warfira_contact.html">Contact</a></li>
-      <li><a href="warfira_serenite.html">Sérénité</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_ecosysteme.html" data-i18n="nav_ecosysteme">Ecosysteme</a></li>
+      <li><a href="warfira_vision.html" data-i18n="nav_vision">Vision</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
+      <li><a href="warfira_evenementiels.html" class="active" data-i18n="nav_evenementiels">Evenementiels</a></li>
+      <li><a href="warfira_contact.html" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="warfira_serenite.html" data-i18n="nav_serenite">Serenite</a></li>
     </ul>
-    <div class="nav-actions">
-      <a href="warfira_contact.html" class="nav-cta-outline">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="nav-cta">Réserver ↗</a>
+    <div class="lang-selector" id="langSelector">
+      <button class="lang-btn" onclick="toggleLang(event)">
+        <span id="currentFlag">&#127467;&#127479;</span>
+        <span id="currentCode">FR</span>
+        <span class="lang-arrow">&#9660;</span>
+      </button>
+      <div class="lang-dropdown" id="langDropdown">
+        <button class="lang-option active" onclick="setLang('fr','&#127467;&#127479;','FR',this)">
+          <span class="lang-option-flag">&#127467;&#127479;</span><span class="lang-option-name">Fran&#231;ais</span>
+          <span class="lang-option-check" id="check-fr">&#10003;</span>
+        </button>
+        <button class="lang-option" onclick="setLang('en','&#127468;&#127463;','EN',this)">
+          <span class="lang-option-flag">&#127468;&#127463;</span><span class="lang-option-name">English</span>
+          <span class="lang-option-check" id="check-en" style="display:none;">&#10003;</span>
+        </button>
+        <button class="lang-option" onclick="setLang('es','&#127466;&#127480;','ES',this)">
+          <span class="lang-option-flag">&#127466;&#127480;</span><span class="lang-option-name">Espa&#241;ol</span>
+          <span class="lang-option-check" id="check-es" style="display:none;">&#10003;</span>
+        </button>
+      </div>
     </div>
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <a href="warfira_contact.html" class="nav-cta-outline" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="nav-cta" data-i18n="nav_reserver">Reserver</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
   <!-- MENU MOBILE -->
   <div class="nav-mobile" id="navMobile">
-    <button class="nav-mobile-close" id="navClose">✕</button>
-    <a href="index.html" onclick="closeMenu()">Accueil</a>
-    <a href="warfira_ecosysteme.html" onclick="closeMenu()">Écosystème</a>
-    <a href="warfira_vision.html" onclick="closeMenu()">Vision & Fondateur</a>
-    <a href="warfira_partenaires.html" onclick="closeMenu()">Partenaires</a>
-    <a href="warfira_evenementiels.html" onclick="closeMenu()">Événementiels</a>
-    <a href="warfira_contact.html" onclick="closeMenu()">Contact</a>
-    <a href="warfira_serenite.html" onclick="closeMenu()">Sérénité</a>
+    <button class="nav-mobile-close" id="navClose">&#10005;</button>
+    <a href="index.html" onclick="closeMenu()" data-i18n="nav_accueil">Accueil</a>
+    <a href="warfira_ecosysteme.html" onclick="closeMenu()" data-i18n="nav_ecosysteme">Ecosysteme</a>
+    <a href="warfira_vision.html" onclick="closeMenu()" data-i18n="nav_vision">Vision</a>
+    <a href="warfira_partenaires.html" onclick="closeMenu()" data-i18n="nav_partenaires">Partenaires</a>
+    <a href="warfira_evenementiels.html" onclick="closeMenu()" data-i18n="nav_evenementiels">Evenementiels</a>
+    <a href="warfira_contact.html" onclick="closeMenu()" data-i18n="nav_contact">Contact</a>
+    <a href="warfira_serenite.html" onclick="closeMenu()" data-i18n="nav_serenite">Serenite</a>
     <div class="nav-mobile-actions">
-      <a href="warfira_contact.html" class="btn-m-outline" onclick="closeMenu()">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid">✈ Réserver maintenant</a>
+      <a href="warfira_contact.html" class="btn-m-outline" onclick="closeMenu()" data-i18n="nav_rejoindre">Nous rejoindre</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid" data-i18n="nav_reserver">Reserver</a>
     </div>
   </div>
 
@@ -249,461 +239,480 @@
       <source src="Video evenementiels.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    <div class="hero-badge">Location d'espaces · Galas · Privatisations · Événements</div>
-    <h1>Des lieux d'exception <span>pour</span><br/>vos grands événements</h1>
-    <p class="hero-sub">WARFIRA met à disposition des espaces de prestige — châteaux, domaines et salles d'apparat — pour que vos événements deviennent des moments inoubliables.</p>
+    <div class="hero-badge" data-i18n="hero_badge">Location d'espaces · Galas · Privatisations · Evenements</div>
+    <h1><span data-i18n="hero_h1">Des lieux d'exception pour</span><br/><span data-i18n="hero_h1b">vos grands evenements</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">WARFIRA met a disposition des espaces de prestige — chateaux, domaines et salles d'apparat — pour que vos evenements deviennent des moments inoubliables.</p>
     <div class="hero-pills">
-      <span class="hero-pill"> Châteaux & Domaines</span>
-      <span class="hero-pill"> Galas & ONG</span>
-      <span class="hero-pill"> Séminaires & Conférences</span>
-      <span class="hero-pill"> Événements Privés</span>
+      <span class="hero-pill" data-i18n="pill1">Chateaux & Domaines</span>
+      <span class="hero-pill" data-i18n="pill2">Galas & ONG</span>
+      <span class="hero-pill" data-i18n="pill3">Seminaires & Conferences</span>
+      <span class="hero-pill" data-i18n="pill4">Evenements Prives</span>
     </div>
   </section>
 
   <!-- INTRO -->
   <div class="intro">
     <div class="intro-text reveal-left">
-      <div class="intro-label">Notre approche</div>
-      <h2>WARFIRA, gestionnaire<br/>d'espaces de prestige</h2>
-      <p>WARFIRA loue et gère des espaces d'exception pour permettre aux entreprises, ONG, associations et institutions d'organiser leurs grands événements dans des cadres uniques en France.</p>
-      <p>Du gala caritatif dans un château à la conférence internationale dans un domaine privatisé — nous prenons en charge la mise à disposition du lieu et la coordination logistique complète.</p>
+      <div class="intro-label" data-i18n="intro_label">Notre approche</div>
+      <h2 data-i18n="intro_titre">WARFIRA, gestionnaire d'espaces de prestige</h2>
+      <p data-i18n="intro_p1">WARFIRA loue et gere des espaces d'exception pour permettre aux entreprises, ONG, associations et institutions d'organiser leurs grands evenements dans des cadres uniques en France.</p>
+      <p data-i18n="intro_p2">Du gala caritatif dans un chateau a la conference internationale dans un domaine privatise — nous prenons en charge la mise a disposition du lieu et la coordination logistique complete.</p>
     </div>
     <div class="intro-stats reveal-right">
-      <div class="istat"><div class="istat-num">100%</div><div class="istat-label">Privatisable</div></div>
-      <div class="istat"><div class="istat-num">24/7</div><div class="istat-label">Support dédié</div></div>
-      <div class="istat"><div class="istat-num">48h</div><div class="istat-label">Délai de réponse</div></div>
-      <div class="istat"><div class="istat-num">5 étoiles</div><div class="istat-label">Niveau de service</div></div>
+      <div class="istat"><div class="istat-num">100%</div><div class="istat-label" data-i18n="stat1">Privatisable</div></div>
+      <div class="istat"><div class="istat-num">24/7</div><div class="istat-label" data-i18n="stat2">Support dedie</div></div>
+      <div class="istat"><div class="istat-num">48h</div><div class="istat-label" data-i18n="stat3">Delai de reponse</div></div>
+      <div class="istat"><div class="istat-num">5 étoiles</div><div class="istat-label" data-i18n="stat4">Niveau de service</div></div>
     </div>
   </div>
 
   <!-- NOS ESPACES -->
   <section class="section section-alt">
-    <div class="section-label reveal">Nos espaces</div>
-    <h2 class="reveal">Des lieux taillés pour l'excellence</h2>
-    <p class="section-sub reveal">Châteaux historiques, domaines viticoles ou salles de réception contemporaines — WARFIRA sélectionne et gère des espaces adaptés à chaque envergure d'événement.</p>
+    <div class="section-label reveal" data-i18n="espaces_label">Nos espaces</div>
+    <h2 class="reveal" data-i18n="espaces_titre">Des lieux tailles pour l'excellence</h2>
+    <p class="section-sub reveal" data-i18n="espaces_sub">Chateaux historiques, domaines viticoles ou salles de reception contemporaines — WARFIRA selectionne et gere des espaces adaptes a chaque envergure d'evenement.</p>
     <div class="espaces-grid">
-
       <div class="espace-card reveal delay-1">
         <div class="espace-card-top chateau">
-          <h3>Châteaux historiques</h3>
-          <p>Des écrins patrimoniaux pour des événements d'exception à la française.</p>
+          <h3 data-i18n="e1_titre">Chateaux historiques</h3>
+          <p data-i18n="e1_desc">Des ecrins patrimoniaux pour des evenements d'exception a la francaise.</p>
         </div>
         <div class="espace-card-body">
           <ul class="espace-list">
-            <li>Salons et salles de réception historiques</li>
-            <li>Parcs et jardins privatisables</li>
-            <li>Hébergement sur place possible</li>
-            <li>Cuisine gastronomique à la demande</li>
+            <li data-i18n="e1_li1">Salons et salles de reception historiques</li>
+            <li data-i18n="e1_li2">Parcs et jardins privatisables</li>
+            <li data-i18n="e1_li3">Hebergement sur place possible</li>
+            <li data-i18n="e1_li4">Cuisine gastronomique a la demande</li>
           </ul>
-          <span class="espace-tag">Galas · Cérémonies · Dîners de prestige</span>
-          <p class="espace-capacity">Capacité : 50 à 500 personnes</p>
+          <span class="espace-tag" data-i18n="e1_tag">Galas · Ceremonies · Diners de prestige</span>
+          <p class="espace-capacity" data-i18n="e1_cap">Capacite : 50 a 500 personnes</p>
         </div>
       </div>
-
       <div class="espace-card reveal delay-2">
         <div class="espace-card-top domaine">
-
-          <h3>Domaines & Propriétés</h3>
-          <p>De vastes propriétés pour des événements en plein air ou en intérieur.</p>
+          <h3 data-i18n="e2_titre">Domaines & Proprietes</h3>
+          <p data-i18n="e2_desc">De vastes proprietes pour des evenements en plein air ou en interieur.</p>
         </div>
         <div class="espace-card-body">
           <ul class="espace-list">
-            <li>Espaces extérieurs aménageables</li>
-            <li>Salles modulables selon vos besoins</li>
-            <li>Parking privatif et accès facilité</li>
-            <li>Logistique complète prise en charge</li>
+            <li data-i18n="e2_li1">Espaces exterieurs amenageables</li>
+            <li data-i18n="e2_li2">Salles modulables selon vos besoins</li>
+            <li data-i18n="e2_li3">Parking privatif et acces facilite</li>
+            <li data-i18n="e2_li4">Logistique complete prise en charge</li>
           </ul>
-          <span class="espace-tag">Conférences · Séminaires · Incentives</span>
-          <p class="espace-capacity">Capacité : 100 à 1000 personnes</p>
+          <span class="espace-tag" data-i18n="e2_tag">Conferences · Seminaires · Incentives</span>
+          <p class="espace-capacity" data-i18n="e2_cap">Capacite : 100 a 1000 personnes</p>
         </div>
       </div>
-
       <div class="espace-card reveal delay-3">
         <div class="espace-card-top salle">
-          <h3>Salles d'apparat</h3>
-          <p>Des espaces contemporains et élégants au cœur des grandes villes.</p>
+          <h3 data-i18n="e3_titre">Salles d'apparat</h3>
+          <p data-i18n="e3_desc">Des espaces contemporains et elegants au coeur des grandes villes.</p>
         </div>
         <div class="espace-card-body">
           <ul class="espace-list">
-            <li>Équipements audiovisuels dernier cri</li>
-            <li>Configuration modulable</li>
-            <li>Accès transports en commun</li>
-            <li>Service traiteur partenaire disponible</li>
+            <li data-i18n="e3_li1">Equipements audiovisuels dernier cri</li>
+            <li data-i18n="e3_li2">Configuration modulable</li>
+            <li data-i18n="e3_li3">Acces transports en commun</li>
+            <li data-i18n="e3_li4">Service traiteur partenaire disponible</li>
           </ul>
-          <span class="espace-tag">Conférences · Remises de prix · Galas</span>
-          <p class="espace-capacity">Capacité : 30 à 800 personnes</p>
+          <span class="espace-tag" data-i18n="e3_tag">Conferences · Remises de prix · Galas</span>
+          <p class="espace-capacity" data-i18n="e3_cap">Capacite : 30 a 800 personnes</p>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- TYPES D'ÉVÉNEMENTS -->
+  <!-- TYPES D'EVENEMENTS -->
   <section class="section">
-    <div class="section-label reveal">Pour qui ?</div>
-    <h2 class="reveal">Tous types d'événements</h2>
-    <p class="section-sub reveal">Nos espaces accueillent une grande variété d'événements — qu'il s'agisse d'une soirée caritative, d'un séminaire d'entreprise ou d'une cérémonie institutionnelle.</p>
+    <div class="section-label reveal" data-i18n="events_label">Pour qui ?</div>
+    <h2 class="reveal" data-i18n="events_titre">Tous types d'evenements</h2>
+    <p class="section-sub reveal" data-i18n="events_sub">Nos espaces accueillent une grande variete d'evenements — soiree caritative, seminaire d'entreprise ou ceremonie institutionnelle.</p>
     <div class="events-grid">
-
       <div class="event-item reveal delay-1">
         <div>
-          <h4>Galas & Événements caritatifs</h4>
-          <p>ONG, fondations et associations — nos espaces de prestige donnent à vos galas caritatifs le cadre qu'ils méritent pour maximiser votre impact et lever des fonds.</p>
-          <span class="event-tag">ONG · Fondations · Associations</span>
+          <h4 data-i18n="ev1_titre">Galas & Evenements caritatifs</h4>
+          <p data-i18n="ev1_desc">ONG, fondations et associations — nos espaces de prestige donnent a vos galas caritatifs le cadre qu'ils meritent pour maximiser votre impact.</p>
+          <span class="event-tag" data-i18n="ev1_tag">ONG · Fondations · Associations</span>
         </div>
       </div>
-
       <div class="event-item reveal delay-2">
         <div>
-          <h4>Séminaires & Conférences d'entreprise</h4>
-          <p>Sortez vos équipes du cadre ordinaire. Nos domaines et châteaux offrent un environnement inspirant pour vos réunions stratégiques et formations.</p>
-          <span class="event-tag">Corporate · Entreprises · Institutions</span>
+          <h4 data-i18n="ev2_titre">Seminaires & Conferences d'entreprise</h4>
+          <p data-i18n="ev2_desc">Sortez vos equipes du cadre ordinaire. Nos domaines et chateaux offrent un environnement inspirant pour vos reunions strategiques et formations.</p>
+          <span class="event-tag" data-i18n="ev2_tag">Corporate · Entreprises · Institutions</span>
         </div>
       </div>
-
       <div class="event-item reveal delay-3">
         <div>
-          <h4>Cérémonies & Remises de prix</h4>
-          <p>Remises de trophées, cérémonies de distinction, Awards — nos espaces apportent la solennité et le prestige qu'exigent ces moments forts.</p>
-          <span class="event-tag">Cérémonies · Awards · Distinctions</span>
+          <h4 data-i18n="ev3_titre">Ceremonies & Remises de prix</h4>
+          <p data-i18n="ev3_desc">Remises de trophees, ceremonies de distinction, Awards — nos espaces apportent la solennite et le prestige qu'exigent ces moments forts.</p>
+          <span class="event-tag" data-i18n="ev3_tag">Ceremonies · Awards · Distinctions</span>
         </div>
       </div>
-
       <div class="event-item reveal delay-4">
         <div>
-          <h4>Événements privés & Privatisations</h4>
-          <p>Anniversaires d'entreprise, cocktails de lancement, soirées de fin d'année — nous privatisons nos espaces pour des moments sur-mesure et exclusifs.</p>
-          <span class="event-tag">Privé · Exclusif · Sur-mesure</span>
+          <h4 data-i18n="ev4_titre">Evenements prives & Privatisations</h4>
+          <p data-i18n="ev4_desc">Anniversaires d'entreprise, cocktails de lancement, soirees de fin d'annee — nous privatisons nos espaces pour des moments sur-mesure et exclusifs.</p>
+          <span class="event-tag" data-i18n="ev4_tag">Prive · Exclusif · Sur-mesure</span>
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- FORMATS & KPIS -->
   <section class="section section-dark">
-    <div class="section-label light reveal">Ce que nous offrons</div>
-    <h2 class="light reveal">Un service clé en main</h2>
-    <p class="section-sub light reveal">WARFIRA ne se contente pas de louer un espace. Nous coordonnons chaque détail pour que votre événement soit parfait de A à Z.</p>
+    <div class="section-label light reveal" data-i18n="formats_label">Ce que nous offrons</div>
+    <h2 class="light reveal" data-i18n="formats_titre">Un service cle en main</h2>
+    <p class="section-sub light reveal" data-i18n="formats_sub">WARFIRA ne se contente pas de louer un espace. Nous coordonnons chaque detail pour que votre evenement soit parfait de A a Z.</p>
     <div class="formats-grid">
       <div class="format-card reveal delay-1">
-        <h4>Location de l'espace</h4>
-        <p>Mise à disposition exclusive du lieu pour la durée de votre événement.</p>
+        <h4 data-i18n="f1_titre">Location de l'espace</h4>
+        <p data-i18n="f1_desc">Mise à disposition exclusive du lieu pour la durée de votre événement.</p>
       </div>
       <div class="format-card reveal delay-2">
-        <h4>Traiteur & Restauration</h4>
-        <p>Coordination avec nos partenaires gastronomiques pour un service irréprochable.</p>
+        <h4 data-i18n="f2_titre">Traiteur & Restauration</h4>
+        <p data-i18n="f2_desc">Coordination avec nos partenaires gastronomiques pour un service irréprochable.</p>
       </div>
       <div class="format-card reveal delay-3">
-
-        <h4>Décoration & Scénographie</h4>
-        <p>Mise en scène de l'espace selon votre thème et votre identité visuelle.</p>
+        <h4 data-i18n="f3_titre">Decoration & Scenographie</h4>
+        <p data-i18n="f3_desc">Mise en scène de l'espace selon votre thème et votre identité visuelle.</p>
       </div>
       <div class="format-card reveal delay-4">
-    
-        <h4>Transferts & Logistique</h4>
-        <p>Organisation des navettes et transferts pour vos invités via notre réseau WRS.</p>
+        <h4 data-i18n="f4_titre">Transferts & Logistique</h4>
+        <p data-i18n="f4_desc">Organisation des navettes et transferts pour vos invités via notre réseau WRS.</p>
       </div>
     </div>
     <div class="kpis reveal">
-      <div class="kpi"><div class="kpi-num">48h</div><div class="kpi-label">Délai de réponse</div></div>
-      <div class="kpi"><div class="kpi-num">100%</div><div class="kpi-label">Privatisation exclusive</div></div>
-      <div class="kpi"><div class="kpi-num">24/7</div><div class="kpi-label">Support événementiel</div></div>
-      <div class="kpi"><div class="kpi-num">5 étoiles</div><div class="kpi-label">Niveau de service</div></div>
+      <div class="kpi"><div class="kpi-num">48h</div><div class="kpi-label" data-i18n="kpi1">Délai de réponse</div></div>
+      <div class="kpi"><div class="kpi-num">100%</div><div class="kpi-label" data-i18n="kpi2">Privatisation exclusive</div></div>
+      <div class="kpi"><div class="kpi-num">24/7</div><div class="kpi-label" data-i18n="kpi3">Support événementiel</div></div>
+      <div class="kpi"><div class="kpi-num">5 étoiles</div><div class="kpi-label" data-i18n="kpi4">Niveau de service</div></div>
     </div>
   </section>
 
   <!-- PROCESSUS -->
   <section class="section section-alt">
-    <div class="section-label reveal">Comment ça marche</div>
-    <h2 class="reveal">Votre événement en 4 étapes</h2>
-    <p class="section-sub reveal">Un accompagnement de A à Z, avec un interlocuteur unique dédié à votre projet.</p>
+    <div class="section-label reveal" data-i18n="process_label">Comment ça marche</div>
+    <h2 class="reveal" data-i18n="process_titre">Votre événement en 4 étapes</h2>
+    <p class="section-sub reveal" data-i18n="process_sub">Un accompagnement de A a Z, avec un interlocuteur unique dedie a votre projet.</p>
     <div class="process-grid">
       <div class="process-step reveal delay-1">
         <div class="process-circle"><span>1</span></div>
-        <h4>Brief & Cahier des charges</h4>
-        <p>Décrivez-nous votre projet — type d'événement, nombre d'invités, date et budget estimé</p>
+        <h4 data-i18n="ps1_titre">Brief & Cahier des charges</h4>
+        <p data-i18n="ps1_desc">Decrivez-nous votre projet — type d'evenement, nombre d'invites, date et budget</p>
       </div>
       <div class="process-step reveal delay-2">
         <div class="process-circle"><span>2</span></div>
-        <h4>Proposition sur-mesure</h4>
-        <p>Notre équipe vous soumet une sélection d'espaces adaptés sous 48h</p>
+        <h4 data-i18n="ps2_titre">Proposition sur-mesure</h4>
+        <p data-i18n="ps2_desc">Notre equipe vous soumet une selection d'espaces adaptes sous 48h</p>
       </div>
       <div class="process-step reveal delay-3">
         <div class="process-circle"><span>3</span></div>
-        <h4>Validation & Réservation</h4>
-        <p>Contrat signé, nous sécurisons l'espace et coordonnons tous les prestataires</p>
+        <h4 data-i18n="ps3_titre">Validation & Reservation</h4>
+        <p data-i18n="ps3_desc">Contrat signe, nous securisons l'espace et coordonnons tous les prestataires</p>
       </div>
       <div class="process-step reveal delay-4">
         <div class="process-circle"><span>4</span></div>
-        <h4>Jour J & Suivi</h4>
-        <p>Un coordinateur WARFIRA est présent le jour de votre événement pour gérer chaque détail</p>
+        <h4 data-i18n="ps4_titre">Jour J & Suivi</h4>
+        <p data-i18n="ps4_desc">Un coordinateur WARFIRA est present le jour de votre evenement pour gerer chaque detail</p>
       </div>
     </div>
   </section>
 
-  <!-- TÉMOIGNAGES -->
+  <!-- TEMOIGNAGES -->
   <section class="section section-dark">
-    <div class="section-label light reveal">Ils nous font confiance</div>
-    <h2 class="light reveal">Ce que disent nos clients</h2>
+    <div class="section-label light reveal" data-i18n="temo_label">Ils nous font confiance</div>
+    <h2 class="light reveal" data-i18n="temo_titre">Ce que disent nos clients</h2>
     <div class="tgrid">
       <div class="tcard reveal delay-1">
-        <p class="tcard-quote">"WARFIRA nous a trouvé un château exceptionnel pour notre gala annuel. 200 invités, une soirée mémorable. La coordination était parfaite du début à la fin."</p>
+        <p class="tcard-quote" data-i18n="t1_quote">"WARFIRA nous a trouve un chateau exceptionnel pour notre gala annuel. 200 invites, une soiree memorable. La coordination etait parfaite du debut a la fin."</p>
         <div class="tcard-author">
           <div class="tcard-avatar">SC</div>
-          <div><div class="tcard-name">Sophie C.</div><div class="tcard-role">Directrice · ONG Humanitaire France</div></div>
+          <div><div class="tcard-name">Sophie C.</div><div class="tcard-role" data-i18n="t1_role">Directrice · ONG Humanitaire France</div></div>
         </div>
       </div>
       <div class="tcard reveal delay-2">
-        <p class="tcard-quote">"Notre séminaire de direction dans un domaine privatisé a marqué les esprits. WARFIRA a géré l'espace, le traiteur et les transferts. Nous n'avons eu qu'à profiter."</p>
+        <p class="tcard-quote" data-i18n="t2_quote">"Notre séminaire de direction dans un domaine privatisé a marqué les esprits. WARFIRA a géré l'espace, le traiteur et les transferts. Nous n'avons eu qu'à profiter."</p>
         <div class="tcard-author">
           <div class="tcard-avatar">MR</div>
-          <div><div class="tcard-name">Marc R.</div><div class="tcard-role">DRH · Groupe industriel français</div></div>
+          <div><div class="tcard-name">Marc R.</div><div class="tcard-role" data-i18n="t2_role">DRH · Groupe industriel français</div></div>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- ══ FORMULAIRE ÉVÉNEMENTIELS ══ -->
-  <section id="formulaire-evenement" style="background:#F5F4EF;padding:72px 60px;">
-    <div style="max-width:860px;margin:0 auto;">
-
-      <div class="reveal" style="text-align:center;margin-bottom:48px;">
-        <div style="font-size:10px;font-weight:600;letter-spacing:2px;color:#28368C;opacity:0.6;text-transform:uppercase;margin-bottom:10px;">Événementiels · Demande de devis</div>
-        <h2 style="font-size:32px;font-weight:800;color:#1A2E5A;margin-bottom:12px;font-family:Poppins,sans-serif;">Décrivez-nous votre projet</h2>
-        <p style="font-size:15px;color:#999;line-height:1.8;max-width:560px;margin:0 auto;">Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure adaptés à votre événement.</p>
+  <!-- ══════════════════════════════════════
+       CONCIERGERIE & WEEKENDS PRESTIGE
+  ══════════════════════════════════════ -->
+  <section id="conciergerie" style="background:#1A2E5A;padding:88px 60px 60px;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="reveal" style="text-align:center;margin-bottom:64px;">
+        <div style="display:inline-block;font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase;border:1px solid rgba(255,255,255,0.15);padding:6px 20px;border-radius:20px;margin-bottom:18px;">Conciergerie & Weekends Préstige</div>
+        <h2 style="font-size:38px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:16px;letter-spacing:-0.5px;">La culture au coeur<br/><span style="color:rgba(255,255,255,0.35);font-weight:300;">du tourisme de prestige</span></h2>
+        <p style="font-size:15px;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto;line-height:1.85;">Du vendredi au dimanche, WARFIRA vous invite dans des chateaux d'exception pour des weekends immersifs meles d'art, de gastronomie, de culture et de rencontres uniques.</p>
       </div>
 
-      <div style="background:#fff;border:1px solid rgba(40,54,140,0.1);border-radius:10px;padding:40px;" class="reveal">
+      <!-- 3 CARTES WEEKENDS -->
+      <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:64px;">
 
-        <!-- NOTE EMAIL -->
-        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#EEF1FA;border-radius:4px;margin-bottom:28px;">
-          <div style="width:8px;height:8px;border-radius:50%;background:#28368C;flex-shrink:0;"></div>
-          <span style="font-size:12px;color:#666;">Formulaire envoyé à <strong style="color:#1A2E5A;">evenements@warfira.com</strong></span>
+        <div class="wkd-card" style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all 0.35s;">
+          <div style="height:200px;background:linear-gradient(135deg,#28368C 0%,#6B21A8 100%);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,0.03) 30px,rgba(255,255,255,0.03) 31px);"></div>
+            <div style="position:absolute;top:16px;left:16px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-transform:uppercase;">Vendredi &#8594; Dimanche</div>
+            <div style="position:absolute;bottom:20px;left:20px;right:20px;">
+          
+              <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.2;">Art & Gastronomie</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">Chateau de la Loire</div>
+            </div>
+          </div>
+          <div style="padding:22px;">
+            <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:14px;">Exposition d'artistes contemporains, diner gastronomique avec chef etoile, visite privee du chateau au clair de lune.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">A partir de 290&#8364; / pers.</span>
+              <a href="#formulaire-evenement" style="font-size:11px;font-weight:700;color:#fff;background:rgba(255,255,255,0.12);padding:7px 16px;border-radius:20px;text-decoration:none;">Reserver &#8594;</a>
+            </div>
+          </div>
         </div>
 
+        <div class="wkd-card" style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all 0.35s;">
+          <div style="height:200px;background:linear-gradient(135deg,#B45309 0%,#D97706 100%);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,0.03) 30px,rgba(255,255,255,0.03) 31px);"></div>
+            <div style="position:absolute;top:16px;left:16px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-transform:uppercase;">Vendredi &#8594; Dimanche</div>
+            <div style="position:absolute;bottom:20px;left:20px;right:20px;">
+              
+              <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.2;">Danse & Festival</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">Domaine de Bourgogne</div>
+            </div>
+          </div>
+          <div style="padding:22px;">
+            <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:14px;">Festival de danse contemporaine, ateliers de sculpture textile, defiles de mode et gala de cloture sous les etoiles.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">A partir de 350&#8364; / pers.</span>
+              <a href="#formulaire-evenement" style="font-size:11px;font-weight:700;color:#fff;background:rgba(255,255,255,0.12);padding:7px 16px;border-radius:20px;text-decoration:none;">Reserver &#8594;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="wkd-card" style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all 0.35s;">
+          <div style="height:200px;background:linear-gradient(135deg,#065F46 0%,#059669 100%);position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 30px,rgba(255,255,255,0.03) 30px,rgba(255,255,255,0.03) 31px);"></div>
+            <div style="position:absolute;top:16px;left:16px;font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.6);text-transform:uppercase;">Vendredi &#8594; Dimanche</div>
+            <div style="position:absolute;bottom:20px;left:20px;right:20px;">
+              <div style="font-size:18px;font-weight:800;color:#fff;line-height:1.2;">Patrimoine & Mode</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">Chateau d'Ile-de-France</div>
+            </div>
+          </div>
+          <div style="padding:22px;">
+            <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.75;margin-bottom:14px;">Visite patrimoniale exclusive, exposition mode & tissu africain, production artistique et diner avec les createurs.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:13px;font-weight:700;color:#fff;">A partir de 320&#8364; / pers.</span>
+              <a href="#formulaire-evenement" style="font-size:11px;font-weight:700;color:#fff;background:rgba(255,255,255,0.12);padding:7px 16px;border-radius:20px;text-decoration:none;">Reserver &#8594;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- UNIVERS + SPOTLIGHT -->
+      <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+        <div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:14px;">L'univers Conciergerie</div>
+          <h3 style="font-size:28px;font-weight:700;color:#fff;margin-bottom:16px;line-height:1.25;">Une foire culturelle<br/>en chateau</h3>
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.85;margin-bottom:28px;">Chaque weekend WARFIRA est une production des temps modernes — une scene unique ou artistes, gastromes et voyageurs se retrouvent pour vivre l'excellence franco-africaine.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#127912;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Art & Sculpture</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#127869;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Gastronomie</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#128247;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Mode & Tissu</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#128131;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Danse & Festival</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#127984;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Visite patrimoniale</span></div>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">&#127914;</span><span style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);">Production artistique</span></div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:32px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(40,54,140,0.3);"></div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-bottom:20px;">Spotlight Artiste</div>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">
+            <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#28368C,#6B21A8);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">&#127912;</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:#fff;">Artiste en résidence</div>
+              <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">Exposé lors de votre weekend</div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:20px;">Comme WARFIRA Serenite soutient les athletes, WARFIRA Conciergerie donne une scene aux artistes emergents. Chaque weekend met en lumiere un talent — peinture, sculpture, mode, musique.</p>
+          <div style="background:rgba(255,255,255,0.06);border-radius:8px;padding:14px 16px;border-left:3px solid #28368C;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.6);font-style:italic;">"Voyager avec WARFIRA, c'est aussi financer la creation artistique."</div>
+          </div>
+          <a href="warfira_contact.html" style="display:inline-block;margin-top:20px;font-size:12px;font-weight:700;color:#fff;background:#28368C;padding:10px 22px;border-radius:4px;text-decoration:none;">Proposer un artiste &#8594;</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <style>
+    .wkd-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(0,0,0,0.35); border-color: rgba(255,255,255,0.25) !important; }
+    @media (max-width: 768px) {
+      #conciergerie { padding: 60px 24px 40px !important; }
+    }
+  </style>
+
+
+  <!-- FORMULAIRE -->
+  <section id="formulaire-evenement" style="background:#F5F4EF;padding:72px 60px;">
+    <div style="max-width:860px;margin:0 auto;">
+      <div class="reveal" style="text-align:center;margin-bottom:48px;">
+        <div style="font-size:10px;font-weight:600;letter-spacing:2px;color:#28368C;opacity:0.6;text-transform:uppercase;margin-bottom:10px;" data-i18n="form_label">Evenementiels · Demande de devis</div>
+        <h2 style="font-size:32px;font-weight:800;color:#1A2E5A;margin-bottom:12px;font-family:Poppins,sans-serif;" data-i18n="form_titre">Décrivez-nous votre projet</h2>
+        <p style="font-size:15px;color:#999;line-height:1.8;max-width:560px;margin:0 auto;" data-i18n="form_sub">Notre equipe vous repond sous 48h avec une selection d'espaces sur-mesure adaptés à votre événement.</p>
+      </div>
+      <div style="background:#fff;border:1px solid rgba(40,54,140,0.1);border-radius:10px;padding:40px;" class="reveal">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 16px;background:#EEF1FA;border-radius:4px;margin-bottom:28px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#28368C;flex-shrink:0;"></div>
+          <span style="font-size:12px;color:#666;">Formulaire à envoyer à <strong style="color:#1A2E5A;">événements@warfira.com</strong></span>
+        </div>
         <form id="formEvenement" onsubmit="submitEvenement(event)">
-
-          <!-- SECTION 1 : ORGANISATEUR -->
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Informations de l'organisateur</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);" data-i18n="sec1_titre">Informations de l'organisateur</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Prénom <span style="color:#E24B4A;">*</span></label>
-              <input type="text" name="prenom" placeholder="ex: Marie" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Nom <span style="color:#E24B4A;">*</span></label>
-              <input type="text" name="nom" placeholder="ex: Dupont" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_prenom">Prenom *</label><input type="text" name="prenom" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_nom">Nom *</label><input type="text" name="nom" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Email <span style="color:#E24B4A;">*</span></label>
-              <input type="email" name="email" placeholder="contact@organisation.com" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Téléphone <span style="color:#E24B4A;">*</span></label>
-              <input type="tel" name="telephone" placeholder="+33 6 00 00 00 00" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_email">Email *</label><input type="email" name="email" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_tel">Telephone *</label><input type="tel" name="telephone" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Organisme / Structure</label>
-              <input type="text" name="organisme" placeholder="ex: ONG Solidarité, SAS Event Co." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Type d'organisme <span style="color:#E24B4A;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_organisme">Organisme / Structure</label><input type="text" name="organisme" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_type_org">Type d'organisme *</label>
               <select name="type_organisme" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="ong_association">ONG / Association</option>
-                <option value="entreprise">Entreprise / Société</option>
-                <option value="institution_publique">Institution publique</option>
-                <option value="particulier">Particulier</option>
-                <option value="federation_sportive">Fédération sportive</option>
-                <option value="autre">Autre</option>
+                <option value="">...</option>
+                <option value="ong_association" data-i18n="org_ong">ONG / Association</option>
+                <option value="entreprise" data-i18n="org_ent">Entreprise / Société</option>
+                <option value="institution_publique" data-i18n="org_inst">Institution publique</option>
+                <option value="particulier" data-i18n="org_part">Particulier</option>
+                <option value="federation_sportive" data-i18n="org_fed">Fédération sportive</option>
+                <option value="autre" data-i18n="org_autre">Autre</option>
               </select>
             </div>
           </div>
-
-          <!-- SECTION 2 : ÉVÉNEMENT -->
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Type d'événement</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);" data-i18n="sec2_titre">Type d'evenement</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Nature de l'événement <span style="color:#E24B4A;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_nature">Nature de l'evenement *</label>
               <select name="type_evenement" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="gala_caritatif">Gala caritatif / ONG</option>
-                <option value="seminaire">Séminaire d'entreprise</option>
-                <option value="conference">Conférence / Colloque</option>
-                <option value="ceremonie">Cérémonie / Remise de prix</option>
-                <option value="evenement_sportif">Événement sportif</option>
-                <option value="mariage">Mariage / Anniversaire</option>
-                <option value="cocktail_prive">Cocktail / Soirée privée</option>
-                <option value="autre">Autre</option>
+                <option value="">...</option>
+                <option value="gala_caritatif" data-i18n="evt_gala">Gala caritatif / ONG</option>
+                <option value="seminaire" data-i18n="evt_sem">Seminaire d'entreprise</option>
+                <option value="conference" data-i18n="evt_conf">Conference / Colloque</option>
+                <option value="ceremonie" data-i18n="evt_cer">Ceremonie / Remise de prix</option>
+                <option value="evenement_sportif" data-i18n="evt_sport">Événement sportif</option>
+                <option value="mariage" data-i18n="evt_mar">Mariage / Anniversaire</option>
+                <option value="cocktail_prive" data-i18n="evt_cock">Cocktail / Soirée privée</option>
+                <option value="autre" data-i18n="evt_autre">Autre</option>
               </select>
             </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Type d'espace souhaité <span style="color:#E24B4A;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_espace">Type d'espace souhaite *</label>
               <select name="type_espace" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="chateau">Château historique</option>
-                <option value="domaine">Domaine / Propriété</option>
-                <option value="salle_apparat">Salle d'apparat</option>
-                <option value="espace_exterieur">Espace extérieur</option>
-                <option value="au_choix">Au choix de WARFIRA</option>
+                <option value="">...</option>
+                <option value="chateau" data-i18n="esp_chat">Château historique</option>
+                <option value="domaine" data-i18n="esp_dom">Domaine / Propriété</option>
+                <option value="salle_apparat" data-i18n="esp_salle">Salle d'apparat</option>
+                <option value="espace_exterieur" data-i18n="esp_ext">Espace extérieur</option>
+                <option value="au_choix" data-i18n="esp_choix">Au choix de WARFIRA</option>
               </select>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Nombre d'invités <span style="color:#E24B4A;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_invites">Nombre d'invites *</label>
               <select name="nb_invites" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="moins_50">Moins de 50 personnes</option>
-                <option value="50_100">50 à 100 personnes</option>
-                <option value="100_200">100 à 200 personnes</option>
-                <option value="200_500">200 à 500 personnes</option>
-                <option value="plus_500">Plus de 500 personnes</option>
+                <option value="">...</option>
+                <option value="moins_50" data-i18n="inv_50">Moins de 50 personnes</option>
+                <option value="50_100" data-i18n="inv_100">50 a 100 personnes</option>
+                <option value="100_200" data-i18n="inv_200">100 a 200 personnes</option>
+                <option value="200_500" data-i18n="inv_500">200 a 500 personnes</option>
+                <option value="plus_500" data-i18n="inv_500p">Plus de 500 personnes</option>
               </select>
             </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Ville / Région souhaitée</label>
-              <input type="text" name="ville_souhaitee" placeholder="ex: Paris, Île-de-France, Lyon..." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_ville">Ville / Region souhaitee</label><input type="text" name="ville_souhaitee" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
           </div>
-
-          <!-- SECTION 3 : DATE -->
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Date et durée</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);" data-i18n="sec3_titre">Date et duree</div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px;margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Date souhaitée</label>
-              <input type="date" name="date_evenement" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Date alternative</label>
-              <input type="date" name="date_alternative" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Heure de début</label>
-              <input type="time" name="heure_debut" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Durée <span style="color:#E24B4A;">*</span></label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_date">Date souhaitee</label><input type="date" name="date_evenement" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_date_alt">Date alternative</label><input type="date" name="date_alternative" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_heure">Heure de debut</label><input type="time" name="heure_debut" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;"/></div>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_duree">Duree *</label>
               <select name="duree" required style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="demi_journee">Demi-journée (4h)</option>
-                <option value="journee">Journée complète</option>
-                <option value="weekend">Week-end (2 jours)</option>
-                <option value="plusieurs_jours">Plusieurs jours</option>
+                <option value="">...</option>
+                <option value="demi_journee" data-i18n="dur_demi">Demi-journee (4h)</option>
+                <option value="journee" data-i18n="dur_jour">Journee complete</option>
+                <option value="weekend" data-i18n="dur_wk">Week-end (2 jours)</option>
+                <option value="plusieurs_jours" data-i18n="dur_plus">Plusieurs jours</option>
               </select>
             </div>
           </div>
-
-          <!-- SECTION 4 : SERVICES -->
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Services souhaités</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Traiteur & Restauration</label>
-              <select name="besoins_traiteur" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="non_souhaite">Non souhaité</option>
-                <option value="cocktail">Cocktail dinatoire</option>
-                <option value="diner">Dîner assis</option>
-                <option value="buffet">Buffet</option>
-                <option value="a_definir">À définir avec WARFIRA</option>
-              </select>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Décoration & Scénographie</label>
-              <select name="besoins_decoration" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="non_souhaite">Non souhaité</option>
-                <option value="standard">Décoration standard</option>
-                <option value="sur_mesure">Décoration sur-mesure</option>
-                <option value="a_definir">À définir avec WARFIRA</option>
-              </select>
-            </div>
-          </div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);" data-i18n="sec4_titre">Services souhaites</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Transferts & Navettes</label>
-              <select name="besoins_transferts" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="non_souhaite">Non souhaité</option>
-                <option value="navettes_paris">Navettes depuis Paris</option>
-                <option value="transferts_aeroport">Transferts aéroport</option>
-                <option value="organisation_complete">Organisation complète</option>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_traiteur">Traiteur & Restauration</label>
+              <select name="besoins_traiteur" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite" data-i18n="srv_non">Non souhaité</option>
+                <option value="cocktail" data-i18n="srv_cock">Cocktail dinatoire</option>
+                <option value="diner" data-i18n="srv_din">Diner assis</option>
+                <option value="buffet" data-i18n="srv_buf">Buffet</option>
+                <option value="a_definir" data-i18n="srv_def">A definir avec WARFIRA</option>
               </select>
             </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Équipements audiovisuels</label>
-              <select name="besoins_av" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="non_souhaite">Non souhaité</option>
-                <option value="sono_simple">Sonorisation simple</option>
-                <option value="video_projection">Vidéo / Projection</option>
-                <option value="complet">Équipement complet</option>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_deco">Decoration & Scenographie</label>
+              <select name="besoins_decoration" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
+                <option value="non_souhaite" data-i18n="srv_non">Non souhaité</option>
+                <option value="standard" data-i18n="deco_std">Decoration standard</option>
+                <option value="sur_mesure" data-i18n="deco_sm">Decoration sur-mesure</option>
+                <option value="a_definir" data-i18n="srv_def">A definir avec WARFIRA</option>
               </select>
             </div>
           </div>
-
-          <!-- SECTION 5 : BUDGET & MESSAGE -->
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);">Budget & Message</div>
+          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;color:#999;text-transform:uppercase;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(40,54,140,0.08);" data-i18n="sec5_titre">Budget & Message</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Budget estimé</label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_budget">Budget estime</label>
               <select name="budget_estime" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="moins_5000">Moins de 5 000€</option>
-                <option value="5000_15000">5 000€ à 15 000€</option>
-                <option value="15000_30000">15 000€ à 30 000€</option>
-                <option value="30000_50000">30 000€ à 50 000€</option>
-                <option value="plus_50000">Plus de 50 000€</option>
-                <option value="a_definir">À définir</option>
+                <option value="" data-i18n="choisir">Choisir...</option>
+                <option value="moins_5000">- 5 000€</option>
+                <option value="5000_15000">5 000€ - 15 000€</option>
+                <option value="15000_30000">15 000€ - 30 000€</option>
+                <option value="30000_50000">30 000€ - 50 000€</option>
+                <option value="plus_50000">+ 50 000€</option>
+                <option value="a_definir" data-i18n="a_definir">A definir</option>
               </select>
             </div>
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Comment nous avez-vous connu ?</label>
+            <div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_source">Comment nous avez-vous connu ?</label>
               <select name="source" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;">
-                <option value="">Choisir...</option>
-                <option value="bouche_oreille">Bouche à oreille</option>
-                <option value="reseaux_sociaux">Réseaux sociaux</option>
+                <option value="" data-i18n="choisir">Choisir...</option>
+                <option value="bouche_oreille" data-i18n="src_bao">Bouche à oreille</option>
+                <option value="reseaux_sociaux" data-i18n="src_rs">Reseaux sociaux</option>
                 <option value="google">Google</option>
-                <option value="partenaire">Partenaire WARFIRA</option>
-                <option value="autre">Autre</option>
+                <option value="partenaire" data-i18n="src_part">Partenaire WARFIRA</option>
+                <option value="autre" data-i18n="org_autre">Autre</option>
               </select>
             </div>
           </div>
-          <div style="margin-bottom:28px;">
-            <div style="display:flex;flex-direction:column;gap:5px;">
-              <label style="font-size:12px;color:#999;font-weight:600;">Décrivez votre projet</label>
-              <textarea name="message" placeholder="Ex: Gala annuel de notre ONG pour 150 invités, avec dîner assis, remise de prix et discours. Nous souhaitons un château dans la région parisienne..." style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;min-height:90px;resize:vertical;"></textarea>
-            </div>
-          </div>
-
-          <button type="submit" style="width:100%;padding:14px;background:#28368C;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:800;font-family:Poppins,sans-serif;cursor:pointer;letter-spacing:0.5px;transition:all 0.2s;">
-             Envoyer ma demande
-          </button>
-
-          <div id="success-evt" style="display:none;background:#EAF3DE;border:1px solid #97C459;border-radius:6px;padding:14px 18px;margin-top:14px;">
-            <p style="font-size:13px;color:#27500A;font-weight:600;">✅ Demande envoyée ! Notre équipe vous répond sous 48h avec une sélection d'espaces sur-mesure.</p>
-          </div>
-          <div id="error-evt" style="display:none;background:#FCEBEB;border:1px solid #E24B4A;border-radius:6px;padding:14px 18px;margin-top:14px;">
-            <p style="font-size:13px;color:#E24B4A;">❌ Erreur. Contactez-nous directement sur  evenements@warfira.com</p>
-          </div>
-
+          <div style="margin-bottom:28px;"><div style="display:flex;flex-direction:column;gap:5px;"><label style="font-size:12px;color:#999;font-weight:600;" data-i18n="f_message">Decrivez votre projet</label><textarea name="message" style="padding:10px 12px;border:1px solid rgba(40,54,140,0.15);border-radius:4px;font-size:13px;font-family:Poppins,sans-serif;outline:none;min-height:90px;resize:vertical;"></textarea></div></div>
+          <button type="submit" style="width:100%;padding:14px;background:#28368C;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:800;font-family:Poppins,sans-serif;cursor:pointer;" data-i18n="form_submit">Envoyer ma demande</button>
+          <div id="success-evt" style="display:none;background:#EAF3DE;border:1px solid #97C459;border-radius:6px;padding:14px 18px;margin-top:14px;"><p style="font-size:13px;color:#27500A;font-weight:600;" data-i18n="form_success">Demande envoyee ! Notre equipe vous repond sous 48h.</p></div>
+          <div id="error-evt" style="display:none;background:#FCEBEB;border:1px solid #E24B4A;border-radius:6px;padding:14px 18px;margin-top:14px;"><p style="font-size:13px;color:#E24B4A;" data-i18n="form_error">Erreur. Contactez-nous sur evenements@warfira.com</p></div>
         </form>
       </div>
     </div>
   </section>
-  <!-- ══ FIN FORMULAIRE ÉVÉNEMENTIELS ══ -->
 
   <!-- FOOTER CTA -->
   <div class="footer-cta reveal">
     <div>
-      <h3>Vous avez un projet<br/>événementiel ?</h3>
-      <p>Parlez-nous de votre événement. Notre équipe vous répond sous 48h avec notre sélection d'espaces sur-mesure.</p>
+      <h3 data-i18n="fcta_titre">Vous avez un projet événementiel ?</h3>
+      <p data-i18n="fcta_desc">Parlez-nous de votre événement. Notre équipe vous répond sous 48h avec notre sélection d'espaces sur-mesure.</p>
     </div>
     <div class="footer-cta-actions">
-      <a href="warfira_contact.html" class="btn-white">Nous contacter ↗</a>
-      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white">✈ Réserver sur warfira.com</a>
+      <a href="warfira_contact.html" class="btn-white" data-i18n="fcta_btn1">Nous contacter</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-outline-white" data-i18n="fcta_btn2">Réserver sur warfira.com</a>
     </div>
   </div>
 
@@ -711,47 +720,39 @@
   <footer>
     <div class="footer-logo">WARFIRA</div>
     <ul class="footer-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="warfira_partenaires.html">Partenaires</a></li>
-      <li><a href="warfira_evenementiels.html">Événementiels</a></li>
-      <li><a href="warfira_serenite.html">Sérénité</a></li>
-      <li><a href="warfira_contact.html">Contact</a></li>
+      <li><a href="index.html" data-i18n="nav_accueil">Accueil</a></li>
+      <li><a href="warfira_partenaires.html" data-i18n="nav_partenaires">Partenaires</a></li>
+      <li><a href="warfira_evenementiels.html" data-i18n="nav_evenementiels">Événementiels</a></li>
+      <li><a href="warfira_serenite.html" data-i18n="nav_serenite">Serenite</a></li>
+      <li><a href="warfira_contact.html" data-i18n="nav_contact">Contact</a></li>
       <li><a href="mailto:contact@warfira.com">contact@warfira.com</a></li>
     </ul>
-    <div class="footer-info">Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
+    <div class="footer-info" data-i18n="footer_info">Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25</div>
   </footer>
 
   <a href="https://www.warfira.com" target="_blank" class="back-btn">
     <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-    Réserver sur warfira.com
+    <span data-i18n="back_btn">Reserver sur warfira.com</span>
   </a>
 
   <script>
+    // NAVBAR
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); });
 
-    const allReveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    allReveals.forEach(el => observer.observe(el));
-
+    // HAMBURGER
     const hamburger = document.getElementById('hamburger');
     const navMobile = document.getElementById('navMobile');
     const navClose = document.getElementById('navClose');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navMobile.classList.toggle('open');
-      document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
-    });
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); navMobile.classList.toggle('open'); document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : ''; });
     navClose.addEventListener('click', closeMenu);
-    function closeMenu() {
-      hamburger.classList.remove('open');
-      navMobile.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); document.body.style.overflow = ''; }
 
-    // FORMULAIRE ÉVÉNEMENTIELS
+    // REVEAL
+    const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    // FORMULAIRE
     const BACKEND_EVT = 'http://localhost:3000';
     async function submitEvenement(e) {
       e.preventDefault();
@@ -759,25 +760,318 @@
       document.getElementById('success-evt').style.display = 'none';
       document.getElementById('error-evt').style.display = 'none';
       try {
-        const res = await fetch(BACKEND_EVT + '/api/evenements', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
+        const res = await fetch(BACKEND_EVT + '/api/evenements', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
         const result = await res.json();
-        if (result.success) {
-          document.getElementById('success-evt').style.display = 'block';
-          e.target.reset();
-          document.getElementById('success-evt').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          document.getElementById('error-evt').style.display = 'block';
-        }
-      } catch(err) {
-        document.getElementById('error-evt').style.display = 'block';
-      }
+        if (result.success) { document.getElementById('success-evt').style.display = 'block'; e.target.reset(); }
+        else document.getElementById('error-evt').style.display = 'block';
+      } catch(err) { document.getElementById('error-evt').style.display = 'block'; }
     }
 
-  </script>
+    // SELECTEUR DE LANGUE
+    function toggleLang(e) { e.stopPropagation(); document.getElementById('langSelector').classList.toggle('open'); }
+    function setLang(code, flag, label, el) {
+      document.getElementById('currentFlag').textContent = flag;
+      document.getElementById('currentCode').textContent = label;
+      document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
+      el.classList.add('active');
+      ['fr','en','es'].forEach(l => { const c = document.getElementById('check-'+l); if (c) c.style.display = l === code ? 'block' : 'none'; });
+      localStorage.setItem('warfira_lang', code);
+      applyTranslations(code);
+      document.getElementById('langSelector').classList.remove('open');
+    }
+    document.addEventListener('click', () => { const s = document.getElementById('langSelector'); if (s) s.classList.remove('open'); });
 
+    const T = {
+      fr: {
+        nav_accueil:'Accueil', nav_ecosysteme:'Ecosysteme', nav_vision:'Vision',
+        nav_partenaires:'Partenaires', nav_evenementiels:'Evenementiels', nav_contact:'Contact',
+        nav_serenite:'Serenite', nav_rejoindre:'Nous rejoindre', nav_reserver:'Reserver',
+        hero_badge:'Location d\'espaces · Galas · Privatisations · Evenements',
+        hero_h1:'Des lieux d\'exception pour', hero_h1b:'vos grands evenements',
+        hero_sub:'WARFIRA met a disposition des espaces de prestige pour que vos evenements deviennent des moments inoubliables.',
+        pill1:'Chateaux & Domaines', pill2:'Galas & ONG', pill3:'Seminaires & Conferences', pill4:'Evenements Prives',
+        intro_label:'Notre approche', intro_titre:'WARFIRA, gestionnaire d\'espaces de prestige',
+        intro_p1:'WARFIRA loue et gere des espaces d\'exception pour permettre aux entreprises, ONG et institutions d\'organiser leurs grands evenements en France.',
+        intro_p2:'Du gala caritatif dans un chateau a la conference internationale — nous prenons en charge la mise a disposition et la coordination logistique complete.',
+        stat1:'Privatisable', stat2:'Support dedie', stat3:'Delai de reponse', stat4:'Niveau de service',
+        espaces_label:'Nos espaces', espaces_titre:'Des lieux tailles pour l\'excellence',
+        espaces_sub:'Chateaux historiques, domaines viticoles ou salles contemporaines — WARFIRA selectionne des espaces adaptes a chaque evenement.',
+        e1_titre:'Chateaux historiques', e1_desc:'Des ecrins patrimoniaux pour des evenements d\'exception a la francaise.',
+        e1_li1:'Salons et salles de reception historiques', e1_li2:'Parcs et jardins privatisables',
+        e1_li3:'Hebergement sur place possible', e1_li4:'Cuisine gastronomique a la demande',
+        e1_tag:'Galas · Ceremonies · Diners de prestige', e1_cap:'Capacite : 50 a 500 personnes',
+        e2_titre:'Domaines & Proprietes', e2_desc:'De vastes proprietes pour des evenements en plein air ou en interieur.',
+        e2_li1:'Espaces exterieurs amenageables', e2_li2:'Salles modulables selon vos besoins',
+        e2_li3:'Parking privatif et acces facilite', e2_li4:'Logistique complete prise en charge',
+        e2_tag:'Conferences · Seminaires · Incentives', e2_cap:'Capacite : 100 a 1000 personnes',
+        e3_titre:'Salles d\'apparat', e3_desc:'Des espaces contemporains et elegants au coeur des grandes villes.',
+        e3_li1:'Equipements audiovisuels dernier cri', e3_li2:'Configuration modulable',
+        e3_li3:'Acces transports en commun', e3_li4:'Service traiteur partenaire disponible',
+        e3_tag:'Conferences · Remises de prix · Galas', e3_cap:'Capacite : 30 a 800 personnes',
+        events_label:'Pour qui ?', events_titre:'Tous types d\'evenements',
+        events_sub:'Nos espaces accueillent une grande variete d\'evenements.',
+        ev1_titre:'Galas & Evenements caritatifs', ev1_desc:'ONG, fondations et associations — nos espaces donnent a vos galas le cadre qu\'ils meritent.', ev1_tag:'ONG · Fondations · Associations',
+        ev2_titre:'Seminaires & Conferences d\'entreprise', ev2_desc:'Nos domaines offrent un environnement inspirant pour vos reunions strategiques.', ev2_tag:'Corporate · Entreprises · Institutions',
+        ev3_titre:'Ceremonies & Remises de prix', ev3_desc:'Nos espaces apportent la solennite et le prestige qu\'exigent ces moments forts.', ev3_tag:'Ceremonies · Awards · Distinctions',
+        ev4_titre:'Evenements prives & Privatisations', ev4_desc:'Anniversaires, cocktails, soirees — nous privatisons nos espaces pour des moments exclusifs.', ev4_tag:'Prive · Exclusif · Sur-mesure',
+        formats_label:'Ce que nous offrons', formats_titre:'Un service cle en main',
+        formats_sub:'WARFIRA coordonne chaque detail pour que votre evenement soit parfait de A a Z.',
+        f1_titre:'Location de l\'espace', f1_desc:'Mise a disposition exclusive du lieu pour la duree de votre evenement.',
+        f2_titre:'Traiteur & Restauration', f2_desc:'Coordination avec nos partenaires gastronomiques pour un service irreprochable.',
+        f3_titre:'Decoration & Scenographie', f3_desc:'Mise en scene de l\'espace selon votre theme et votre identite visuelle.',
+        f4_titre:'Transferts & Logistique', f4_desc:'Organisation des navettes et transferts pour vos invites via notre reseau WRS.',
+        kpi1:'Delai de reponse', kpi2:'Privatisation exclusive', kpi3:'Support evenementiel', kpi4:'Niveau de service',
+        process_label:'Comment ca marche', process_titre:'Votre evenement en 4 etapes',
+        process_sub:'Un accompagnement de A a Z, avec un interlocuteur unique dedie a votre projet.',
+        ps1_titre:'Brief & Cahier des charges', ps1_desc:'Decrivez-nous votre projet — type, invites, date et budget',
+        ps2_titre:'Proposition sur-mesure', ps2_desc:'Notre equipe vous soumet une selection d\'espaces sous 48h',
+        ps3_titre:'Validation & Reservation', ps3_desc:'Contrat signe, nous securisons l\'espace et coordonnons les prestataires',
+        ps4_titre:'Jour J & Suivi', ps4_desc:'Un coordinateur WARFIRA present le jour J pour gerer chaque detail',
+        temo_label:'Ils nous font confiance', temo_titre:'Ce que disent nos clients',
+        t1_quote:'"WARFIRA nous a trouve un chateau exceptionnel pour notre gala annuel. 200 invites, une soiree memorable. La coordination etait parfaite."',
+        t1_role:'Directrice · ONG Humanitaire France',
+        t2_quote:'"Notre seminaire dans un domaine privatise a marque les esprits. WARFIRA a gere l\'espace, le traiteur et les transferts. Nous n\'avons eu qu\'a profiter."',
+        t2_role:'DRH · Groupe industriel francais',
+        form_label:'Evenementiels · Demande de devis',
+        form_titre:'Decrivez-nous votre projet',
+        form_sub:'Notre equipe vous repond sous 48h avec une selection d\'espaces sur-mesure.',
+        sec1_titre:'Informations de l\'organisateur',
+        f_prenom:'Prenom *', f_nom:'Nom *', f_email:'Email *', f_tel:'Telephone *',
+        f_organisme:'Organisme / Structure', f_type_org:'Type d\'organisme *',
+        org_ong:'ONG / Association', org_ent:'Entreprise / Societe', org_inst:'Institution publique',
+        org_part:'Particulier', org_fed:'Federation sportive', org_autre:'Autre',
+        sec2_titre:'Type d\'evenement',
+        f_nature:'Nature de l\'evenement *', f_espace:'Type d\'espace souhaite *',
+        evt_gala:'Gala caritatif / ONG', evt_sem:'Seminaire d\'entreprise', evt_conf:'Conference / Colloque',
+        evt_cer:'Ceremonie / Remise de prix', evt_sport:'Evenement sportif', evt_mar:'Mariage / Anniversaire',
+        evt_cock:'Cocktail / Soiree privee', evt_autre:'Autre',
+        esp_chat:'Chateau historique', esp_dom:'Domaine / Propriete', esp_salle:'Salle d\'apparat',
+        esp_ext:'Espace exterieur', esp_choix:'Au choix de WARFIRA',
+        f_invites:'Nombre d\'invites *',
+        inv_50:'Moins de 50 personnes', inv_100:'50 a 100 personnes', inv_200:'100 a 200 personnes',
+        inv_500:'200 a 500 personnes', inv_500p:'Plus de 500 personnes',
+        f_ville:'Ville / Region souhaitee',
+        sec3_titre:'Date et duree',
+        f_date:'Date souhaitee', f_date_alt:'Date alternative', f_heure:'Heure de debut', f_duree:'Duree *',
+        dur_demi:'Demi-journee (4h)', dur_jour:'Journee complete', dur_wk:'Week-end (2 jours)', dur_plus:'Plusieurs jours',
+        sec4_titre:'Services souhaites',
+        f_traiteur:'Traiteur & Restauration', f_deco:'Decoration & Scenographie',
+        srv_non:'Non souhaite', srv_cock:'Cocktail dinatoire', srv_din:'Diner assis', srv_buf:'Buffet', srv_def:'A definir avec WARFIRA',
+        deco_std:'Decoration standard', deco_sm:'Decoration sur-mesure',
+        sec5_titre:'Budget & Message',
+        f_budget:'Budget estime', f_source:'Comment nous avez-vous connu ?',
+        choisir:'Choisir...', a_definir:'A definir',
+        src_bao:'Bouche a oreille', src_rs:'Reseaux sociaux', src_part:'Partenaire WARFIRA',
+        f_message:'Decrivez votre projet',
+        form_submit:'Envoyer ma demande',
+        form_success:'Demande envoyee ! Notre equipe vous repond sous 48h.',
+        form_error:'Erreur. Contactez-nous sur evenements@warfira.com',
+        fcta_titre:'Vous avez un projet evenementiel ?',
+        fcta_desc:'Parlez-nous de votre evenement. Notre equipe vous repond sous 48h.',
+        fcta_btn1:'Nous contacter', fcta_btn2:'Reserver sur warfira.com',
+        footer_info:'Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Reserver sur warfira.com'
+      },
+      en: {
+        nav_accueil:'Home', nav_ecosysteme:'Ecosystem', nav_vision:'Vision',
+        nav_partenaires:'Partners', nav_evenementiels:'Events', nav_contact:'Contact',
+        nav_serenite:'Serenity', nav_rejoindre:'Join us', nav_reserver:'Book now',
+        hero_badge:'Venue hire · Galas · Privatisations · Events',
+        hero_h1:'Exceptional venues for', hero_h1b:'your major events',
+        hero_sub:'WARFIRA provides prestige spaces — castles, estates and reception halls — to make your events unforgettable.',
+        pill1:'Castles & Estates', pill2:'Galas & NGOs', pill3:'Seminars & Conferences', pill4:'Private Events',
+        intro_label:'Our approach', intro_titre:'WARFIRA, prestige venue manager',
+        intro_p1:'WARFIRA rents and manages exceptional spaces for companies, NGOs and institutions to organise major events in unique settings in France.',
+        intro_p2:'From a charity gala in a castle to an international conference in a privatised estate — we handle the venue and full logistics.',
+        stat1:'Privatisable', stat2:'Dedicated support', stat3:'Response time', stat4:'Service level',
+        espaces_label:'Our venues', espaces_titre:'Venues built for excellence',
+        espaces_sub:'Historic castles, wine estates or contemporary reception halls — WARFIRA selects venues for every event.',
+        e1_titre:'Historic Castles', e1_desc:'Heritage settings for exceptional French-style events.',
+        e1_li1:'Historic salons and reception rooms', e1_li2:'Privatisable parks and gardens',
+        e1_li3:'On-site accommodation available', e1_li4:'Gastronomic cuisine on request',
+        e1_tag:'Galas · Ceremonies · Prestige dinners', e1_cap:'Capacity: 50 to 500 guests',
+        e2_titre:'Estates & Properties', e2_desc:'Vast properties for outdoor or indoor events.',
+        e2_li1:'Adaptable outdoor spaces', e2_li2:'Modular rooms to suit your needs',
+        e2_li3:'Private parking and easy access', e2_li4:'Full logistics management',
+        e2_tag:'Conferences · Seminars · Incentives', e2_cap:'Capacity: 100 to 1,000 guests',
+        e3_titre:'Reception Halls', e3_desc:'Contemporary and elegant spaces in major cities.',
+        e3_li1:'State-of-the-art audiovisual equipment', e3_li2:'Modular configuration',
+        e3_li3:'Public transport access', e3_li4:'Partner catering service available',
+        e3_tag:'Conferences · Award ceremonies · Galas', e3_cap:'Capacity: 30 to 800 guests',
+        events_label:'Who is it for?', events_titre:'All types of events',
+        events_sub:'Our spaces host a wide variety of events.',
+        ev1_titre:'Galas & Charity Events', ev1_desc:'NGOs, foundations and associations — our prestige spaces give your galas the setting they deserve.', ev1_tag:'NGOs · Foundations · Associations',
+        ev2_titre:'Corporate Seminars & Conferences', ev2_desc:'Our estates offer an inspiring environment for your strategic meetings.', ev2_tag:'Corporate · Companies · Institutions',
+        ev3_titre:'Ceremonies & Award Events', ev3_desc:'Our spaces bring the solemnity and prestige these moments demand.', ev3_tag:'Ceremonies · Awards · Distinctions',
+        ev4_titre:'Private Events & Privatisations', ev4_desc:'Anniversaries, launch cocktails, year-end parties — we privatise spaces for exclusive moments.', ev4_tag:'Private · Exclusive · Tailor-made',
+        formats_label:'What we offer', formats_titre:'A turnkey service',
+        formats_sub:'WARFIRA coordinates every detail so your event is perfect from start to finish.',
+        f1_titre:'Venue hire', f1_desc:'Exclusive use of the space for the duration of your event.',
+        f2_titre:'Catering & Dining', f2_desc:'Coordination with our gastronomic partners for impeccable service.',
+        f3_titre:'Decoration & Set design', f3_desc:'Staging the space according to your theme and visual identity.',
+        f4_titre:'Transfers & Logistics', f4_desc:'Organisation of shuttles and transfers for guests via our WRS network.',
+        kpi1:'Response time', kpi2:'Exclusive privatisation', kpi3:'Event support', kpi4:'Service level',
+        process_label:'How it works', process_titre:'Your event in 4 steps',
+        process_sub:'End-to-end support with a single dedicated contact for your project.',
+        ps1_titre:'Brief & Specifications', ps1_desc:'Tell us about your project — type, guests, date and budget',
+        ps2_titre:'Tailor-made proposal', ps2_desc:'Our team submits a selection of suitable spaces within 48 hours',
+        ps3_titre:'Validation & Booking', ps3_desc:'Contract signed, we secure the space and coordinate all suppliers',
+        ps4_titre:'Event day & Follow-up', ps4_desc:'A WARFIRA coordinator on-site on the day to manage every detail',
+        temo_label:'They trust us', temo_titre:'What our clients say',
+        t1_quote:'"WARFIRA found us an exceptional castle for our annual gala. 200 guests, an unforgettable evening. The coordination was perfect from start to finish."',
+        t1_role:'Director · French Humanitarian NGO',
+        t2_quote:'"Our management seminar in a privatised estate left everyone impressed. WARFIRA handled the venue, catering and transfers. We just had to enjoy it."',
+        t2_role:'HR Director · French industrial group',
+        form_label:'Events · Quote request',
+        form_titre:'Tell us about your project',
+        form_sub:'Our team will reply within 48 hours with a tailored selection of spaces.',
+        sec1_titre:'Organiser information',
+        f_prenom:'First name *', f_nom:'Last name *', f_email:'Email *', f_tel:'Phone *',
+        f_organisme:'Organisation / Company', f_type_org:'Organisation type *',
+        org_ong:'NGO / Association', org_ent:'Company / Business', org_inst:'Public institution',
+        org_part:'Individual', org_fed:'Sports federation', org_autre:'Other',
+        sec2_titre:'Event type',
+        f_nature:'Event nature *', f_espace:'Preferred venue type *',
+        evt_gala:'Charity gala / NGO', evt_sem:'Corporate seminar', evt_conf:'Conference / Symposium',
+        evt_cer:'Ceremony / Award event', evt_sport:'Sports event', evt_mar:'Wedding / Birthday',
+        evt_cock:'Cocktail / Private party', evt_autre:'Other',
+        esp_chat:'Historic castle', esp_dom:'Estate / Property', esp_salle:'Reception hall',
+        esp_ext:'Outdoor space', esp_choix:'WARFIRA choice',
+        f_invites:'Number of guests *',
+        inv_50:'Under 50 people', inv_100:'50 to 100 people', inv_200:'100 to 200 people',
+        inv_500:'200 to 500 people', inv_500p:'Over 500 people',
+        f_ville:'Preferred city / region',
+        sec3_titre:'Date and duration',
+        f_date:'Preferred date', f_date_alt:'Alternative date', f_heure:'Start time', f_duree:'Duration *',
+        dur_demi:'Half day (4h)', dur_jour:'Full day', dur_wk:'Weekend (2 days)', dur_plus:'Several days',
+        sec4_titre:'Requested services',
+        f_traiteur:'Catering & Dining', f_deco:'Decoration & Set design',
+        srv_non:'Not required', srv_cock:'Cocktail reception', srv_din:'Seated dinner', srv_buf:'Buffet', srv_def:'To define with WARFIRA',
+        deco_std:'Standard decoration', deco_sm:'Tailor-made decoration',
+        sec5_titre:'Budget & Message',
+        f_budget:'Estimated budget', f_source:'How did you hear about us?',
+        choisir:'Choose...', a_definir:'To be defined',
+        src_bao:'Word of mouth', src_rs:'Social media', src_part:'WARFIRA partner',
+        f_message:'Describe your project',
+        form_submit:'Send my request',
+        form_success:'Request sent! Our team will reply within 48 hours.',
+        form_error:'Error. Contact us at evenements@warfira.com',
+        fcta_titre:'Do you have an event project?',
+        fcta_desc:'Tell us about your event. Our team will reply within 48 hours.',
+        fcta_btn1:'Contact us', fcta_btn2:'Book on warfira.com',
+        footer_info:'Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Book on warfira.com'
+      },
+      es: {
+        nav_accueil:'Inicio', nav_ecosysteme:'Ecosistema', nav_vision:'Vision',
+        nav_partenaires:'Socios', nav_evenementiels:'Eventos', nav_contact:'Contacto',
+        nav_serenite:'Serenidad', nav_rejoindre:'Unirse', nav_reserver:'Reservar',
+        hero_badge:'Alquiler de espacios · Galas · Privatizaciones · Eventos',
+        hero_h1:'Espacios de excepcion para', hero_h1b:'sus grandes eventos',
+        hero_sub:'WARFIRA pone a disposicion espacios de prestigio — castillos, dominios y salones — para que sus eventos sean momentos inolvidables.',
+        pill1:'Castillos & Dominios', pill2:'Galas & ONG', pill3:'Seminarios & Conferencias', pill4:'Eventos Privados',
+        intro_label:'Nuestro enfoque', intro_titre:'WARFIRA, gestor de espacios de prestigio',
+        intro_p1:'WARFIRA alquila y gestiona espacios de excepcion para que empresas, ONG e instituciones organicen sus grandes eventos en Francia.',
+        intro_p2:'Desde una gala benefica en un castillo hasta una conferencia internacional — nos encargamos del espacio y la coordinacion logistica completa.',
+        stat1:'Privatizable', stat2:'Soporte dedicado', stat3:'Tiempo de respuesta', stat4:'Nivel de servicio',
+        espaces_label:'Nuestros espacios', espaces_titre:'Espacios a la altura de la excelencia',
+        espaces_sub:'Castillos historicos, fincas vinicolas o salones contemporaneos — WARFIRA selecciona espacios para cada evento.',
+        e1_titre:'Castillos historicos', e1_desc:'Enclaves patrimoniales para eventos de excepcion a la francesa.',
+        e1_li1:'Salones y salas de recepcion historicas', e1_li2:'Parques y jardines privatizables',
+        e1_li3:'Alojamiento en el lugar disponible', e1_li4:'Cocina gastronomica bajo pedido',
+        e1_tag:'Galas · Ceremonias · Cenas de prestigio', e1_cap:'Capacidad: 50 a 500 personas',
+        e2_titre:'Dominios & Propiedades', e2_desc:'Grandes propiedades para eventos al aire libre o en interiores.',
+        e2_li1:'Espacios exteriores adaptables', e2_li2:'Salas modulables segun sus necesidades',
+        e2_li3:'Aparcamiento privado y acceso facilitado', e2_li4:'Logistica completa gestionada',
+        e2_tag:'Conferencias · Seminarios · Incentivos', e2_cap:'Capacidad: 100 a 1.000 personas',
+        e3_titre:'Salones de aparato', e3_desc:'Espacios contemporaneos y elegantes en el corazon de las grandes ciudades.',
+        e3_li1:'Equipos audiovisuales de ultima generacion', e3_li2:'Configuracion modular',
+        e3_li3:'Acceso en transporte publico', e3_li4:'Servicio de catering disponible',
+        e3_tag:'Conferencias · Premios · Galas', e3_cap:'Capacidad: 30 a 800 personas',
+        events_label:'Para quienes?', events_titre:'Todo tipo de eventos',
+        events_sub:'Nuestros espacios acogen una gran variedad de eventos.',
+        ev1_titre:'Galas & Eventos beneficos', ev1_desc:'ONG, fundaciones y asociaciones — nuestros espacios dan a sus galas el marco que merecen.', ev1_tag:'ONG · Fundaciones · Asociaciones',
+        ev2_titre:'Seminarios & Conferencias', ev2_desc:'Nuestros dominios ofrecen un entorno inspirador para sus reuniones estrategicas.', ev2_tag:'Corporativo · Empresas · Instituciones',
+        ev3_titre:'Ceremonias & Premios', ev3_desc:'Nuestros espacios aportan la solemnidad y el prestigio que exigen estos momentos.', ev3_tag:'Ceremonias · Premios · Distinciones',
+        ev4_titre:'Eventos privados & Privatizaciones', ev4_desc:'Aniversarios, cocteleria, fiestas — privatizamos espacios para momentos exclusivos.', ev4_tag:'Privado · Exclusivo · A medida',
+        formats_label:'Lo que ofrecemos', formats_titre:'Un servicio llave en mano',
+        formats_sub:'WARFIRA coordina cada detalle para que su evento sea perfecto de principio a fin.',
+        f1_titre:'Alquiler del espacio', f1_desc:'Uso exclusivo del lugar durante la duracion de su evento.',
+        f2_titre:'Catering & Restauracion', f2_desc:'Coordinacion con nuestros socios gastronomicos para un servicio irreprochable.',
+        f3_titre:'Decoracion & Escenografia', f3_desc:'Ambientacion del espacio segun su tema e identidad visual.',
+        f4_titre:'Traslados & Logistica', f4_desc:'Organizacion de traslados para sus invitados a traves de nuestra red WRS.',
+        kpi1:'Tiempo de respuesta', kpi2:'Privatizacion exclusiva', kpi3:'Soporte de eventos', kpi4:'Nivel de servicio',
+        process_label:'Como funciona', process_titre:'Su evento en 4 pasos',
+        process_sub:'Acompanamiento integral con un interlocutor unico dedicado a su proyecto.',
+        ps1_titre:'Brief & Pliego de condiciones', ps1_desc:'Describanos su proyecto — tipo, invitados, fecha y presupuesto',
+        ps2_titre:'Propuesta a medida', ps2_desc:'Nuestro equipo le presenta una seleccion de espacios en 48 horas',
+        ps3_titre:'Validacion & Reserva', ps3_desc:'Contrato firmado, aseguramos el espacio y coordinamos los proveedores',
+        ps4_titre:'Dia J & Seguimiento', ps4_desc:'Un coordinador WARFIRA presente el dia del evento para gestionar cada detalle',
+        temo_label:'Confian en nosotros', temo_titre:'Lo que dicen nuestros clientes',
+        t1_quote:'"WARFIRA nos encontro un castillo excepcional para nuestra gala anual. 200 invitados, una velada memorable. La coordinacion fue perfecta de principio a fin."',
+        t1_role:'Directora · ONG Humanitaria Francia',
+        t2_quote:'"Nuestro seminario directivo en una finca privatizada marco los espiritus. WARFIRA gestiono el espacio, el catering y los traslados. Solo tuvimos que disfrutar."',
+        t2_role:'Director de RRHH · Grupo industrial frances',
+        form_label:'Eventos · Solicitud de presupuesto',
+        form_titre:'Describanos su proyecto',
+        form_sub:'Nuestro equipo le respondera en 48 horas con una seleccion de espacios a medida.',
+        sec1_titre:'Informacion del organizador',
+        f_prenom:'Nombre *', f_nom:'Apellido *', f_email:'Correo *', f_tel:'Telefono *',
+        f_organisme:'Organismo / Empresa', f_type_org:'Tipo de organismo *',
+        org_ong:'ONG / Asociacion', org_ent:'Empresa / Sociedad', org_inst:'Institucion publica',
+        org_part:'Particular', org_fed:'Federacion deportiva', org_autre:'Otro',
+        sec2_titre:'Tipo de evento',
+        f_nature:'Naturaleza del evento *', f_espace:'Tipo de espacio deseado *',
+        evt_gala:'Gala benefica / ONG', evt_sem:'Seminario de empresa', evt_conf:'Conferencia / Simposio',
+        evt_cer:'Ceremonia / Entrega de premios', evt_sport:'Evento deportivo', evt_mar:'Boda / Aniversario',
+        evt_cock:'Coctel / Fiesta privada', evt_autre:'Otro',
+        esp_chat:'Castillo historico', esp_dom:'Dominio / Propiedad', esp_salle:'Salon de aparato',
+        esp_ext:'Espacio exterior', esp_choix:'A eleccion de WARFIRA',
+        f_invites:'Numero de invitados *',
+        inv_50:'Menos de 50 personas', inv_100:'50 a 100 personas', inv_200:'100 a 200 personas',
+        inv_500:'200 a 500 personas', inv_500p:'Mas de 500 personas',
+        f_ville:'Ciudad / Region deseada',
+        sec3_titre:'Fecha y duracion',
+        f_date:'Fecha deseada', f_date_alt:'Fecha alternativa', f_heure:'Hora de inicio', f_duree:'Duracion *',
+        dur_demi:'Media jornada (4h)', dur_jour:'Jornada completa', dur_wk:'Fin de semana (2 dias)', dur_plus:'Varios dias',
+        sec4_titre:'Servicios deseados',
+        f_traiteur:'Catering & Restauracion', f_deco:'Decoracion & Escenografia',
+        srv_non:'No deseado', srv_cock:'Coctel', srv_din:'Cena sentada', srv_buf:'Bufet', srv_def:'A definir con WARFIRA',
+        deco_std:'Decoracion estandar', deco_sm:'Decoracion a medida',
+        sec5_titre:'Presupuesto & Mensaje',
+        f_budget:'Presupuesto estimado', f_source:'Como nos conocio?',
+        choisir:'Elegir...', a_definir:'A definir',
+        src_bao:'Boca a boca', src_rs:'Redes sociales', src_part:'Socio WARFIRA',
+        f_message:'Describa su proyecto',
+        form_submit:'Enviar mi solicitud',
+        form_success:'Solicitud enviada. Nuestro equipo le respondera en 48 horas.',
+        form_error:'Error. Contactenos en evenements@warfira.com',
+        fcta_titre:'Tiene un proyecto de evento?',
+        fcta_desc:'Hablenos de su evento. Nuestro equipo le respondera en 48 horas.',
+        fcta_btn1:'Contactenos', fcta_btn2:'Reservar en warfira.com',
+        footer_info:'Atout France IM078260004 · RCS 931 304 299 Versailles · +33 7 53 58 47 25',
+        back_btn:'Reservar en warfira.com'
+      }
+    };
+
+    function applyTranslations(lang) {
+      const t = T[lang];
+      if (!t) return;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      document.documentElement.lang = lang;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('warfira_lang') || 'fr';
+      if (saved !== 'fr') {
+        const flags = { en:'EN', es:'ES' };
+        const btn = document.querySelector('.lang-option[onclick*="' + saved + '"]');
+        if (btn) btn.click();
+      }
+    });
+  </script>
 </body>
 </html>

@@ -17,6 +17,8 @@
       --gray: #999999; --border: rgba(40,54,140,0.10); --font: 'Poppins', sans-serif;
     }
     body { font-family: var(--font); color: var(--blue-dark); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+
+    /* ── NAVBAR ── */
     .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 14px 60px; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border); backdrop-filter: blur(16px); transition: box-shadow 0.3s; }
     .nav.scrolled { box-shadow: 0 4px 24px rgba(40,54,140,0.08); }
     .nav-logo { font-size: 15px; font-weight: 700; color: #1A2E5A; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
@@ -43,6 +45,8 @@
     .nav-mobile-actions .btn-m-outline { border: 1.5px solid var(--blue); color: var(--blue); }
     .nav-mobile-actions .btn-m-solid { background: var(--blue); color: var(--white); }
     .nav-mobile-close { position: absolute; top: 20px; right: 20px; font-size: 28px; cursor: pointer; color: var(--blue-dark); background: none; border: none; }
+
+    /* ── HERO ── */
     .hero { position: relative; overflow: hidden; min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 40px 120px; background-color: #000; }
     .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75; z-index: 0; }
     .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,30,58,0.65) 0%, rgba(40,54,140,0.45) 60%, rgba(17,30,58,0.92) 100%); z-index: 1; }
@@ -64,6 +68,8 @@
     .booking-card-title { font-size: 14px; font-weight: 700; color: var(--blue-dark); margin-bottom: 4px; }
     .booking-card-sub { font-size: 11px; color: var(--gray); line-height: 1.5; }
     .booking-card-arrow { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 8px; display: block; }
+
+    /* ── STATS ── */
     .stats-strip { background: var(--blue-darker); padding: 0; overflow: hidden; }
     .stats-track { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; }
     .stats-track:hover { animation-play-state: paused; }
@@ -71,49 +77,31 @@
     .stat-num { font-size: 22px; font-weight: 700; color: var(--white); }
     .stat-label { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; text-transform: uppercase; }
     @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ── SECTION GÉNÉRALE ── */
     .section { padding: 88px 60px; }
     .section-alt { background: var(--cream); }
     .section-label { font-size: 10px; font-weight: 600; letter-spacing: 2.5px; color: var(--blue); margin-bottom: 12px; text-transform: uppercase; }
     .section h2 { font-size: 36px; font-weight: 700; color: var(--blue-dark); margin-bottom: 12px; line-height: 1.2; }
     .section-sub { font-size: 15px; color: var(--gray); max-width: 520px; line-height: 1.85; margin-bottom: 52px; }
-    .offers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .offer-card { border-radius: 6px; overflow: hidden; background: var(--white); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; display: block; }
-    .offer-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(40,54,140,0.12); }
-    .offer-img { height: 200px; background: var(--blue-light); overflow: hidden; position: relative; }
-    .offer-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .offer-card:hover .offer-img img { transform: scale(1.05); }
-    .offer-badge { position: absolute; top: 12px; left: 12px; background: var(--blue); color: var(--white); font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 2px; letter-spacing: 0.5px; }
-    .offer-body { padding: 22px; }
-    .offer-body h3 { font-size: 17px; font-weight: 700; color: var(--blue-dark); margin-bottom: 6px; }
-    .offer-body p { font-size: 13px; color: var(--gray); line-height: 1.65; margin-bottom: 16px; }
-    .offer-link { font-size: 12px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 6px; }
-    .offer-link::after { content: '↗'; transition: transform 0.2s; }
-    .offer-card:hover .offer-link::after { transform: translate(2px, -2px); }
-    .avion-banner { grid-column: 1 / -1; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); display: grid; grid-template-columns: 1.2fr 1fr; min-height: 240px; transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; }
-    .avion-banner:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(40,54,140,0.12); }
-    .avion-banner-img { position: relative; overflow: hidden; }
-    .avion-banner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .avion-banner:hover .avion-banner-img img { transform: scale(1.04); }
-    .avion-banner-badge { position: absolute; top: 16px; left: 16px; background: var(--blue); color: white; font-size: 10px; font-weight: 600; padding: 5px 12px; border-radius: 2px; letter-spacing: 0.5px; }
-    .avion-banner-body { background: var(--blue-dark); padding: 40px 36px; display: flex; flex-direction: column; justify-content: center; }
-    .avion-banner-body h3 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.25; }
-    .avion-banner-body p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 20px; }
-    .avion-banner-link { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 6px; }
-    .avion-banner-link::after { content: '↗'; }
-    .boutiques { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-    .boutiques-left { padding: 72px 56px; display: flex; flex-direction: column; justify-content: center; }
-    .boutiques-right { position: relative; overflow: hidden; min-height: 300px; max-height: 300px; background: var(--blue-light); }
-    .boutiques-right img { width: 100%; height: 100%; object-fit: cover; }
-    .boutiques-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 32px; }
-    .boutique-ville { background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 12px; text-align: center; transition: all 0.2s; cursor: pointer; }
-    .boutique-ville:hover { border-color: var(--blue); background: var(--blue-light); }
-    .boutique-ville.featured { border-color: var(--blue); background: var(--blue); }
-    .boutique-ville strong { display: block; font-size: 12px; font-weight: 600; color: var(--blue-dark); }
-    .boutique-ville.featured strong { color: var(--white); }
-    .boutique-ville span { font-size: 10px; color: var(--gray); }
-    .boutique-ville.featured span { color: rgba(255,255,255,0.6); }
-    .btn-blue-solid { display: inline-block; font-family: var(--font); font-size: 13px; font-weight: 600; color: var(--white); background: var(--blue); padding: 12px 28px; border-radius: 3px; border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; margin-top: 28px; }
-    .btn-blue-solid:hover { background: var(--blue-dark); transform: translateY(-1px); }
+
+    /* ── CARTES OFFRES ── */
+    .offers-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 18px; align-items: stretch; }
+    .offer-card-v2 { border-radius: 8px; overflow: hidden; background: var(--white); border: 1px solid var(--border); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; display: flex; flex-direction: column; min-width: 0; }
+    .offer-card-v2:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(40,54,140,0.12); }
+    .offer-card-v2-header { padding: 16px 18px 14px; background: var(--white); }
+    .offer-card-v2-badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); background: var(--blue-light); padding: 3px 10px; border-radius: 2px; margin-bottom: 8px; white-space: nowrap; }
+    .offer-card-v2-header h3 { font-size: 13px; font-weight: 700; color: var(--blue-dark); line-height: 1.35; }
+    .offer-card-v2-img { height: 160px; overflow: hidden; position: relative; flex-shrink: 0; background: var(--blue-light); }
+    .offer-card-v2-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.4s; }
+    .offer-card-v2:hover .offer-card-v2-img img { transform: scale(1.06); }
+    .offer-card-v2-body { padding: 14px 18px 18px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .offer-card-v2-body p { font-size: 12px; color: var(--gray); line-height: 1.65; }
+    .offer-card-v2-link { font-size: 11px; font-weight: 600; color: var(--blue); display: inline-flex; align-items: center; gap: 4px; margin-top: auto; word-break: break-word; }
+    .offer-card-v2-link::after { content: ' ↗'; flex-shrink: 0; transition: transform 0.2s; }
+    .offer-card-v2:hover .offer-card-v2-link::after { transform: translate(2px, -2px); }
+
+    /* ── AUTRES SECTIONS ── */
     .quote-section { background: var(--blue); padding: 72px 60px; text-align: center; }
     .quote-text { font-size: 26px; font-style: italic; font-weight: 300; color: var(--white); max-width: 800px; margin: 0 auto 20px; line-height: 1.6; }
     .quote-author { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45); letter-spacing: 2px; text-transform: uppercase; }
@@ -140,17 +128,11 @@
     .footer-col a:hover { color: rgba(255,255,255,0.85); }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     .footer-info { font-size: 11px; color: rgba(255,255,255,0.25); }
-    .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 22px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; letter-spacing: 0.3px; }
+    .back-btn { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--blue); color: var(--white); font-family: var(--font); font-size: 12px; font-weight: 700; padding: 12px 22px; border-radius: 28px; text-decoration: none; box-shadow: 0 6px 24px rgba(40,54,140,0.4); display: flex; align-items: center; gap: 8px; transition: all 0.2s; }
     .back-btn:hover { background: var(--blue-dark); transform: translateY(-3px); color: var(--white); }
     .back-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
-    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
-    @media (max-width: 768px) { .nav { padding: 12px 20px; } .hero h1 { font-size: 24px; } .hero-tagline { font-size: 15px; } .booking-bar { grid-template-columns: repeat(2, 1fr); max-width: 100%; } .offers-grid { grid-template-columns: 1fr; } .avion-banner { grid-template-columns: 1fr; } .avion-banner-img { height: 200px; } .boutiques { grid-template-columns: 1fr; } .conformite-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { flex-direction: column; } .footer-cta { flex-direction: column; align-items: flex-start; padding: 40px 24px; } footer { padding: 32px 24px; } .section { padding: 60px 24px; } .quote-text { font-size: 18px; } }
+
+    /* ── LANGUE ── */
     .lang-selector { position: relative; display: flex; align-items: center; }
     .lang-btn { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 3px; border: 1.5px solid rgba(40,54,140,0.2); background: transparent; cursor: pointer; font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--blue-dark); transition: all 0.2s; }
     .lang-btn:hover { border-color: var(--blue); background: var(--blue-light); }
@@ -164,6 +146,30 @@
     .lang-option .lang-option-flag { font-size: 16px; }
     .lang-option .lang-option-name { flex: 1; }
     .lang-option .lang-option-check { color: var(--blue); font-size: 12px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; } .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) { .nav-links { display: none; } .nav-actions { display: none; } .hamburger { display: flex; } }
+    @media (max-width: 1024px) { .offers-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 768px) {
+      .nav { padding: 12px 20px; }
+      .hero h1 { font-size: 24px; } .hero-tagline { font-size: 15px; }
+      .booking-bar { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+      .conformite-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { flex-direction: column; }
+      .footer-cta { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
+      footer { padding: 32px 24px; }
+      .section { padding: 60px 24px; }
+      .quote-text { font-size: 18px; }
+    }
+    @media (max-width: 480px) { .offers-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -171,8 +177,7 @@
   <!-- NAVBAR -->
   <nav class="nav" id="navbar">
     <a href="index.html" class="nav-logo">
-      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>
-      WARFIRA
+      <img src="Logo Warfira.jpeg" alt="WARFIRA"/>WARFIRA
     </a>
     <ul class="nav-links">
       <li><a href="index.html" class="active" data-i18n="nav_accueil">Accueil</a></li>
@@ -191,16 +196,13 @@
       </button>
       <div class="lang-dropdown" id="langDropdown">
         <button class="lang-option active" onclick="setLang('fr','🇫🇷','FR',this)">
-          <span class="lang-option-flag">🇫🇷</span><span class="lang-option-name">Français</span>
-          <span class="lang-option-check" id="check-fr">✓</span>
+          <span class="lang-option-flag">🇫🇷</span><span class="lang-option-name">Français</span><span class="lang-option-check" id="check-fr">✓</span>
         </button>
         <button class="lang-option" onclick="setLang('en','🇬🇧','EN',this)">
-          <span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span>
-          <span class="lang-option-check" id="check-en" style="display:none;">✓</span>
+          <span class="lang-option-flag">🇬🇧</span><span class="lang-option-name">English</span><span class="lang-option-check" id="check-en" style="display:none;">✓</span>
         </button>
         <button class="lang-option" onclick="setLang('es','🇪🇸','ES',this)">
-          <span class="lang-option-flag">🇪🇸</span><span class="lang-option-name">Español</span>
-          <span class="lang-option-check" id="check-es" style="display:none;">✓</span>
+          <span class="lang-option-flag">🇪🇸</span><span class="lang-option-name">Español</span><span class="lang-option-check" id="check-es" style="display:none;">✓</span>
         </button>
       </div>
     </div>
@@ -223,7 +225,7 @@
     <a href="warfira_contact.html" onclick="closeMenu()" data-i18n="nav_contact">Contact</a>
     <div class="nav-mobile-actions">
       <a href="warfira_partenaires.html" class="btn-m-outline" onclick="closeMenu()" data-i18n="nav_rejoindre">Nous rejoindre</a>
-      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid" data-i18n="hero_btn_reserver">✈ Réserver maintenant</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-m-solid" data-i18n="hero_btn_reserver">Réserver maintenant</a>
     </div>
   </div>
 
@@ -292,48 +294,77 @@
     <div class="section-label" data-i18n="offres_label">Nos offres</div>
     <h2 data-i18n="offres_titre">L'hospitalité à votre portée</h2>
     <p class="section-sub" data-i18n="offres_sub">De la réservation d'hôtel aux châteaux privatisés, en passant par nos séjours sur-mesure — WARFIRA vous ouvre les portes d'une expérience unique.</p>
+
     <div class="offers-grid">
-      <a href="https://www.warfira.com" target="_blank" class="avion-banner reveal">
-        <div class="avion-banner-img">
+
+      <!-- Carte 1 — Vols -->
+      <a href="https://www.warfira.com" target="_blank" class="offer-card-v2 reveal">
+        <div class="offer-card-v2-header">
+          <span class="offer-card-v2-badge" data-i18n="avion_badge">VOLS MONDIAUX</span>
+          <h3 data-i18n="avion_titre">Vols & Destinations</h3>
+        </div>
+        <div class="offer-card-v2-img">
           <img src="Avion_voyage.jpg" alt="Vols WARFIRA"/>
-          <span class="avion-banner-badge" data-i18n="avion_badge">✈ VOLS MONDIAUX</span>
         </div>
-        <div class="avion-banner-body">
-          <h3 data-i18n="avion_titre">Vols & Destinations partout dans le monde</h3>
-          <p data-i18n="avion_desc">Nos compagnies partenaires vous emmènent en France et partout dans le monde — Un conseiller WARFIRA vous accompagne à chaque étape de votre voyage.</p>
-          <span class="avion-banner-link" data-i18n="avion_link">Réserver un vol sur warfira.com</span>
+        <div class="offer-card-v2-body">
+          <p data-i18n="avion_desc">Nos compagnies partenaires vous emmènent en France et partout dans le monde — Un conseiller WARFIRA vous accompagne à chaque étape.</p>
+          <span class="offer-card-v2-link" data-i18n="avion_link">Réserver un vol sur warfira.com</span>
         </div>
       </a>
-      <a href="https://www.warfira.com/hotels" target="_blank" class="offer-card reveal reveal-delay-1">
-        <div class="offer-img"><img src="hotel.jpeg" alt="Hôtels WARFIRA"/><span class="offer-badge" data-i18n="badge1">DISPONIBLE</span></div>
-        <div class="offer-body">
-          <h3 data-i18n="offre1_titre">Hôtels indépendants</h3>
+
+      <!-- Carte 2 — Hôtels -->
+      <a href="https://www.warfira.com/hotels" target="_blank" class="offer-card-v2 reveal reveal-delay-1">
+        <div class="offer-card-v2-header">
+          <span class="offer-card-v2-badge" data-i18n="badge1">Hébergements</span>
+          <h3 data-i18n="offre1_titre">Hôtels et Locations Saisonnières</h3>
+        </div>
+        <div class="offer-card-v2-img">
+          <img src="hotel.jpeg" alt="Hôtels WARFIRA"/>
+        </div>
+        <div class="offer-card-v2-body">
           <p data-i18n="offre1_desc">Accédez à notre réseau d'hôtels partenaires sélectionnés pour leur qualité et leur authenticité.</p>
-          <span class="offer-link" data-i18n="offre1_link">Réserver sur warfira.com</span>
+          <span class="offer-card-v2-link" data-i18n="offre1_link">Réserver sur warfira.com</span>
         </div>
       </a>
-      <a href="https://www.warfira.com" target="_blank" class="offer-card reveal reveal-delay-2">
-        <div class="offer-img"><img src="Chateaux.jpg" alt="Châteaux & Domaines"/><span class="offer-badge" data-i18n="badge2">PRESTIGE</span></div>
-        <div class="offer-body">
+
+      <!-- Carte 3 — Châteaux -->
+      <a href="https://www.warfira.com" target="_blank" class="offer-card-v2 reveal reveal-delay-2">
+        <div class="offer-card-v2-header">
+          <span class="offer-card-v2-badge" data-i18n="badge2">EVENEMENTIEL</span>
           <h3 data-i18n="offre2_titre">Châteaux & Domaines</h3>
+        </div>
+        <div class="offer-card-v2-img">
+          <img src="Chateaux.jpg" alt="Châteaux & Domaines"/>
+        </div>
+        <div class="offer-card-v2-body">
           <p data-i18n="offre2_desc">Des week-ends d'exception dans nos châteaux et domaines français privatisés. L'art de vivre à la française.</p>
-          <span class="offer-link" data-i18n="offre2_link">Découvrir les séjours prestige</span>
+          <span class="offer-card-v2-link" data-i18n="offre2_link">Découvrir les séjours prestige</span>
         </div>
       </a>
-      <a href="https://www.warfira.com" target="_blank" class="offer-card reveal reveal-delay-3">
-        <div class="offer-img"><img src="reservartion.JPG" alt="Partenariats Business"/><span class="offer-badge" data-i18n="badge3">SUR-MESURE</span></div>
-        <div class="offer-body">
+
+      <!-- Carte 4 — Partenariats -->
+      <a href="https://www.warfira.com" target="_blank" class="offer-card-v2 reveal reveal-delay-3">
+        <div class="offer-card-v2-header">
+          <span class="offer-card-v2-badge" data-i18n="badge3">SUR-MESURE</span>
           <h3 data-i18n="offre3_titre">Partenariats Business</h3>
+        </div>
+        <div class="offer-card-v2-img">
+          <img src="reservartion.JPG" alt="Partenariats Business"/>
+        </div>
+        <div class="offer-card-v2-body">
           <p data-i18n="offre3_desc">Voyages avec nos agences partenaires. Cameroun, Sénégal, Gabon, Côte d'Ivoire, Bruxelles — partez en confiance.</p>
-          <span class="offer-link" data-i18n="offre3_link">Explorer nos destinations</span>
+          <span class="offer-card-v2-link" data-i18n="offre3_link">Explorer nos destinations</span>
         </div>
       </a>
+
     </div>
   </section>
+
   <!-- CITATION -->
   <div class="quote-section reveal">
     <p class="quote-text" data-i18n="quote_text">"WARFIRA n'est pas simplement une entreprise touristique de plus. C'est la construction méthodique d'un champion français capable de rivaliser avec les géants internationaux."</p>
-    <p class="quote-author" data-i18n="quote_author">— Serge 1er NKOA, Président Directeur Général</p>
+    <p class="quote-author" data-i18n="quote_author_name">— Serge 1er NKOA</p>
+    <p class="quote-author" data-i18n="quote_author_title">Président Directeur Général</p>
   </div>
 
   <!-- CONFORMITÉ -->
@@ -350,7 +381,7 @@
       <div class="conformite-item reveal reveal-delay-2">
         <div class="conformite-num">02</div>
         <h4 data-i18n="c2_titre">Atout France</h4>
-        <p data-i18n="c2_desc">Immatriculation IM078260004 validant notre conformité légale en tant qu'opérateur de voyages agréé par l'État français.</p>
+        <p data-i18n="c2_desc">Immatriculation IM078260004 validant notre conformité légale en tant qu'opérateur de voyages et séjours agréé par l'État français.</p>
       </div>
       <div class="conformite-item reveal reveal-delay-3">
         <div class="conformite-num">03</div>
@@ -360,7 +391,7 @@
       <div class="conformite-item reveal reveal-delay-4">
         <div class="conformite-num">04</div>
         <h4 data-i18n="c4_titre">Conformité RGPD</h4>
-        <p data-i18n="c4_desc">L'ensemble de nos outils numériques respecte strictement le règlement général sur la protection des données.</p>
+        <p data-i18n="c4_desc">L'ensemble de nos outils numériques respectent strictement le règlement général sur la protection des données.</p>
       </div>
     </div>
   </section>
@@ -369,7 +400,7 @@
   <div class="footer-cta reveal">
     <h3 data-i18n="fcta_titre">Prêt à rejoindre l'écosystème WARFIRA ?</h3>
     <div class="footer-cta-actions">
-      <a href="https://www.warfira.com" target="_blank" class="btn-white" data-i18n="fcta_btn1">✈ Réserver maintenant</a>
+      <a href="https://www.warfira.com" target="_blank" class="btn-white" data-i18n="fcta_btn1">Réserver maintenant</a>
       <a href="warfira_contact.html" class="btn-outline-white" data-i18n="fcta_btn2">Nous contacter</a>
     </div>
   </div>
@@ -428,99 +459,77 @@
     const navMobile = document.getElementById('navMobile');
     const navClose = document.getElementById('navClose');
     hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('open');
-      navMobile.classList.toggle('open');
+      hamburger.classList.toggle('open'); navMobile.classList.toggle('open');
       document.body.style.overflow = navMobile.classList.contains('open') ? 'hidden' : '';
     });
     navClose.addEventListener('click', closeMenu);
-    function closeMenu() {
-      hamburger.classList.remove('open');
-      navMobile.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    function closeMenu() { hamburger.classList.remove('open'); navMobile.classList.remove('open'); document.body.style.overflow = ''; }
 
-    // SÉLECTEUR DE LANGUE
-    function toggleLang(e) {
-      e.stopPropagation();
-      document.getElementById('langSelector').classList.toggle('open');
-    }
+    function toggleLang(e) { e.stopPropagation(); document.getElementById('langSelector').classList.toggle('open'); }
     function setLang(code, flag, label, el) {
       document.getElementById('currentFlag').textContent = flag;
       document.getElementById('currentCode').textContent = label;
       document.querySelectorAll('.lang-option').forEach(o => o.classList.remove('active'));
       el.classList.add('active');
-      ['fr','en','es'].forEach(l => {
-        const c = document.getElementById('check-'+l);
-        if (c) c.style.display = l === code ? 'block' : 'none';
-      });
+      ['fr','en','es'].forEach(l => { const c=document.getElementById('check-'+l); if(c) c.style.display=l===code?'block':'none'; });
       localStorage.setItem('warfira_lang', code);
       applyTranslations(code);
       document.getElementById('langSelector').classList.remove('open');
     }
-    document.addEventListener('click', () => {
-      const s = document.getElementById('langSelector');
-      if (s) s.classList.remove('open');
-    });
+    document.addEventListener('click', () => { const s=document.getElementById('langSelector'); if(s) s.classList.remove('open'); });
 
     const T = {
       fr: {
-        // NAVBAR
         nav_accueil:'Accueil', nav_ecosysteme:'Écosystème', nav_vision:'Vision & Fondateur',
         nav_partenaires:'Partenaires', nav_evenementiels:'Événementiels', nav_contact:'Contact',
         nav_serenite:'Sérénité', nav_rejoindre:'Nous rejoindre', nav_reserver:'Réserver ↗',
-        // HERO
         hero_eyebrow:'Une Infrastructure Touristique',
         hero_h1_v:'Voyagez!', hero_h1_s:'Séjournez!', hero_h1_viv:'Vivez!',
         hero_h1_exp:"l'expérience WARFIRA",
         hero_tagline:"Réservez vos titres de voyages, vos nuitées d'hôtels et locations saisonnières, directement avec WARFIRA, votre réseau de confiance.",
         hero_btn_reserver:'✈ Réserver maintenant', hero_btn_ecosysteme:"Découvrir l'écosystème",
-        // BOOKING BAR
         b_label1:'Réservation', b_title1:'Vols et destinations',
         b_sub1:'Nos compagnies partenaires vous emmènent en France et partout dans le monde', b_arrow1:'Réserver →',
         b_label2:'Prestige', b_title2:'Hotels et locations saisonnières',
         b_sub2:'Week-ends prestiges dans nos domaines privatisés', b_arrow2:'Découvrir →',
-        b_label3:'Partenariats', b_title3:'Relations investisseurs',
+        b_label3:'Evenementiel', b_title3:'Conciergerie Warfira le',
         b_sub3:"Un alignement stratégique au service de l'excellence client", b_arrow3:'Explorer →',
         b_label4:'Performances', b_title4:'Écuries WARFIRA',
         b_sub4:"Une alliance entre la puissance opérationnelle et l'exigence du sport", b_arrow4:'Nous contacter →',
-        // STATS
         s1:"Boutiques d'ici 2027", s2:'CA projeté 2029', s3:'Pays cibles',
         s4:'Marge nette 2029', s5:'Piliers stratégiques', s6:'Pour les investisseurs', s7:'Abonnement mensuel WRB',
-        // OFFRES
         offres_label:'Nos offres', offres_titre:"L'hospitalité à votre portée",
         offres_sub:"De la réservation d'hôtel aux châteaux privatisés, en passant par nos séjours sur-mesure — WARFIRA vous ouvre les portes d'une expérience unique.",
-        avion_badge:'✈ VOLS MONDIAUX', avion_titre:'Vols & Destinations partout dans le monde',
-        avion_desc:"Nos compagnies partenaires vous emmènent en France et partout dans le monde — avec le conseil humain WARFIRA à chaque étape de votre voyage.",
+        // ── Cartes offres — valeurs synchronisées avec le HTML ──
+        avion_badge:'VOLS MONDIAUX',
+        avion_titre:'Vols & Destinations',
+        avion_desc:"Nos compagnies partenaires vous emmènent en France et partout dans le monde — Un conseiller WARFIRA vous accompagne à chaque étape.",
         avion_link:'Réserver un vol sur warfira.com',
-        badge1:'DISPONIBLE', offre1_titre:'Hôtels indépendants',
+        badge1:'Hébergements',
+        offre1_titre:'Hôtels et Locations Saisonnières',
         offre1_desc:"Accédez à notre réseau d'hôtels partenaires sélectionnés pour leur qualité et leur authenticité.",
         offre1_link:'Réserver sur warfira.com',
-        badge2:'PRESTIGE', offre2_titre:'Châteaux & Domaines',
+        badge2:'EVENEMENTIEL',
+        offre2_titre:'Châteaux & Domaines',
         offre2_desc:"Des week-ends d'exception dans nos châteaux et domaines français privatisés. L'art de vivre à la française.",
         offre2_link:'Découvrir les séjours prestige',
-        badge3:'SUR-MESURE', offre3_titre:'Partenariats Business',
+        badge3:'SUR-MESURE',
+        offre3_titre:'Partenariats Business',
         offre3_desc:"Voyages avec nos agences partenaires. Cameroun, Sénégal, Gabon, Côte d'Ivoire, Bruxelles — partez en confiance.",
         offre3_link:'Explorer nos destinations',
-        // RÉSEAU
-        reseau_label:'Notre réseau', reseau_titre:'3000 boutiques de proximité près de chez vous',
-        reseau_desc1:"Notre réseau WRB transforme des agences de voyage locales en points de vente WARFIRA connectés. Un conseiller humain, une technologie de pointe — à deux pas de chez vous.",
-        reseau_desc2:'Nos boutiques partenaires sont votre porte d\'entrée vers toutes les expériences WARFIRA.',
-        ville_hub:'Hub principal', ville_wrb:'Boutique WRB', ville_ci:"Côte d'Ivoire", ville_venir:'à venir',
-        reseau_btn:'Devenir boutique partenaire WRB →',
-        // CITATION
-        quote_text:'"WARFIRA n\'est pas simplement une entreprise touristique de plus. C\'est la construction méthodique d\'un champion français capable de rivaliser avec les géants internationaux."',
-        quote_author:'— Serge 1er NKOA, Président Directeur Général',
-        // CONFORMITÉ
+        // ── Citation ──
+        quote_text:"\"WARFIRA n'est pas simplement une entreprise touristique de plus. C'est la construction méthodique d'un champion français capable de rivaliser avec les géants internationaux.\"",
+        quote_author_name:'— Serge 1er NKOA',
+        quote_author_title:'Président Directeur Général',
+        // ── Conformité ──
         conf_label:'Conformité & sécurité', conf_titre:'Une confiance institutionnelle irréprochable',
         conf_sub:'Nos engagements réglementaires sont le socle de notre crédibilité auprès de nos partenaires financiers, bancaires et hôteliers.',
         c1_titre:'Accréditation IATA', c1_desc:"Obtention de la licence IATA pour l'émission directe de billets d'avion.",
-        c2_titre:'Atout France', c2_desc:"Immatriculation IM078260004 validant notre conformité légale en tant qu'opérateur de voyages agréé par l'État français.",
+        c2_titre:'Atout France', c2_desc:"Immatriculation IM078260004 validant notre conformité légale en tant qu'opérateur de voyages et séjours agréé par l'État français.",
         c3_titre:'Garantie financière Accélérant', c3_desc:"Protection intégrale des fonds clients auprès d'organismes agréés.",
-        c4_titre:'Conformité RGPD', c4_desc:"L'ensemble de nos outils numériques respecte strictement le règlement général sur la protection des données.",
-        // FOOTER CTA
+        c4_titre:'Conformité RGPD', c4_desc:"L'ensemble de nos outils numériques respectent strictement le règlement général sur la protection des données.",
         fcta_titre:"Prêt à rejoindre l'écosystème WARFIRA ?",
-        fcta_btn1:'✈ Réserver maintenant', fcta_btn2:'Nous contacter',
-        // FOOTER
+        fcta_btn1:'Réserver maintenant', fcta_btn2:'Nous contacter',
         f_tagline:'Outil digital de nouvelle génération.',
         f_col1:'Réserver', f_hotels:'Hôtels & Séjours', f_chateaux:'Châteaux & Domaines', f_vols:'Vols', f_event:'Événementiel',
         f_col2:'Notre groupe', f_ecosysteme:'Écosystème WRS/WRB/WHS', f_vision:'Vision & Fondateur', f_partenaire:'Devenir partenaire',
@@ -540,7 +549,7 @@
         b_sub1:'Our partner airlines take you to France and around the world', b_arrow1:'Book →',
         b_label2:'Prestige', b_title2:'Hotels & seasonal rentals',
         b_sub2:'Prestige weekends in our privatized estates', b_arrow2:'Discover →',
-        b_label3:'Partnerships', b_title3:'Investor relations',
+        b_label3:'Events', b_title3:'Warfira Concierge',
         b_sub3:'A strategic alignment serving client excellence', b_arrow3:'Explore →',
         b_label4:'Performance', b_title4:'WARFIRA Stables',
         b_sub4:'An alliance between operational power and sporting excellence', b_arrow4:'Contact us →',
@@ -548,33 +557,33 @@
         s4:'Net margin 2029', s5:'Strategic pillars', s6:'For investors', s7:'Monthly WRB subscription',
         offres_label:'Our offers', offres_titre:'Hospitality within your reach',
         offres_sub:'From hotel bookings to privatized castles and tailor-made stays — WARFIRA opens the doors to a unique experience.',
-        avion_badge:'✈ WORLDWIDE FLIGHTS', avion_titre:'Flights & Destinations worldwide',
-        avion_desc:'Our partner airlines take you to France and around the world — with WARFIRA human expertise at every step of your journey.',
+        avion_badge:'WORLDWIDE FLIGHTS',
+        avion_titre:'Flights & Destinations',
+        avion_desc:'Our partner airlines take you to France and around the world — with WARFIRA human expertise at every step.',
         avion_link:'Book a flight on warfira.com',
-        badge1:'AVAILABLE', offre1_titre:'Independent Hotels',
+        badge1:'Accommodation',
+        offre1_titre:'Hotels & Seasonal Rentals',
         offre1_desc:'Access our network of partner hotels selected for their quality and authenticity.',
         offre1_link:'Book on warfira.com',
-        badge2:'PRESTIGE', offre2_titre:'Castles & Estates',
+        badge2:'EVENTS',
+        offre2_titre:'Castles & Estates',
         offre2_desc:'Exceptional weekends in our privatized French castles and estates. The French art of living.',
         offre2_link:'Discover prestige stays',
-        badge3:'TAILOR-MADE', offre3_titre:'Business Partnerships',
+        badge3:'TAILOR-MADE',
+        offre3_titre:'Business Partnerships',
         offre3_desc:'Travel with our partner agencies. Cameroon, Senegal, Gabon, Ivory Coast, Brussels — travel with confidence.',
         offre3_link:'Explore our destinations',
-        reseau_label:'Our network', reseau_titre:'3,000 neighbourhood stores near you',
-        reseau_desc1:'Our WRB network transforms local travel agencies into connected WARFIRA sales points. A human advisor, cutting-edge technology — just around the corner.',
-        reseau_desc2:'Our partner stores are your gateway to all WARFIRA experiences.',
-        ville_hub:'Main hub', ville_wrb:'WRB Store', ville_ci:'Ivory Coast', ville_venir:'coming soon',
-        reseau_btn:'Become a WRB partner store →',
         quote_text:'"WARFIRA is not simply another tourism company. It is the methodical construction of a French champion capable of competing with international giants."',
-        quote_author:'— Serge 1st NKOA, Chief Executive Officer',
+        quote_author_name:'— Serge 1st NKOA',
+        quote_author_title:'Chief Executive Officer',
         conf_label:'Compliance & security', conf_titre:'Irreproachable institutional trust',
         conf_sub:'Our regulatory commitments are the foundation of our credibility with our financial, banking and hotel partners.',
         c1_titre:'IATA Accreditation', c1_desc:'Obtaining the IATA licence for direct airline ticket issuance.',
-        c2_titre:'Atout France', c2_desc:'Registration IM078260004 validating our legal compliance as a travel operator approved by the French State.',
+        c2_titre:'Atout France', c2_desc:'Registration IM078260004 validating our legal compliance as a travel and stay operator approved by the French State.',
         c3_titre:'Accélérant Financial Guarantee', c3_desc:'Full protection of client funds with approved organisations.',
         c4_titre:'GDPR Compliance', c4_desc:'All our digital tools strictly comply with the General Data Protection Regulation.',
         fcta_titre:'Ready to join the WARFIRA ecosystem?',
-        fcta_btn1:'✈ Book now', fcta_btn2:'Contact us',
+        fcta_btn1:'Book now', fcta_btn2:'Contact us',
         f_tagline:'Next-generation digital tool.',
         f_col1:'Book', f_hotels:'Hotels & Stays', f_chateaux:'Castles & Estates', f_vols:'Flights', f_event:'Events',
         f_col2:'Our group', f_ecosysteme:'Ecosystem WRS/WRB/WHS', f_vision:'Vision & Founder', f_partenaire:'Become a partner',
@@ -594,7 +603,7 @@
         b_sub1:'Nuestras aerolíneas socias le llevan a Francia y a todo el mundo', b_arrow1:'Reservar →',
         b_label2:'Prestigio', b_title2:'Hoteles y alquileres de temporada',
         b_sub2:'Fines de semana de prestigio en nuestras propiedades privatizadas', b_arrow2:'Descubrir →',
-        b_label3:'Asociaciones', b_title3:'Relaciones con inversores',
+        b_label3:'Eventos', b_title3:'Conserjería Warfira',
         b_sub3:'Una alineación estratégica al servicio de la excelencia del cliente', b_arrow3:'Explorar →',
         b_label4:'Rendimiento', b_title4:'Establos WARFIRA',
         b_sub4:'Una alianza entre el poder operativo y la exigencia deportiva', b_arrow4:'Contáctenos →',
@@ -602,25 +611,25 @@
         s4:'Margen neto 2029', s5:'Pilares estratégicos', s6:'Para los inversores', s7:'Suscripción mensual WRB',
         offres_label:'Nuestras ofertas', offres_titre:'La hospitalidad a su alcance',
         offres_sub:'Desde reservas de hotel hasta castillos privatizados y estancias a medida — WARFIRA le abre las puertas a una experiencia única.',
-        avion_badge:'✈ VUELOS MUNDIALES', avion_titre:'Vuelos y Destinos en todo el mundo',
-        avion_desc:'Nuestras aerolíneas socias le llevan a Francia y a todo el mundo — con el asesoramiento humano de WARFIRA en cada etapa de su viaje.',
+        avion_badge:'VUELOS MUNDIALES',
+        avion_titre:'Vuelos y Destinos',
+        avion_desc:'Nuestras aerolíneas socias le llevan a Francia y a todo el mundo — con el asesoramiento humano de WARFIRA en cada etapa.',
         avion_link:'Reservar un vuelo en warfira.com',
-        badge1:'DISPONIBLE', offre1_titre:'Hoteles independientes',
+        badge1:'Alojamiento',
+        offre1_titre:'Hoteles y Alquileres de Temporada',
         offre1_desc:'Acceda a nuestra red de hoteles socios seleccionados por su calidad y autenticidad.',
         offre1_link:'Reservar en warfira.com',
-        badge2:'PRESTIGIO', offre2_titre:'Castillos y Dominios',
-        offre2_desc:'Fines de semana excepcionales en nuestros castillos y dominios franceses privatizados. El arte de vivir a la francesa.',
+        badge2:'EVENTOS',
+        offre2_titre:'Castillos y Dominios',
+        offre2_desc:'Fines de semana excepcionales en nuestros castillos y dominios franceses privatizados.',
         offre2_link:'Descubrir estancias de prestigio',
-        badge3:'A MEDIDA', offre3_titre:'Alianzas Empresariales',
-        offre3_desc:'Viajes con nuestras agencias socias. Camerún, Senegal, Gabón, Costa de Marfil, Bruselas — viaje con confianza.',
+        badge3:'A MEDIDA',
+        offre3_titre:'Alianzas Empresariales',
+        offre3_desc:'Viajes con nuestras agencias socias. Camerún, Senegal, Gabón, Costa de Marfil, Bruselas.',
         offre3_link:'Explorar nuestros destinos',
-        reseau_label:'Nuestra red', reseau_titre:'3.000 tiendas de barrio cerca de usted',
-        reseau_desc1:'Nuestra red WRB transforma las agencias de viaje locales en puntos de venta WARFIRA conectados. Un asesor humano, tecnología de vanguardia — a dos pasos de usted.',
-        reseau_desc2:'Nuestras tiendas socias son su puerta de entrada a todas las experiencias WARFIRA.',
-        ville_hub:'Centro principal', ville_wrb:'Tienda WRB', ville_ci:'Costa de Marfil', ville_venir:'próximamente',
-        reseau_btn:'Convertirse en tienda socia WRB →',
         quote_text:'"WARFIRA no es simplemente otra empresa de turismo. Es la construcción metódica de un campeón francés capaz de competir con los gigantes internacionales."',
-        quote_author:'— Serge 1er NKOA, Director General',
+        quote_author_name:'— Serge 1er NKOA',
+        quote_author_title:'Director General',
         conf_label:'Cumplimiento & seguridad', conf_titre:'Una confianza institucional irreprochable',
         conf_sub:'Nuestros compromisos reglamentarios son la base de nuestra credibilidad ante nuestros socios financieros, bancarios y hoteleros.',
         c1_titre:'Acreditación IATA', c1_desc:'Obtención de la licencia IATA para la emisión directa de billetes de avión.',
@@ -628,7 +637,7 @@
         c3_titre:'Garantía financiera Accélérant', c3_desc:'Protección integral de los fondos de los clientes en organismos autorizados.',
         c4_titre:'Cumplimiento RGPD', c4_desc:'Todas nuestras herramientas digitales cumplen estrictamente el Reglamento General de Protección de Datos.',
         fcta_titre:'¿Listo para unirse al ecosistema WARFIRA?',
-        fcta_btn1:'✈ Reservar ahora', fcta_btn2:'Contáctenos',
+        fcta_btn1:'Reservar ahora', fcta_btn2:'Contáctenos',
         f_tagline:'Herramienta digital de nueva generación.',
         f_col1:'Reservar', f_hotels:'Hoteles & Estancias', f_chateaux:'Castillos y Dominios', f_vols:'Vuelos', f_event:'Eventos',
         f_col2:'Nuestro grupo', f_ecosysteme:'Ecosistema WRS/WRB/WHS', f_vision:'Visión & Fundador', f_partenaire:'Convertirse en socio',
@@ -638,21 +647,18 @@
     };
 
     function applyTranslations(lang) {
-      const t = T[lang];
-      if (!t) return;
+      const t = T[lang]; if (!t) return;
       document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (t[key] !== undefined) el.textContent = t[key];
+        const k = el.getAttribute('data-i18n');
+        if (t[k] !== undefined) el.textContent = t[k];
       });
-      // Mettre à jour l'attribut lang de la page
       document.documentElement.lang = lang;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       const saved = localStorage.getItem('warfira_lang') || 'fr';
       if (saved !== 'fr') {
-        const flags = { en:'🇬🇧', es:'🇪🇸' };
-        const labels = { en:'EN', es:'ES' };
+        const flags = {en:'🇬🇧', es:'🇪🇸'}, labels = {en:'EN', es:'ES'};
         const btn = document.querySelector('.lang-option[onclick*="\''+saved+'\'"]');
         if (btn) setLang(saved, flags[saved], labels[saved], btn);
       }

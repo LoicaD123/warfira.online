@@ -7,6 +7,7 @@
   <link rel="icon" href="favicon.ico"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="auth.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -377,7 +378,6 @@
           <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h4 data-i18n="whs_c1_titre">Hôtels partenaires</h4><p data-i18n="whs_c1_desc">Visibilité internationale GDS</p></div></div>
           <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h4 data-i18n="whs_c2_titre">Hôtels sous mandat</h4><p data-i18n="whs_c2_desc">Gestion opérationnelle complète</p></div></div>
           <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4 data-i18n="whs_c3_titre">Prestige & Événementiel</h4><p data-i18n="whs_c3_desc">Châteaux & domaines privatisés</p></div></div>
-          <div class="whs-card"><div class="whs-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><div><h4 data-i18n="whs_c4_titre">Commission</h4><p data-i18n="whs_c4_desc">5–10% sur transactions</p></div></div>
         </div>
       </div>
     </div>
@@ -623,5 +623,6 @@
       if (saved !== 'fr') { const flags={en:'🇬🇧',es:'🇪🇸'}, labels={en:'EN',es:'ES'}; const btn=document.querySelector('.lang-option[onclick*="\''+saved+'\'"]'); if(btn) setLang(saved,flags[saved],labels[saved],btn); }
     });
   </script>
+  <script src="auth.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const authRoutes = require('./routes/auth.routes');
 require('dotenv').config();
 
 const db = require('./database');
@@ -10,10 +11,9 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRoutes);
 
-// ============================================================
-// TEST CONNEXION BASE DE DONNÉES
-// ============================================================
+
 db.query('SELECT 1')
   .then(() => console.log('✅ Base de données WARFIRA connectée !'))
   .catch(err => console.error('❌ Erreur connexion DB :', err));
